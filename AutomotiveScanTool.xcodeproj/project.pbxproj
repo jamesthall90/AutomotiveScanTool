@@ -7,13 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		727770C61F9FD7E9004F2241 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770C51F9FD7E9004F2241 /* AppDelegate.swift */; };
-		727770C81F9FD7E9004F2241 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770C71F9FD7E9004F2241 /* ViewController.swift */; };
+		624FB15DB7EB3B1B0FD0CCDD /* Pods_AutomotiveScanToolTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A646871F6ACECD0127A0221 /* Pods_AutomotiveScanToolTests.framework */; };
 		727770CB1F9FD7E9004F2241 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 727770C91F9FD7E9004F2241 /* Main.storyboard */; };
 		727770CD1F9FD7E9004F2241 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 727770CC1F9FD7E9004F2241 /* Assets.xcassets */; };
 		727770D01F9FD7E9004F2241 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 727770CE1F9FD7E9004F2241 /* LaunchScreen.storyboard */; };
 		727770DB1F9FD7E9004F2241 /* AutomotiveScanToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770DA1F9FD7E9004F2241 /* AutomotiveScanToolTests.swift */; };
 		727770E61F9FD7E9004F2241 /* AutomotiveScanToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770E51F9FD7E9004F2241 /* AutomotiveScanToolUITests.swift */; };
+		727770FA1F9FD882004F2241 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770F31F9FD880004F2241 /* UIViewExtension.swift */; };
+		727770FB1F9FD882004F2241 /* VinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770F41F9FD881004F2241 /* VinRequest.swift */; };
+		727770FC1F9FD882004F2241 /* DeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770F51F9FD881004F2241 /* DeviceViewController.swift */; };
+		727770FD1F9FD882004F2241 /* VInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770F61F9FD881004F2241 /* VInfoViewController.swift */; };
+		727770FE1F9FD882004F2241 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770F71F9FD881004F2241 /* ViewController.swift */; };
+		727770FF1F9FD882004F2241 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770F81F9FD881004F2241 /* AppDelegate.swift */; };
+		727771001F9FD882004F2241 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770F91F9FD882004F2241 /* LoginViewController.swift */; };
+		72926AC41F9FDA1600A8BCA5 /* ParticleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72926AC31F9FDA1600A8BCA5 /* ParticleSDK.framework */; };
+		72926AC81F9FDA1E00A8BCA5 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72926AC71F9FDA1D00A8BCA5 /* AFNetworking.framework */; };
+		A5D6DE94631699D1FC8C8EE9 /* Pods_AutomotiveScanTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8240C1EA87ED660AAE625 /* Pods_AutomotiveScanTool.framework */; };
+		E1E991B8B53FB1AB24BE0217 /* Pods_AutomotiveScanToolUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE30ED95563C507B274AD8A1 /* Pods_AutomotiveScanToolUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		154A6774E45C17166EA59671 /* Pods-AutomotiveScanToolUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanToolUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanToolUITests/Pods-AutomotiveScanToolUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2A646871F6ACECD0127A0221 /* Pods_AutomotiveScanToolTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutomotiveScanToolTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		339CFCDB618861FB2FCFDCEB /* Pods-AutomotiveScanTool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanTool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanTool/Pods-AutomotiveScanTool.debug.xcconfig"; sourceTree = "<group>"; };
+		51E8240C1EA87ED660AAE625 /* Pods_AutomotiveScanTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutomotiveScanTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		720D8E4A1F9FDEBE00DAF53E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		727770C21F9FD7E9004F2241 /* AutomotiveScanTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomotiveScanTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		727770C51F9FD7E9004F2241 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		727770C71F9FD7E9004F2241 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		727770CA1F9FD7E9004F2241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		727770CC1F9FD7E9004F2241 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		727770CF1F9FD7E9004F2241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +60,23 @@
 		727770E11F9FD7E9004F2241 /* AutomotiveScanToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutomotiveScanToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		727770E51F9FD7E9004F2241 /* AutomotiveScanToolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomotiveScanToolUITests.swift; sourceTree = "<group>"; };
 		727770E71F9FD7E9004F2241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		727770F31F9FD880004F2241 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		727770F41F9FD881004F2241 /* VinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinRequest.swift; sourceTree = "<group>"; };
+		727770F51F9FD881004F2241 /* DeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
+		727770F61F9FD881004F2241 /* VInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VInfoViewController.swift; sourceTree = "<group>"; };
+		727770F71F9FD881004F2241 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../../../../../../../AST/AST/ViewController.swift; sourceTree = "<group>"; };
+		727770F81F9FD881004F2241 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../../../../../../../../AST/AST/AppDelegate.swift; sourceTree = "<group>"; };
+		727770F91F9FD882004F2241 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		727771011F9FD89F004F2241 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
+		72926AC31F9FDA1600A8BCA5 /* ParticleSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParticleSDK.framework; path = Carthage/Build/iOS/ParticleSDK.framework; sourceTree = "<group>"; };
+		72926AC71F9FDA1D00A8BCA5 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		72926ACB1F9FDA5E00A8BCA5 /* ParticleSDK.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ParticleSDK.framework.dSYM; path = Carthage/Build/iOS/ParticleSDK.framework.dSYM; sourceTree = "<group>"; };
+		72926ACD1F9FDA6600A8BCA5 /* AFNetworking.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = AFNetworking.framework.dSYM; path = Carthage/Build/iOS/AFNetworking.framework.dSYM; sourceTree = "<group>"; };
+		A07F900895DE522BA641694B /* Pods-AutomotiveScanToolTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanToolTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanToolTests/Pods-AutomotiveScanToolTests.release.xcconfig"; sourceTree = "<group>"; };
+		C692D2A5BAEA437E271D551C /* Pods-AutomotiveScanTool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanTool.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanTool/Pods-AutomotiveScanTool.release.xcconfig"; sourceTree = "<group>"; };
+		DE30ED95563C507B274AD8A1 /* Pods_AutomotiveScanToolUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutomotiveScanToolUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2BF0CC7F765CD4BE42C2738 /* Pods-AutomotiveScanToolTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanToolTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanToolTests/Pods-AutomotiveScanToolTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E8DD77C21B8B553607C2FA81 /* Pods-AutomotiveScanToolUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanToolUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanToolUITests/Pods-AutomotiveScanToolUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +84,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5D6DE94631699D1FC8C8EE9 /* Pods_AutomotiveScanTool.framework in Frameworks */,
+				72926AC81F9FDA1E00A8BCA5 /* AFNetworking.framework in Frameworks */,
+				72926AC41F9FDA1600A8BCA5 /* ParticleSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				624FB15DB7EB3B1B0FD0CCDD /* Pods_AutomotiveScanToolTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1E991B8B53FB1AB24BE0217 /* Pods_AutomotiveScanToolUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,10 +112,16 @@
 		727770B91F9FD7E9004F2241 = {
 			isa = PBXGroup;
 			children = (
+				72926ACD1F9FDA6600A8BCA5 /* AFNetworking.framework.dSYM */,
+				72926ACB1F9FDA5E00A8BCA5 /* ParticleSDK.framework.dSYM */,
+				72926AC71F9FDA1D00A8BCA5 /* AFNetworking.framework */,
+				72926AC31F9FDA1600A8BCA5 /* ParticleSDK.framework */,
 				727770C41F9FD7E9004F2241 /* AutomotiveScanTool */,
 				727770D91F9FD7E9004F2241 /* AutomotiveScanToolTests */,
 				727770E41F9FD7E9004F2241 /* AutomotiveScanToolUITests */,
 				727770C31F9FD7E9004F2241 /* Products */,
+				9FD834E6F99FBFBB52BBDF14 /* Pods */,
+				85857947F9D5608C93F3B7FC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,11 +138,18 @@
 		727770C41F9FD7E9004F2241 /* AutomotiveScanTool */ = {
 			isa = PBXGroup;
 			children = (
-				727770C51F9FD7E9004F2241 /* AppDelegate.swift */,
-				727770C71F9FD7E9004F2241 /* ViewController.swift */,
+				727771011F9FD89F004F2241 /* img */,
+				727770F81F9FD881004F2241 /* AppDelegate.swift */,
+				727770F51F9FD881004F2241 /* DeviceViewController.swift */,
+				727770F91F9FD882004F2241 /* LoginViewController.swift */,
+				727770F31F9FD880004F2241 /* UIViewExtension.swift */,
+				727770F71F9FD881004F2241 /* ViewController.swift */,
+				727770F61F9FD881004F2241 /* VInfoViewController.swift */,
+				727770F41F9FD881004F2241 /* VinRequest.swift */,
 				727770C91F9FD7E9004F2241 /* Main.storyboard */,
 				727770CC1F9FD7E9004F2241 /* Assets.xcassets */,
 				727770CE1F9FD7E9004F2241 /* LaunchScreen.storyboard */,
+				720D8E4A1F9FDEBE00DAF53E /* GoogleService-Info.plist */,
 				727770D11F9FD7E9004F2241 /* Info.plist */,
 			);
 			path = AutomotiveScanTool;
@@ -125,6 +173,29 @@
 			path = AutomotiveScanToolUITests;
 			sourceTree = "<group>";
 		};
+		85857947F9D5608C93F3B7FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				51E8240C1EA87ED660AAE625 /* Pods_AutomotiveScanTool.framework */,
+				2A646871F6ACECD0127A0221 /* Pods_AutomotiveScanToolTests.framework */,
+				DE30ED95563C507B274AD8A1 /* Pods_AutomotiveScanToolUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9FD834E6F99FBFBB52BBDF14 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				339CFCDB618861FB2FCFDCEB /* Pods-AutomotiveScanTool.debug.xcconfig */,
+				C692D2A5BAEA437E271D551C /* Pods-AutomotiveScanTool.release.xcconfig */,
+				E2BF0CC7F765CD4BE42C2738 /* Pods-AutomotiveScanToolTests.debug.xcconfig */,
+				A07F900895DE522BA641694B /* Pods-AutomotiveScanToolTests.release.xcconfig */,
+				E8DD77C21B8B553607C2FA81 /* Pods-AutomotiveScanToolUITests.debug.xcconfig */,
+				154A6774E45C17166EA59671 /* Pods-AutomotiveScanToolUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +203,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 727770EA1F9FD7E9004F2241 /* Build configuration list for PBXNativeTarget "AutomotiveScanTool" */;
 			buildPhases = (
+				A29B9DEC441CEA996ED2F8C3 /* [CP] Check Pods Manifest.lock */,
 				727770BE1F9FD7E9004F2241 /* Sources */,
 				727770BF1F9FD7E9004F2241 /* Frameworks */,
 				727770C01F9FD7E9004F2241 /* Resources */,
+				36215AB8EC235B457673CD00 /* [CP] Embed Pods Frameworks */,
+				3C9299BD0998E2DBE1155D86 /* [CP] Copy Pods Resources */,
+				72926ACF1F9FDABC00A8BCA5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -149,9 +224,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 727770ED1F9FD7E9004F2241 /* Build configuration list for PBXNativeTarget "AutomotiveScanToolTests" */;
 			buildPhases = (
+				4EB88FA713649370D8DB5AA1 /* [CP] Check Pods Manifest.lock */,
 				727770D21F9FD7E9004F2241 /* Sources */,
 				727770D31F9FD7E9004F2241 /* Frameworks */,
 				727770D41F9FD7E9004F2241 /* Resources */,
+				4F782BF3BE97D86056F9BB72 /* [CP] Embed Pods Frameworks */,
+				761B5F3D45F049AF3C0A2FF6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +245,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 727770F01F9FD7E9004F2241 /* Build configuration list for PBXNativeTarget "AutomotiveScanToolUITests" */;
 			buildPhases = (
+				17FEB42B97B3A54048EB9539 /* [CP] Check Pods Manifest.lock */,
 				727770DD1F9FD7E9004F2241 /* Sources */,
 				727770DE1F9FD7E9004F2241 /* Frameworks */,
 				727770DF1F9FD7E9004F2241 /* Resources */,
+				CAB5EED3754EA21D2E3166BB /* [CP] Embed Pods Frameworks */,
+				248677216FD5439D76DD1FDE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,13 +335,195 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		17FEB42B97B3A54048EB9539 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AutomotiveScanToolUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		248677216FD5439D76DD1FDE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutomotiveScanToolUITests/Pods-AutomotiveScanToolUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		36215AB8EC235B457673CD00 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AutomotiveScanTool/Pods-AutomotiveScanTool-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutomotiveScanTool/Pods-AutomotiveScanTool-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3C9299BD0998E2DBE1155D86 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutomotiveScanTool/Pods-AutomotiveScanTool-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4EB88FA713649370D8DB5AA1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AutomotiveScanToolTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F782BF3BE97D86056F9BB72 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutomotiveScanToolTests/Pods-AutomotiveScanToolTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72926ACF1F9FDABC00A8BCA5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ParticleSDK.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AFNetworking.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ParticleSDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		761B5F3D45F049AF3C0A2FF6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutomotiveScanToolTests/Pods-AutomotiveScanToolTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A29B9DEC441CEA996ED2F8C3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AutomotiveScanTool-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAB5EED3754EA21D2E3166BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutomotiveScanToolUITests/Pods-AutomotiveScanToolUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		727770BE1F9FD7E9004F2241 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				727770C81F9FD7E9004F2241 /* ViewController.swift in Sources */,
-				727770C61F9FD7E9004F2241 /* AppDelegate.swift in Sources */,
+				727771001F9FD882004F2241 /* LoginViewController.swift in Sources */,
+				727770FF1F9FD882004F2241 /* AppDelegate.swift in Sources */,
+				727770FA1F9FD882004F2241 /* UIViewExtension.swift in Sources */,
+				727770FB1F9FD882004F2241 /* VinRequest.swift in Sources */,
+				727770FC1F9FD882004F2241 /* DeviceViewController.swift in Sources */,
+				727770FD1F9FD882004F2241 /* VInfoViewController.swift in Sources */,
+				727770FE1F9FD882004F2241 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,13 +687,22 @@
 		};
 		727770EB1F9FD7E9004F2241 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 339CFCDB618861FB2FCFDCEB /* Pods-AutomotiveScanTool.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4U642UQEDA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = AutomotiveScanTool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = OP.AutomotiveScanTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -438,13 +710,22 @@
 		};
 		727770EC1F9FD7E9004F2241 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C692D2A5BAEA437E271D551C /* Pods-AutomotiveScanTool.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4U642UQEDA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_OPTIMIZATION_LEVEL = 2;
 				INFOPLIST_FILE = AutomotiveScanTool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = OP.AutomotiveScanTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -452,6 +733,7 @@
 		};
 		727770EE1F9FD7E9004F2241 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2BF0CC7F765CD4BE42C2738 /* Pods-AutomotiveScanToolTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -468,6 +750,7 @@
 		};
 		727770EF1F9FD7E9004F2241 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A07F900895DE522BA641694B /* Pods-AutomotiveScanToolTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -484,6 +767,7 @@
 		};
 		727770F11F9FD7E9004F2241 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8DD77C21B8B553607C2FA81 /* Pods-AutomotiveScanToolUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -499,6 +783,7 @@
 		};
 		727770F21F9FD7E9004F2241 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 154A6774E45C17166EA59671 /* Pods-AutomotiveScanToolUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
