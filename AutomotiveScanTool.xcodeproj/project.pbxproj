@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		727770C61F9FD7E9004F2241 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770C51F9FD7E9004F2241 /* AppDelegate.swift */; };
+		727770C81F9FD7E9004F2241 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770C71F9FD7E9004F2241 /* ViewController.swift */; };
+		727770CB1F9FD7E9004F2241 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 727770C91F9FD7E9004F2241 /* Main.storyboard */; };
+		727770CD1F9FD7E9004F2241 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 727770CC1F9FD7E9004F2241 /* Assets.xcassets */; };
+		727770D01F9FD7E9004F2241 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 727770CE1F9FD7E9004F2241 /* LaunchScreen.storyboard */; };
+		727770DB1F9FD7E9004F2241 /* AutomotiveScanToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770DA1F9FD7E9004F2241 /* AutomotiveScanToolTests.swift */; };
+		727770E61F9FD7E9004F2241 /* AutomotiveScanToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770E51F9FD7E9004F2241 /* AutomotiveScanToolUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		727770D71F9FD7E9004F2241 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 727770BA1F9FD7E9004F2241 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 727770C11F9FD7E9004F2241;
+			remoteInfo = AutomotiveScanTool;
+		};
+		727770E21F9FD7E9004F2241 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 727770BA1F9FD7E9004F2241 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 727770C11F9FD7E9004F2241;
+			remoteInfo = AutomotiveScanTool;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		727770C21F9FD7E9004F2241 /* AutomotiveScanTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomotiveScanTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		727770C51F9FD7E9004F2241 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		727770C71F9FD7E9004F2241 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		727770CA1F9FD7E9004F2241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		727770CC1F9FD7E9004F2241 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		727770CF1F9FD7E9004F2241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		727770D11F9FD7E9004F2241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		727770D61F9FD7E9004F2241 /* AutomotiveScanToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutomotiveScanToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		727770DA1F9FD7E9004F2241 /* AutomotiveScanToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomotiveScanToolTests.swift; sourceTree = "<group>"; };
+		727770DC1F9FD7E9004F2241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		727770E11F9FD7E9004F2241 /* AutomotiveScanToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutomotiveScanToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		727770E51F9FD7E9004F2241 /* AutomotiveScanToolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomotiveScanToolUITests.swift; sourceTree = "<group>"; };
+		727770E71F9FD7E9004F2241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		727770BF1F9FD7E9004F2241 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		727770D31F9FD7E9004F2241 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		727770DE1F9FD7E9004F2241 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		727770B91F9FD7E9004F2241 = {
+			isa = PBXGroup;
+			children = (
+				727770C41F9FD7E9004F2241 /* AutomotiveScanTool */,
+				727770D91F9FD7E9004F2241 /* AutomotiveScanToolTests */,
+				727770E41F9FD7E9004F2241 /* AutomotiveScanToolUITests */,
+				727770C31F9FD7E9004F2241 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		727770C31F9FD7E9004F2241 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				727770C21F9FD7E9004F2241 /* AutomotiveScanTool.app */,
+				727770D61F9FD7E9004F2241 /* AutomotiveScanToolTests.xctest */,
+				727770E11F9FD7E9004F2241 /* AutomotiveScanToolUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		727770C41F9FD7E9004F2241 /* AutomotiveScanTool */ = {
+			isa = PBXGroup;
+			children = (
+				727770C51F9FD7E9004F2241 /* AppDelegate.swift */,
+				727770C71F9FD7E9004F2241 /* ViewController.swift */,
+				727770C91F9FD7E9004F2241 /* Main.storyboard */,
+				727770CC1F9FD7E9004F2241 /* Assets.xcassets */,
+				727770CE1F9FD7E9004F2241 /* LaunchScreen.storyboard */,
+				727770D11F9FD7E9004F2241 /* Info.plist */,
+			);
+			path = AutomotiveScanTool;
+			sourceTree = "<group>";
+		};
+		727770D91F9FD7E9004F2241 /* AutomotiveScanToolTests */ = {
+			isa = PBXGroup;
+			children = (
+				727770DA1F9FD7E9004F2241 /* AutomotiveScanToolTests.swift */,
+				727770DC1F9FD7E9004F2241 /* Info.plist */,
+			);
+			path = AutomotiveScanToolTests;
+			sourceTree = "<group>";
+		};
+		727770E41F9FD7E9004F2241 /* AutomotiveScanToolUITests */ = {
+			isa = PBXGroup;
+			children = (
+				727770E51F9FD7E9004F2241 /* AutomotiveScanToolUITests.swift */,
+				727770E71F9FD7E9004F2241 /* Info.plist */,
+			);
+			path = AutomotiveScanToolUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		727770C11F9FD7E9004F2241 /* AutomotiveScanTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 727770EA1F9FD7E9004F2241 /* Build configuration list for PBXNativeTarget "AutomotiveScanTool" */;
+			buildPhases = (
+				727770BE1F9FD7E9004F2241 /* Sources */,
+				727770BF1F9FD7E9004F2241 /* Frameworks */,
+				727770C01F9FD7E9004F2241 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AutomotiveScanTool;
+			productName = AutomotiveScanTool;
+			productReference = 727770C21F9FD7E9004F2241 /* AutomotiveScanTool.app */;
+			productType = "com.apple.product-type.application";
+		};
+		727770D51F9FD7E9004F2241 /* AutomotiveScanToolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 727770ED1F9FD7E9004F2241 /* Build configuration list for PBXNativeTarget "AutomotiveScanToolTests" */;
+			buildPhases = (
+				727770D21F9FD7E9004F2241 /* Sources */,
+				727770D31F9FD7E9004F2241 /* Frameworks */,
+				727770D41F9FD7E9004F2241 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				727770D81F9FD7E9004F2241 /* PBXTargetDependency */,
+			);
+			name = AutomotiveScanToolTests;
+			productName = AutomotiveScanToolTests;
+			productReference = 727770D61F9FD7E9004F2241 /* AutomotiveScanToolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		727770E01F9FD7E9004F2241 /* AutomotiveScanToolUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 727770F01F9FD7E9004F2241 /* Build configuration list for PBXNativeTarget "AutomotiveScanToolUITests" */;
+			buildPhases = (
+				727770DD1F9FD7E9004F2241 /* Sources */,
+				727770DE1F9FD7E9004F2241 /* Frameworks */,
+				727770DF1F9FD7E9004F2241 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				727770E31F9FD7E9004F2241 /* PBXTargetDependency */,
+			);
+			name = AutomotiveScanToolUITests;
+			productName = AutomotiveScanToolUITests;
+			productReference = 727770E11F9FD7E9004F2241 /* AutomotiveScanToolUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		727770BA1F9FD7E9004F2241 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "James Hall";
+				TargetAttributes = {
+					727770C11F9FD7E9004F2241 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					727770D51F9FD7E9004F2241 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 727770C11F9FD7E9004F2241;
+					};
+					727770E01F9FD7E9004F2241 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 727770C11F9FD7E9004F2241;
+					};
+				};
+			};
+			buildConfigurationList = 727770BD1F9FD7E9004F2241 /* Build configuration list for PBXProject "AutomotiveScanTool" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 727770B91F9FD7E9004F2241;
+			productRefGroup = 727770C31F9FD7E9004F2241 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				727770C11F9FD7E9004F2241 /* AutomotiveScanTool */,
+				727770D51F9FD7E9004F2241 /* AutomotiveScanToolTests */,
+				727770E01F9FD7E9004F2241 /* AutomotiveScanToolUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		727770C01F9FD7E9004F2241 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				727770D01F9FD7E9004F2241 /* LaunchScreen.storyboard in Resources */,
+				727770CD1F9FD7E9004F2241 /* Assets.xcassets in Resources */,
+				727770CB1F9FD7E9004F2241 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		727770D41F9FD7E9004F2241 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		727770DF1F9FD7E9004F2241 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		727770BE1F9FD7E9004F2241 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				727770C81F9FD7E9004F2241 /* ViewController.swift in Sources */,
+				727770C61F9FD7E9004F2241 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		727770D21F9FD7E9004F2241 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				727770DB1F9FD7E9004F2241 /* AutomotiveScanToolTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		727770DD1F9FD7E9004F2241 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				727770E61F9FD7E9004F2241 /* AutomotiveScanToolUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		727770D81F9FD7E9004F2241 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 727770C11F9FD7E9004F2241 /* AutomotiveScanTool */;
+			targetProxy = 727770D71F9FD7E9004F2241 /* PBXContainerItemProxy */;
+		};
+		727770E31F9FD7E9004F2241 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 727770C11F9FD7E9004F2241 /* AutomotiveScanTool */;
+			targetProxy = 727770E21F9FD7E9004F2241 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		727770C91F9FD7E9004F2241 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				727770CA1F9FD7E9004F2241 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		727770CE1F9FD7E9004F2241 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				727770CF1F9FD7E9004F2241 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		727770E81F9FD7E9004F2241 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		727770E91F9FD7E9004F2241 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		727770EB1F9FD7E9004F2241 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AutomotiveScanTool/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = OP.AutomotiveScanTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		727770EC1F9FD7E9004F2241 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AutomotiveScanTool/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = OP.AutomotiveScanTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		727770EE1F9FD7E9004F2241 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AutomotiveScanToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = OP.AutomotiveScanToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutomotiveScanTool.app/AutomotiveScanTool";
+			};
+			name = Debug;
+		};
+		727770EF1F9FD7E9004F2241 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AutomotiveScanToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = OP.AutomotiveScanToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutomotiveScanTool.app/AutomotiveScanTool";
+			};
+			name = Release;
+		};
+		727770F11F9FD7E9004F2241 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AutomotiveScanToolUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = OP.AutomotiveScanToolUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AutomotiveScanTool;
+			};
+			name = Debug;
+		};
+		727770F21F9FD7E9004F2241 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AutomotiveScanToolUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = OP.AutomotiveScanToolUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AutomotiveScanTool;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		727770BD1F9FD7E9004F2241 /* Build configuration list for PBXProject "AutomotiveScanTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				727770E81F9FD7E9004F2241 /* Debug */,
+				727770E91F9FD7E9004F2241 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		727770EA1F9FD7E9004F2241 /* Build configuration list for PBXNativeTarget "AutomotiveScanTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				727770EB1F9FD7E9004F2241 /* Debug */,
+				727770EC1F9FD7E9004F2241 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		727770ED1F9FD7E9004F2241 /* Build configuration list for PBXNativeTarget "AutomotiveScanToolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				727770EE1F9FD7E9004F2241 /* Debug */,
+				727770EF1F9FD7E9004F2241 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		727770F01F9FD7E9004F2241 /* Build configuration list for PBXNativeTarget "AutomotiveScanToolUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				727770F11F9FD7E9004F2241 /* Debug */,
+				727770F21F9FD7E9004F2241 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 727770BA1F9FD7E9004F2241 /* Project object */;
+}
