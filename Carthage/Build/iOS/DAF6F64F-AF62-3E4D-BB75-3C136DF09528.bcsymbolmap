@@ -1,0 +1,546 @@
+BCSymbolMap Version: 2.0
+-[ParticleSession initWithNewSession:]
+-[ParticleSession initWithToken:]
+-[ParticleSession storeSessionInKeychainAndSetExpiryTimer]
+-[ParticleSession initWithToken:andExpiryDate:]
+-[ParticleSession initWithToken:withExpiryDate:withRefreshToken:]
+-[ParticleSession initWithSavedSession]
+-[ParticleSession accessToken]
+-[ParticleSession removeSession]
+-[ParticleSession accessTokenExpired:]
+-[ParticleSession dealloc]
+-[ParticleSession username]
+-[ParticleSession setUsername:]
+-[ParticleSession refreshToken]
+-[ParticleSession setRefreshToken:]
+-[ParticleSession delegate]
+-[ParticleSession setDelegate:]
+-[ParticleSession expiryDate]
+-[ParticleSession setExpiryDate:]
+-[ParticleSession expiryTimer]
+-[ParticleSession setExpiryTimer:]
+-[ParticleSession setAccessToken:]
+-[ParticleSession .cxx_destruct]
+_OBJC_IVAR_$_ParticleSession._accessToken
+_OBJC_IVAR_$_ParticleSession._username
+_OBJC_IVAR_$_ParticleSession._refreshToken
+_OBJC_IVAR_$_ParticleSession._delegate
+_OBJC_IVAR_$_ParticleSession._expiryDate
+_OBJC_IVAR_$_ParticleSession._expiryTimer
+Apple LLVM version 9.0.0 (clang-900.0.37)
+/Users/TylerHall/Library/Mobile Documents/com~apple~CloudDocs/FGCU/Software Engineering/Classes/2017/Fall 2017/CNT 4104/Project/AutomotiveScanTool/Carthage/Checkouts/particle-sdk-ios/Pod/Classes/SDK/ParticleSession.m
+/Users/TylerHall/Library/Mobile Documents/com~apple~CloudDocs/FGCU/Software Engineering/Classes/2017/Fall 2017/CNT 4104/Project/AutomotiveScanTool/Carthage/Checkouts/particle-sdk-ios/ParticleSDK
+/Users/TylerHall/Library/Mobile Documents/com~apple~CloudDocs/FGCU/Software Engineering/Classes/2017/Fall 2017/CNT 4104/Project/AutomotiveScanTool/Carthage/Checkouts/particle-sdk-ios/Pod/Classes/SDK/ParticleSession.h
++[EventSource eventSourceWithURL:timeoutInterval:queue:]
+-[EventSource initWithURL:timeoutInterval:queue:]
+___49-[EventSource initWithURL:timeoutInterval:queue:]_block_invoke
+___copy_helper_block_
+___destroy_helper_block_
+-[EventSource addEventListener:handler:]
+-[EventSource removeEventListener:handler:]
+-[EventSource onMessage:]
+-[EventSource onError:]
+-[EventSource onOpen:]
+-[EventSource open]
+-[EventSource close]
+-[EventSource connection:didReceiveResponse:]
+___45-[EventSource connection:didReceiveResponse:]_block_invoke
+___copy_helper_block_.76
+___destroy_helper_block_.77
+-[EventSource connection:didFailWithError:]
+___43-[EventSource connection:didFailWithError:]_block_invoke
+___copy_helper_block_.83
+___destroy_helper_block_.84
+___43-[EventSource connection:didFailWithError:]_block_invoke.88
+___copy_helper_block_.93
+___destroy_helper_block_.94
+-[EventSource connection:didReceiveData:]
+___Block_byref_object_copy_
+___Block_byref_object_dispose_
+___41-[EventSource connection:didReceiveData:]_block_invoke
+___copy_helper_block_.130
+___destroy_helper_block_.131
+-[EventSource connectionDidFinishLoading:]
+___42-[EventSource connectionDidFinishLoading:]_block_invoke
+___copy_helper_block_.145
+___destroy_helper_block_.146
+___42-[EventSource connectionDidFinishLoading:]_block_invoke.148
+___copy_helper_block_.149
+___destroy_helper_block_.150
+-[EventSource dealloc]
+-[EventSource eventURL]
+-[EventSource setEventURL:]
+-[EventSource eventSource]
+-[EventSource setEventSource:]
+-[EventSource eventSourceTask]
+-[EventSource setEventSourceTask:]
+-[EventSource listeners]
+-[EventSource setListeners:]
+-[EventSource timeoutInterval]
+-[EventSource setTimeoutInterval:]
+-[EventSource retryInterval]
+-[EventSource setRetryInterval:]
+-[EventSource lastEventID]
+-[EventSource setLastEventID:]
+-[EventSource queue]
+-[EventSource setQueue:]
+-[EventSource retries]
+-[EventSource setRetries:]
+-[EventSource event]
+-[EventSource setEvent:]
+-[EventSource .cxx_destruct]
+-[Event description]
+-[Event copyWithZone:]
+-[Event name]
+-[Event setName:]
+-[Event data]
+-[Event setData:]
+-[Event readyState]
+-[Event setReadyState:]
+-[Event error]
+-[Event setError:]
+-[Event .cxx_destruct]
+_OBJC_IVAR_$_EventSource._listeners
+_OBJC_IVAR_$_EventSource._eventURL
+_OBJC_IVAR_$_EventSource._timeoutInterval
+_OBJC_IVAR_$_EventSource._retryInterval
+_OBJC_IVAR_$_EventSource._queue
+_OBJC_IVAR_$_EventSource._retries
+___block_descriptor_tmp
+_OBJC_IVAR_$_EventSource.wasClosed
+___block_descriptor_tmp.78
+___block_descriptor_tmp.85
+___block_descriptor_tmp.95
+___block_descriptor_tmp.132
+___block_descriptor_tmp.147
+___block_descriptor_tmp.151
+_OBJC_IVAR_$_EventSource._eventSource
+_OBJC_IVAR_$_EventSource._eventSourceTask
+_OBJC_IVAR_$_EventSource._lastEventID
+_OBJC_IVAR_$_EventSource._event
+l_OBJC_PROTOCOL_$_NSObject
+l_OBJC_LABEL_PROTOCOL_$_NSObject
+l_OBJC_PROTOCOL_$_NSURLConnectionDelegate
+l_OBJC_LABEL_PROTOCOL_$_NSURLConnectionDelegate
+l_OBJC_PROTOCOL_$_NSURLConnectionDataDelegate
+l_OBJC_LABEL_PROTOCOL_$_NSURLConnectionDataDelegate
+_OBJC_IVAR_$_Event._name
+_OBJC_IVAR_$_Event._data
+_OBJC_IVAR_$_Event._readyState
+_OBJC_IVAR_$_Event._error
+l_OBJC_PROTOCOL_$_NSCopying
+l_OBJC_LABEL_PROTOCOL_$_NSCopying
+/Users/TylerHall/Library/Mobile Documents/com~apple~CloudDocs/FGCU/Software Engineering/Classes/2017/Fall 2017/CNT 4104/Project/AutomotiveScanTool/Carthage/Checkouts/particle-sdk-ios/Pod/Classes/Helpers/EventSource.m
+/Users/TylerHall/Library/Mobile Documents/com~apple~CloudDocs/FGCU/Software Engineering/Classes/2017/Fall 2017/CNT 4104/Project/AutomotiveScanTool/Carthage/Checkouts/particle-sdk-ios/Pod/Classes/Helpers/EventSource.h
+__destroy_helper_block_
+__copy_helper_block_
+__42-[EventSource connectionDidFinishLoading:]_block_invoke.148
+__42-[EventSource connectionDidFinishLoading:]_block_invoke
+__41-[EventSource connection:didReceiveData:]_block_invoke
+__Block_byref_object_dispose_
+__Block_byref_object_copy_
+__43-[EventSource connection:didFailWithError:]_block_invoke.88
+__43-[EventSource connection:didFailWithError:]_block_invoke
+__45-[EventSource connection:didReceiveResponse:]_block_invoke
+__49-[EventSource initWithURL:timeoutInterval:queue:]_block_invoke
+-[KeychainItemWrapper initWithIdentifier:accessGroup:]
+-[KeychainItemWrapper setObject:forKey:]
+-[KeychainItemWrapper objectForKey:]
+-[KeychainItemWrapper resetKeychainItem]
+-[KeychainItemWrapper dictionaryToSecItemFormat:]
+-[KeychainItemWrapper secItemFormatToDictionary:]
+-[KeychainItemWrapper writeToKeychain]
+-[KeychainItemWrapper .cxx_destruct]
+_OBJC_IVAR_$_KeychainItemWrapper.genericPasswordQuery
+_OBJC_IVAR_$_KeychainItemWrapper.keychainItemData
+/Users/TylerHall/Library/Mobile Documents/com~apple~CloudDocs/FGCU/Software Engineering/Classes/2017/Fall 2017/CNT 4104/Project/AutomotiveScanTool/Carthage/Checkouts/particle-sdk-ios/Pod/Classes/Helpers/KeychainItemWrapper.m
++[ParticleCloud sharedInstance]
+-[ParticleCloud init]
+-[ParticleCloud accessToken]
+-[ParticleCloud injectSessionAccessToken:]
+-[ParticleCloud injectSessionAccessToken:withExpiryDate:]
+-[ParticleCloud injectSessionAccessToken:withExpiryDate:andRefreshToken:]
+-[ParticleCloud loggedInUsername]
+-[ParticleCloud isLoggedIn]
+-[ParticleCloud isAuthenticated]
+-[ParticleCloud setoAuthClientId:]
+-[ParticleCloud setoAuthClientSecret:]
+-[ParticleCloud ParticleSession:didExpireAt:]
+-[ParticleCloud refreshToken:]
+___30-[ParticleCloud refreshToken:]_block_invoke
+___30-[ParticleCloud refreshToken:]_block_invoke.93
+-[ParticleCloud loginWithUser:password:completion:]
+___51-[ParticleCloud loginWithUser:password:completion:]_block_invoke
+___copy_helper_block_.119
+___destroy_helper_block_.120
+___51-[ParticleCloud loginWithUser:password:completion:]_block_invoke.122
+-[ParticleCloud createUser:password:accountInfo:completion:]
+___60-[ParticleCloud createUser:password:accountInfo:completion:]_block_invoke
+___copy_helper_block_.154
+___destroy_helper_block_.155
+___60-[ParticleCloud createUser:password:accountInfo:completion:]_block_invoke.157
+___copy_helper_block_.160
+___destroy_helper_block_.161
+-[ParticleCloud signupWithUser:password:completion:]
+-[ParticleCloud createCustomer:password:productId:accountInfo:completion:]
+___74-[ParticleCloud createCustomer:password:productId:accountInfo:completion:]_block_invoke
+___copy_helper_block_.179
+___destroy_helper_block_.180
+___74-[ParticleCloud createCustomer:password:productId:accountInfo:completion:]_block_invoke.182
+___copy_helper_block_.185
+___destroy_helper_block_.186
+-[ParticleCloud signupWithCustomer:password:orgSlug:completion:]
+-[ParticleCloud logout]
+-[ParticleCloud claimDevice:completion:]
+___40-[ParticleCloud claimDevice:completion:]_block_invoke
+___copy_helper_block_.206
+___destroy_helper_block_.207
+___40-[ParticleCloud claimDevice:completion:]_block_invoke.209
+___copy_helper_block_.212
+___destroy_helper_block_.213
+-[ParticleCloud getDevice:completion:]
+___38-[ParticleCloud getDevice:completion:]_block_invoke
+___copy_helper_block_.231
+___destroy_helper_block_.232
+___38-[ParticleCloud getDevice:completion:]_block_invoke.234
+___copy_helper_block_.237
+___destroy_helper_block_.238
+-[ParticleCloud getDevices:]
+___28-[ParticleCloud getDevices:]_block_invoke
+___28-[ParticleCloud getDevices:]_block_invoke.254
+___copy_helper_block_.255
+___destroy_helper_block_.256
+___28-[ParticleCloud getDevices:]_block_invoke.261
+___copy_helper_block_.264
+___destroy_helper_block_.265
+___copy_helper_block_.268
+___destroy_helper_block_.269
+___28-[ParticleCloud getDevices:]_block_invoke.271
+___copy_helper_block_.274
+___destroy_helper_block_.275
+-[ParticleCloud generateClaimCode:]
+___35-[ParticleCloud generateClaimCode:]_block_invoke
+___copy_helper_block_.285
+___destroy_helper_block_.286
+___35-[ParticleCloud generateClaimCode:]_block_invoke.288
+___copy_helper_block_.291
+___destroy_helper_block_.292
+-[ParticleCloud generateClaimCodeForOrganization:andProduct:withActivationCode:completion:]
+-[ParticleCloud generateClaimCodeForProduct:completion:]
+___56-[ParticleCloud generateClaimCodeForProduct:completion:]_block_invoke
+___copy_helper_block_.298
+___destroy_helper_block_.299
+___56-[ParticleCloud generateClaimCodeForProduct:completion:]_block_invoke.301
+___copy_helper_block_.304
+___destroy_helper_block_.305
+-[ParticleCloud requestPasswordResetForCustomer:productId:completion:]
+___70-[ParticleCloud requestPasswordResetForCustomer:productId:completion:]_block_invoke
+___copy_helper_block_.309
+___destroy_helper_block_.310
+___70-[ParticleCloud requestPasswordResetForCustomer:productId:completion:]_block_invoke.312
+___copy_helper_block_.315
+___destroy_helper_block_.316
+-[ParticleCloud requestPasswordResetForCustomer:email:completion:]
+-[ParticleCloud requestPasswordResetForUser:completion:]
+___56-[ParticleCloud requestPasswordResetForUser:completion:]_block_invoke
+___copy_helper_block_.322
+___destroy_helper_block_.323
+___56-[ParticleCloud requestPasswordResetForUser:completion:]_block_invoke.325
+___copy_helper_block_.328
+___destroy_helper_block_.329
+-[ParticleCloud listTokens:password:]
+___37-[ParticleCloud listTokens:password:]_block_invoke
+___37-[ParticleCloud listTokens:password:]_block_invoke_2
+-[ParticleCloud makeErrorWithDescription:code:]
+-[ParticleCloud subscribeToEventWithURL:handler:]
+___49-[ParticleCloud subscribeToEventWithURL:handler:]_block_invoke
+___copy_helper_block_.363
+___destroy_helper_block_.364
+-[ParticleCloud unsubscribeFromEventWithID:]
+-[ParticleCloud subscribeToAllEventsWithPrefix:handler:]
+-[ParticleCloud subscribeToMyDevicesEventsWithPrefix:handler:]
+-[ParticleCloud subscribeToDeviceEventsWithPrefix:deviceID:handler:]
+-[ParticleCloud publishEventWithName:data:isPrivate:ttl:completion:]
+___68-[ParticleCloud publishEventWithName:data:isPrivate:ttl:completion:]_block_invoke
+___copy_helper_block_.423
+___destroy_helper_block_.424
+___68-[ParticleCloud publishEventWithName:data:isPrivate:ttl:completion:]_block_invoke.426
+___copy_helper_block_.427
+___destroy_helper_block_.428
+-[ParticleCloud subscribeToDevicesSystemEvents]
+___47-[ParticleCloud subscribeToDevicesSystemEvents]_block_invoke
+___copy_helper_block_.436
+___destroy_helper_block_.437
+-[ParticleCloud unsubscribeToDevicesSystemEvents]
+-[ParticleCloud dealloc]
+-[ParticleCloud oAuthClientId]
+-[ParticleCloud setOAuthClientId:]
+-[ParticleCloud oAuthClientSecret]
+-[ParticleCloud setOAuthClientSecret:]
+-[ParticleCloud baseURL]
+-[ParticleCloud setBaseURL:]
+-[ParticleCloud session]
+-[ParticleCloud setSession:]
+-[ParticleCloud manager]
+-[ParticleCloud setManager:]
+-[ParticleCloud eventListenersDict]
+-[ParticleCloud setEventListenersDict:]
+-[ParticleCloud devicesMapTable]
+-[ParticleCloud setDevicesMapTable:]
+-[ParticleCloud systemEventsListenerId]
+-[ParticleCloud setSystemEventsListenerId:]
+-[ParticleCloud .cxx_destruct]
+_sharedInstance.sharedInstance
+_OBJC_IVAR_$_ParticleCloud._oAuthClientId
+_OBJC_IVAR_$_ParticleCloud._oAuthClientSecret
+___block_descriptor_tmp.112
+___block_literal_global
+___block_descriptor_tmp.121
+___block_descriptor_tmp.156
+___block_descriptor_tmp.162
+___block_descriptor_tmp.181
+___block_descriptor_tmp.187
+___block_descriptor_tmp.208
+___block_descriptor_tmp.214
+___block_descriptor_tmp.233
+___block_descriptor_tmp.239
+___block_descriptor_tmp.258
+___block_descriptor_tmp.267
+___block_descriptor_tmp.270
+___block_descriptor_tmp.276
+___block_descriptor_tmp.287
+___block_descriptor_tmp.293
+___block_descriptor_tmp.300
+___block_descriptor_tmp.306
+___block_descriptor_tmp.311
+___block_descriptor_tmp.317
+___block_descriptor_tmp.324
+___block_descriptor_tmp.330
+___block_descriptor_tmp.333
+___block_literal_global.334
+___block_descriptor_tmp.339
+___block_literal_global.340
+___block_descriptor_tmp.366
+___block_descriptor_tmp.425
+___block_descriptor_tmp.429
+___block_descriptor_tmp.439
+_OBJC_IVAR_$_ParticleCloud._baseURL
+_OBJC_IVAR_$_ParticleCloud._session
+_OBJC_IVAR_$_ParticleCloud._manager
+_OBJC_IVAR_$_ParticleCloud._eventListenersDict
+_OBJC_IVAR_$_ParticleCloud._devicesMapTable
+_OBJC_IVAR_$_ParticleCloud._systemEventsListenerId
+l_OBJC_PROTOCOL_$_ParticleSessionDelegate
+l_OBJC_LABEL_PROTOCOL_$_ParticleSessionDelegate
+/Users/TylerHall/Library/Mobile Documents/com~apple~CloudDocs/FGCU/Software Engineering/Classes/2017/Fall 2017/CNT 4104/Project/AutomotiveScanTool/Carthage/Checkouts/particle-sdk-ios/Pod/Classes/SDK/ParticleCloud.m
+/Users/TylerHall/Library/Mobile Documents/com~apple~CloudDocs/FGCU/Software Engineering/Classes/2017/Fall 2017/CNT 4104/Project/AutomotiveScanTool/Carthage/Checkouts/particle-sdk-ios/Pod/Classes/SDK/ParticleCloud.h
+__47-[ParticleCloud subscribeToDevicesSystemEvents]_block_invoke
+__68-[ParticleCloud publishEventWithName:data:isPrivate:ttl:completion:]_block_invoke.426
+__68-[ParticleCloud publishEventWithName:data:isPrivate:ttl:completion:]_block_invoke
+__49-[ParticleCloud subscribeToEventWithURL:handler:]_block_invoke
+__37-[ParticleCloud listTokens:password:]_block_invoke_2
+__37-[ParticleCloud listTokens:password:]_block_invoke
+__56-[ParticleCloud requestPasswordResetForUser:completion:]_block_invoke.325
+__56-[ParticleCloud requestPasswordResetForUser:completion:]_block_invoke
+__70-[ParticleCloud requestPasswordResetForCustomer:productId:completion:]_block_invoke.312
+__70-[ParticleCloud requestPasswordResetForCustomer:productId:completion:]_block_invoke
+__56-[ParticleCloud generateClaimCodeForProduct:completion:]_block_invoke.301
+__56-[ParticleCloud generateClaimCodeForProduct:completion:]_block_invoke
+__35-[ParticleCloud generateClaimCode:]_block_invoke.288
+__35-[ParticleCloud generateClaimCode:]_block_invoke
+__28-[ParticleCloud getDevices:]_block_invoke.271
+__28-[ParticleCloud getDevices:]_block_invoke.261
+__28-[ParticleCloud getDevices:]_block_invoke.254
+__28-[ParticleCloud getDevices:]_block_invoke
+__38-[ParticleCloud getDevice:completion:]_block_invoke.234
+__38-[ParticleCloud getDevice:completion:]_block_invoke
+__40-[ParticleCloud claimDevice:completion:]_block_invoke.209
+__40-[ParticleCloud claimDevice:completion:]_block_invoke
+__74-[ParticleCloud createCustomer:password:productId:accountInfo:completion:]_block_invoke.182
+__74-[ParticleCloud createCustomer:password:productId:accountInfo:completion:]_block_invoke
+__60-[ParticleCloud createUser:password:accountInfo:completion:]_block_invoke.157
+__60-[ParticleCloud createUser:password:accountInfo:completion:]_block_invoke
+__51-[ParticleCloud loginWithUser:password:completion:]_block_invoke.122
+__51-[ParticleCloud loginWithUser:password:completion:]_block_invoke
+__30-[ParticleCloud refreshToken:]_block_invoke.93
+__30-[ParticleCloud refreshToken:]_block_invoke
+-[ParticleDevice initWithParams:]
+-[ParticleDevice refresh:]
+___26-[ParticleDevice refresh:]_block_invoke
+-[ParticleDevice setName:]
+-[ParticleDevice getVariable:completion:]
+___41-[ParticleDevice getVariable:completion:]_block_invoke
+___copy_helper_block_.122
+___destroy_helper_block_.123
+___41-[ParticleDevice getVariable:completion:]_block_invoke.126
+___copy_helper_block_.127
+___destroy_helper_block_.128
+-[ParticleDevice callFunction:withArguments:completion:]
+___56-[ParticleDevice callFunction:withArguments:completion:]_block_invoke
+___copy_helper_block_.155
+___destroy_helper_block_.156
+___56-[ParticleDevice callFunction:withArguments:completion:]_block_invoke.158
+___copy_helper_block_.159
+___destroy_helper_block_.160
+-[ParticleDevice signal:completion:]
+___36-[ParticleDevice signal:completion:]_block_invoke
+___copy_helper_block_.172
+___destroy_helper_block_.173
+___36-[ParticleDevice signal:completion:]_block_invoke.175
+___copy_helper_block_.176
+___destroy_helper_block_.177
+-[ParticleDevice unclaim:]
+___26-[ParticleDevice unclaim:]_block_invoke
+___26-[ParticleDevice unclaim:]_block_invoke.188
+___copy_helper_block_.189
+___destroy_helper_block_.190
+-[ParticleDevice rename:completion:]
+___36-[ParticleDevice rename:completion:]_block_invoke
+___copy_helper_block_.194
+___destroy_helper_block_.195
+___36-[ParticleDevice rename:completion:]_block_invoke.197
+___copy_helper_block_.198
+___destroy_helper_block_.199
+-[ParticleDevice defaultParams]
+-[ParticleDevice setAuthHeaderWithAccessToken]
+-[ParticleDevice makeErrorWithDescription:code:]
+-[ParticleDevice description]
+-[ParticleDevice flashKnownApp:completion:]
+___43-[ParticleDevice flashKnownApp:completion:]_block_invoke
+___copy_helper_block_.258
+___destroy_helper_block_.259
+___43-[ParticleDevice flashKnownApp:completion:]_block_invoke.261
+___copy_helper_block_.262
+___destroy_helper_block_.263
+-[ParticleDevice flashFiles:completion:]
+___40-[ParticleDevice flashFiles:completion:]_block_invoke
+___copy_helper_block_.279
+___destroy_helper_block_.280
+___40-[ParticleDevice flashFiles:completion:]_block_invoke.285
+___copy_helper_block_.286
+___destroy_helper_block_.287
+-[ParticleDevice subscribeToEventsWithPrefix:handler:]
+-[ParticleDevice unsubscribeFromEventWithID:]
+-[ParticleDevice getCurrentDataUsage:]
+___38-[ParticleDevice getCurrentDataUsage:]_block_invoke
+___copy_helper_block_.310
+___destroy_helper_block_.311
+___38-[ParticleDevice getCurrentDataUsage:]_block_invoke.313
+___copy_helper_block_.314
+___destroy_helper_block_.315
+-[ParticleDevice __receivedSystemEvent:]
+-[ParticleDevice id]
+-[ParticleDevice setId:]
+-[ParticleDevice name]
+-[ParticleDevice connected]
+-[ParticleDevice setConnected:]
+-[ParticleDevice functions]
+-[ParticleDevice setFunctions:]
+-[ParticleDevice variables]
+-[ParticleDevice setVariables:]
+-[ParticleDevice lastApp]
+-[ParticleDevice lastHeard]
+-[ParticleDevice appHash]
+-[ParticleDevice setAppHash:]
+-[ParticleDevice isFlashing]
+-[ParticleDevice setIsFlashing:]
+-[ParticleDevice lastIPAdress]
+-[ParticleDevice setLastIPAdress:]
+-[ParticleDevice lastIccid]
+-[ParticleDevice setLastIccid:]
+-[ParticleDevice imei]
+-[ParticleDevice setImei:]
+-[ParticleDevice platformId]
+-[ParticleDevice setPlatformId:]
+-[ParticleDevice productId]
+-[ParticleDevice setProductId:]
+-[ParticleDevice status]
+-[ParticleDevice setStatus:]
+-[ParticleDevice version]
+-[ParticleDevice setVersion:]
+-[ParticleDevice requiresUpdate]
+-[ParticleDevice setRequiresUpdate:]
+-[ParticleDevice type]
+-[ParticleDevice delegate]
+-[ParticleDevice setDelegate:]
+-[ParticleDevice manager]
+-[ParticleDevice setManager:]
+-[ParticleDevice baseURL]
+-[ParticleDevice setBaseURL:]
+-[ParticleDevice .cxx_destruct]
+_OBJC_IVAR_$_ParticleDevice._baseURL
+_OBJC_IVAR_$_ParticleDevice._requiresUpdate
+_OBJC_IVAR_$_ParticleDevice._name
+_OBJC_IVAR_$_ParticleDevice._connected
+_OBJC_IVAR_$_ParticleDevice._functions
+_OBJC_IVAR_$_ParticleDevice._variables
+_OBJC_IVAR_$_ParticleDevice._id
+_OBJC_IVAR_$_ParticleDevice._type
+_OBJC_IVAR_$_ParticleDevice._productId
+_OBJC_IVAR_$_ParticleDevice._lastIccid
+_OBJC_IVAR_$_ParticleDevice._imei
+_OBJC_IVAR_$_ParticleDevice._status
+_OBJC_IVAR_$_ParticleDevice._lastIPAdress
+_OBJC_IVAR_$_ParticleDevice._lastApp
+_OBJC_IVAR_$_ParticleDevice._lastHeard
+___block_descriptor_tmp.125
+___block_descriptor_tmp.130
+___block_descriptor_tmp.157
+___block_descriptor_tmp.161
+___block_descriptor_tmp.174
+___block_descriptor_tmp.178
+___block_descriptor_tmp.191
+___block_descriptor_tmp.196
+___block_descriptor_tmp.200
+___block_descriptor_tmp.260
+___block_descriptor_tmp.264
+___block_descriptor_tmp.282
+___block_descriptor_tmp.289
+___block_descriptor_tmp.312
+___block_descriptor_tmp.316
+_OBJC_IVAR_$_ParticleDevice._appHash
+_OBJC_IVAR_$_ParticleDevice._isFlashing
+_OBJC_IVAR_$_ParticleDevice._platformId
+_OBJC_IVAR_$_ParticleDevice._version
+_OBJC_IVAR_$_ParticleDevice._delegate
+_OBJC_IVAR_$_ParticleDevice._manager
+/Users/TylerHall/Library/Mobile Documents/com~apple~CloudDocs/FGCU/Software Engineering/Classes/2017/Fall 2017/CNT 4104/Project/AutomotiveScanTool/Carthage/Checkouts/particle-sdk-ios/Pod/Classes/SDK/ParticleDevice.m
+/Users/TylerHall/Library/Mobile Documents/com~apple~CloudDocs/FGCU/Software Engineering/Classes/2017/Fall 2017/CNT 4104/Project/AutomotiveScanTool/Carthage/Checkouts/particle-sdk-ios/Pod/Classes/SDK/ParticleDevice.h
+__38-[ParticleDevice getCurrentDataUsage:]_block_invoke.313
+__38-[ParticleDevice getCurrentDataUsage:]_block_invoke
+__40-[ParticleDevice flashFiles:completion:]_block_invoke.285
+__40-[ParticleDevice flashFiles:completion:]_block_invoke
+__43-[ParticleDevice flashKnownApp:completion:]_block_invoke.261
+__43-[ParticleDevice flashKnownApp:completion:]_block_invoke
+__36-[ParticleDevice rename:completion:]_block_invoke.197
+__36-[ParticleDevice rename:completion:]_block_invoke
+__26-[ParticleDevice unclaim:]_block_invoke.188
+__26-[ParticleDevice unclaim:]_block_invoke
+__36-[ParticleDevice signal:completion:]_block_invoke.175
+__36-[ParticleDevice signal:completion:]_block_invoke
+__56-[ParticleDevice callFunction:withArguments:completion:]_block_invoke.158
+__56-[ParticleDevice callFunction:withArguments:completion:]_block_invoke
+__41-[ParticleDevice getVariable:completion:]_block_invoke.126
+__41-[ParticleDevice getVariable:completion:]_block_invoke
+__26-[ParticleDevice refresh:]_block_invoke
+-[ParticleEvent initWithEventDict:]
+-[ParticleEvent description]
+-[ParticleEvent deviceID]
+-[ParticleEvent setDeviceID:]
+-[ParticleEvent data]
+-[ParticleEvent setData:]
+-[ParticleEvent event]
+-[ParticleEvent setEvent:]
+-[ParticleEvent time]
+-[ParticleEvent setTime:]
+-[ParticleEvent ttl]
+-[ParticleEvent setTtl:]
+-[ParticleEvent .cxx_destruct]
+_OBJC_IVAR_$_ParticleEvent._deviceID
+_OBJC_IVAR_$_ParticleEvent._data
+_OBJC_IVAR_$_ParticleEvent._event
+_OBJC_IVAR_$_ParticleEvent._time
+_OBJC_IVAR_$_ParticleEvent._ttl
+/Users/TylerHall/Library/Mobile Documents/com~apple~CloudDocs/FGCU/Software Engineering/Classes/2017/Fall 2017/CNT 4104/Project/AutomotiveScanTool/Carthage/Checkouts/particle-sdk-ios/Pod/Classes/SDK/ParticleEvent.m
+/Users/TylerHall/Library/Mobile Documents/com~apple~CloudDocs/FGCU/Software Engineering/Classes/2017/Fall 2017/CNT 4104/Project/AutomotiveScanTool/Carthage/Checkouts/particle-sdk-ios/Pod/Classes/SDK/ParticleEvent.h
+/Users/TylerHall/Library/Caches/org.carthage.CarthageKit/DerivedData/9.0_9A235/particle-sdk-ios/0.7.0/Build/Intermediates.noindex/ParticleSDK.build/Release-iphoneos/ParticleSDK.build/DerivedSources/ParticleSDK_vers.c

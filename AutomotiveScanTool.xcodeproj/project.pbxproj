@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		624FB15DB7EB3B1B0FD0CCDD /* Pods_AutomotiveScanToolTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A646871F6ACECD0127A0221 /* Pods_AutomotiveScanToolTests.framework */; };
+		720D8E4C1F9FE10100DAF53E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 720D8E4B1F9FE10100DAF53E /* GoogleService-Info.plist */; };
 		727770CB1F9FD7E9004F2241 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 727770C91F9FD7E9004F2241 /* Main.storyboard */; };
 		727770CD1F9FD7E9004F2241 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 727770CC1F9FD7E9004F2241 /* Assets.xcassets */; };
 		727770D01F9FD7E9004F2241 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 727770CE1F9FD7E9004F2241 /* LaunchScreen.storyboard */; };
@@ -48,7 +49,7 @@
 		2A646871F6ACECD0127A0221 /* Pods_AutomotiveScanToolTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutomotiveScanToolTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		339CFCDB618861FB2FCFDCEB /* Pods-AutomotiveScanTool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanTool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanTool/Pods-AutomotiveScanTool.debug.xcconfig"; sourceTree = "<group>"; };
 		51E8240C1EA87ED660AAE625 /* Pods_AutomotiveScanTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutomotiveScanTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		720D8E4A1F9FDEBE00DAF53E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		720D8E4B1F9FE10100DAF53E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		727770C21F9FD7E9004F2241 /* AutomotiveScanTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomotiveScanTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		727770CA1F9FD7E9004F2241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		727770CC1F9FD7E9004F2241 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,7 +150,7 @@
 				727770C91F9FD7E9004F2241 /* Main.storyboard */,
 				727770CC1F9FD7E9004F2241 /* Assets.xcassets */,
 				727770CE1F9FD7E9004F2241 /* LaunchScreen.storyboard */,
-				720D8E4A1F9FDEBE00DAF53E /* GoogleService-Info.plist */,
+				720D8E4B1F9FE10100DAF53E /* GoogleService-Info.plist */,
 				727770D11F9FD7E9004F2241 /* Info.plist */,
 			);
 			path = AutomotiveScanTool;
@@ -314,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				727770D01F9FD7E9004F2241 /* LaunchScreen.storyboard in Resources */,
+				720D8E4C1F9FE10100DAF53E /* GoogleService-Info.plist in Resources */,
 				727770CD1F9FD7E9004F2241 /* Assets.xcassets in Resources */,
 				727770CB1F9FD7E9004F2241 /* Main.storyboard in Resources */,
 			);

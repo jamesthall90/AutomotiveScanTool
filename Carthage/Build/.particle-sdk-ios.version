@@ -1,0 +1,18 @@
+{
+  "iOS" : [
+    {
+      "hash" : "8e9d339d08c0ba09d667e2ce9b21c72bd0d9556d0012d1e60f59f6316f387355",
+      "name" : "ParticleSDK"
+    }
+  ],
+  "commitish" : "0.7.0",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+
+  ]
+}

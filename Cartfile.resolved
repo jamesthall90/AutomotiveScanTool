@@ -1,0 +1,2 @@
+github "AFNetworking/AFNetworking" "3.1.0"
+github "spark/particle-sdk-ios" "0.7.0"
