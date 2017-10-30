@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '664643B5E53E5DC6BBF36FDF18D57C03'
-               BlueprintName = 'SwiftyJSON'
+               BlueprintIdentifier = '5331295E1DC3A1F67F19BF87E377E104'
+               BlueprintName = 'ZAlertView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SwiftyJSON.framework'>
+               BuildableName = 'ZAlertView.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

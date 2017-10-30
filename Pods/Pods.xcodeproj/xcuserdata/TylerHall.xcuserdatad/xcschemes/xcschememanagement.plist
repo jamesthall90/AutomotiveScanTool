@@ -53,6 +53,13 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
+		<key>ZAlertView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>leveldb-library.xcscheme</key>
 		<dict>
 			<key>isShown</key>

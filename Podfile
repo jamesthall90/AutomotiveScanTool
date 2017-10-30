@@ -11,6 +11,7 @@ target 'AutomotiveScanTool' do
     pod 'Firebase/Auth'
     pod 'SwiftyJSON'
     pod 'Alamofire', '~> 4.5'
+    pod 'ZAlertView'
 
   target 'AutomotiveScanToolTests' do
     inherit! :search_paths
