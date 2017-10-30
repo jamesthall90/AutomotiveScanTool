@@ -507,6 +507,9 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="wj1-Mr-dWr" kind="show" id="Mry-Kl-4Fd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJ6-vu-hir">
                                 <rect key="frame" x="48" y="407" width="278" height="66"/>
@@ -620,10 +623,10 @@
             </objects>
             <point key="canvasLocation" x="2792.8000000000002" y="89.505247376311857"/>
         </scene>
-        <!--Device List View Controller-->
+        <!--Device View Controller-->
         <scene sceneID="Koc-FR-gd6">
             <objects>
-                <viewController storyboardIdentifier="list" id="wj1-Mr-dWr" customClass="DeviceListViewController" customModule="AutomotiveScanTool" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="list" id="wj1-Mr-dWr" customClass="DeviceViewController" customModule="AutomotiveScanTool" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2zN-VW-99y"/>
                         <viewControllerLayoutGuide type="bottom" id="rpH-wc-qIW"/>
@@ -632,14 +635,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(No devices)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcM-jC-NiI">
-                                <rect key="frame" x="121.5" y="348.5" width="132.5" height="30"/>
-                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="24"/>
-                                <color key="textColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <size key="shadowOffset" width="0.0" height="2"/>
-                            </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTa-mn-MM9" userLabel="topBarView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
@@ -823,8 +818,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="wj1-Mr-dWr" id="wdK-Ns-P2g"/>
-                                    <outlet property="delegate" destination="wj1-Mr-dWr" id="Kdd-EU-j6X"/>
+                                    <outlet property="dataSource" destination="wj1-Mr-dWr" id="UeW-9Q-5yD"/>
+                                    <outlet property="delegate" destination="wj1-Mr-dWr" id="97f-ye-pJR"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -832,27 +827,19 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="nTa-mn-MM9" secondAttribute="trailing" id="0aU-ff-git"/>
                             <constraint firstItem="rpH-wc-qIW" firstAttribute="top" secondItem="6Vv-SG-iSE" secondAttribute="bottom" id="1h0-eJ-w4K"/>
-                            <constraint firstItem="gcM-jC-NiI" firstAttribute="centerX" secondItem="PIz-jq-BOU" secondAttribute="centerX" id="7Sb-KE-ovZ"/>
                             <constraint firstItem="ScT-3d-nCN" firstAttribute="top" secondItem="2zN-VW-99y" secondAttribute="bottom" constant="8" id="CqJ-Yc-Qld"/>
                             <constraint firstItem="nTa-mn-MM9" firstAttribute="leading" secondItem="PIz-jq-BOU" secondAttribute="leading" id="DH0-HD-kjA"/>
                             <constraint firstItem="nTa-mn-MM9" firstAttribute="top" secondItem="PIz-jq-BOU" secondAttribute="top" id="f81-37-zs3"/>
                             <constraint firstItem="6Vv-SG-iSE" firstAttribute="leading" secondItem="PIz-jq-BOU" secondAttribute="leadingMargin" constant="-20" id="gBN-gC-SsS"/>
                             <constraint firstItem="6Vv-SG-iSE" firstAttribute="top" secondItem="nTa-mn-MM9" secondAttribute="bottom" constant="2" id="nNZ-ek-5w0"/>
-                            <constraint firstItem="gcM-jC-NiI" firstAttribute="centerY" secondItem="PIz-jq-BOU" secondAttribute="centerY" constant="30" id="vLn-9e-gAD"/>
                             <constraint firstItem="6Vv-SG-iSE" firstAttribute="trailing" secondItem="PIz-jq-BOU" secondAttribute="trailingMargin" constant="20" id="zc9-Fk-uTO"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <connections>
-                        <outlet property="logoutButton" destination="ScT-3d-nCN" id="MqD-1n-YBq"/>
-                        <outlet property="noDevicesLabel" destination="gcM-jC-NiI" id="QvD-Ub-w6I"/>
-                        <outlet property="photonSelectionTableView" destination="6Vv-SG-iSE" id="d64-ar-nKp"/>
-                        <outlet property="setupNewDeviceButton" destination="PUB-kk-DE6" id="V45-lI-Gzr"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dUq-9L-gGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="654"/>
+            <point key="canvasLocation" x="3898" y="618"/>
         </scene>
     </scenes>
     <resources>

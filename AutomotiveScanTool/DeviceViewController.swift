@@ -12,11 +12,38 @@ import FirebaseAuth
 import QuartzCore
 
 
-let kDefaultCoreFlashingTime : Int = 30
-let kDefaultPhotonFlashingTime : Int = 15
-let kDefaultElectronFlashingTime : Int = 15
-
-class DeviceViewController: UIViewController{
+class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ParticleDeviceDelegate {
+    
+    //define this function to decide what happens when a row is selected
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //determines the number of rows that will be in the tableview
+        //currently hardcoded because i cant figure out how to get this to be dynamic
+        return 1;
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //default cell style
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "device_cell");
+        
+        //getDevices call for the particleSDK
+        ParticleCloud.sharedInstance().getDevices{ (particleDevices:[ParticleDevice]?, error:Error?) -> Void in
+            if let _ = error {
+                print("Check internet connectivity");
+            } else {
+                if let devices = particleDevices {
+                    //set the text label of the current cell to the corresponding device name in no particular order
+                    cell.textLabel?.text = devices[indexPath.row].name;
+                }
+            }
+        }
+        
+        return cell
+    }
+    
 
     @IBOutlet weak var deviceTableView: UITableView!
     

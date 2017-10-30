@@ -18,13 +18,13 @@
 		727770FB1F9FD882004F2241 /* VinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770F41F9FD881004F2241 /* VinRequest.swift */; };
 		727770FC1F9FD882004F2241 /* DeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770F51F9FD881004F2241 /* DeviceViewController.swift */; };
 		727770FD1F9FD882004F2241 /* VInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770F61F9FD881004F2241 /* VInfoViewController.swift */; };
-		727770FE1F9FD882004F2241 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770F71F9FD881004F2241 /* ViewController.swift */; };
-		727770FF1F9FD882004F2241 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770F81F9FD881004F2241 /* AppDelegate.swift */; };
 		727771001F9FD882004F2241 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770F91F9FD882004F2241 /* LoginViewController.swift */; };
 		72926AC41F9FDA1600A8BCA5 /* ParticleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72926AC31F9FDA1600A8BCA5 /* ParticleSDK.framework */; };
 		72926AC81F9FDA1E00A8BCA5 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72926AC71F9FDA1D00A8BCA5 /* AFNetworking.framework */; };
 		A5D6DE94631699D1FC8C8EE9 /* Pods_AutomotiveScanTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8240C1EA87ED660AAE625 /* Pods_AutomotiveScanTool.framework */; };
 		E1E991B8B53FB1AB24BE0217 /* Pods_AutomotiveScanToolUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE30ED95563C507B274AD8A1 /* Pods_AutomotiveScanToolUITests.framework */; };
+		F853197C1FA7A6440065B2EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F853197B1FA7A6440065B2EC /* AppDelegate.swift */; };
+		F853197E1FA7A6550065B2EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F853197D1FA7A6550065B2EC /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +65,6 @@
 		727770F41F9FD881004F2241 /* VinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinRequest.swift; sourceTree = "<group>"; };
 		727770F51F9FD881004F2241 /* DeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
 		727770F61F9FD881004F2241 /* VInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VInfoViewController.swift; sourceTree = "<group>"; };
-		727770F71F9FD881004F2241 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../../../../../../../AST/AST/ViewController.swift; sourceTree = "<group>"; };
-		727770F81F9FD881004F2241 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../../../../../../../../AST/AST/AppDelegate.swift; sourceTree = "<group>"; };
 		727770F91F9FD882004F2241 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		727771011F9FD89F004F2241 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 		72926AC31F9FDA1600A8BCA5 /* ParticleSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParticleSDK.framework; path = Carthage/Build/iOS/ParticleSDK.framework; sourceTree = "<group>"; };
@@ -78,6 +76,8 @@
 		DE30ED95563C507B274AD8A1 /* Pods_AutomotiveScanToolUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutomotiveScanToolUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BF0CC7F765CD4BE42C2738 /* Pods-AutomotiveScanToolTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanToolTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanToolTests/Pods-AutomotiveScanToolTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E8DD77C21B8B553607C2FA81 /* Pods-AutomotiveScanToolUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanToolUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanToolUITests/Pods-AutomotiveScanToolUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F853197B1FA7A6440065B2EC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F853197D1FA7A6550065B2EC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,12 +139,12 @@
 		727770C41F9FD7E9004F2241 /* AutomotiveScanTool */ = {
 			isa = PBXGroup;
 			children = (
+				F853197D1FA7A6550065B2EC /* ViewController.swift */,
 				727771011F9FD89F004F2241 /* img */,
-				727770F81F9FD881004F2241 /* AppDelegate.swift */,
 				727770F51F9FD881004F2241 /* DeviceViewController.swift */,
 				727770F91F9FD882004F2241 /* LoginViewController.swift */,
 				727770F31F9FD880004F2241 /* UIViewExtension.swift */,
-				727770F71F9FD881004F2241 /* ViewController.swift */,
+				F853197B1FA7A6440065B2EC /* AppDelegate.swift */,
 				727770F61F9FD881004F2241 /* VInfoViewController.swift */,
 				727770F41F9FD881004F2241 /* VinRequest.swift */,
 				727770C91F9FD7E9004F2241 /* Main.storyboard */,
@@ -521,13 +521,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F853197C1FA7A6440065B2EC /* AppDelegate.swift in Sources */,
 				727771001F9FD882004F2241 /* LoginViewController.swift in Sources */,
-				727770FF1F9FD882004F2241 /* AppDelegate.swift in Sources */,
 				727770FA1F9FD882004F2241 /* UIViewExtension.swift in Sources */,
 				727770FB1F9FD882004F2241 /* VinRequest.swift in Sources */,
+				F853197E1FA7A6550065B2EC /* ViewController.swift in Sources */,
 				727770FC1F9FD882004F2241 /* DeviceViewController.swift in Sources */,
 				727770FD1F9FD882004F2241 /* VInfoViewController.swift in Sources */,
-				727770FE1F9FD882004F2241 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
