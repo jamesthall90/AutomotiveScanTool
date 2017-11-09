@@ -1,77 +1,104 @@
-//
-//  DeviceViewController.swift
-//  AST
-//
-//  Created by James Hall on 10/14/17.
-//  Copyright © 2017 OP. All rights reserved.
-//
-
 import UIKit
-import ParticleSDK
-import FirebaseAuth
 import QuartzCore
-
+import ParticleSDK
 
 class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ParticleDeviceDelegate {
     
-    //define this function to decide what happens when a row is selected
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
-    }
+    @IBOutlet weak var deviceTable: UITableView!
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //determines the number of rows that will be in the tableview
-        //currently hardcoded because i cant figure out how to get this to be dynamic
-        return 1;
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //default cell style
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "device_cell");
-        
-        //getDevices call for the particleSDK
-        ParticleCloud.sharedInstance().getDevices{ (particleDevices:[ParticleDevice]?, error:Error?) -> Void in
-            if let _ = error {
-                print("Check internet connectivity");
-            } else {
-                if let devices = particleDevices {
-                    //set the text label of the current cell to the corresponding device name in no particular order
-                    cell.textLabel?.text = devices[indexPath.row].name;
-                }
-            }
-        }
-        
-        return cell
-    }
-    
-
-    @IBOutlet weak var deviceTableView: UITableView!
+    var particleDevices:[ParticleDevice]? = []
+    var selectedDeviceIndex: Int!
+    var deviceImage: UIImage!
+    var deviceType: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        deviceTable.delegate = self
+        deviceTable.dataSource = self
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func logout(_ sender: Any) {
+    // MARK: - Navigation
+    
+    @IBAction func back(_ sender: Any) {
         
-        ParticleCloud.sharedInstance().logout()
+        //dismiss your viewController
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+        if let identifier = segue.identifier {
+            
+            if identifier == "idSeguePresentMainMenu" {
+                
+                let mainMenu = segue.destination as! MainMenuViewController
+                
+                if let deviceObject = self.particleDevices?[selectedDeviceIndex] {
+                    
+                    mainMenu.deviceInfo = deviceObject
+                    
+                } else {
+                    //handle the case of 'deviceObject' being 'nil'
+                }
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableView.register(DeviceTableViewCell.self, forCellReuseIdentifier: "deviceCell")
+        
+        return (particleDevices != nil) ? particleDevices!.count+1 : 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "deviceCell", for: indexPath)
+        
+        if cell == nil {
+            cell = DeviceTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "deviceCell")
         }
         
-        //Once the user is logged out, segue switches views to Login
-        self.performSegue(withIdentifier: "logoutSegue", sender: self)
+        ParticleCloud.sharedInstance().getDevices { (devices:[ParticleDevice]?, error:Error?) -> Void in
+            if let _ = error {
+                print("Check your internet connectivity")
+            }
+            else {
+                if let d = devices {
+                    for device in d {
+                        
+                        self.particleDevices?.append(device)
+                        cell.textLabel?.text = device.name
+                    }
+                }
+            }
+        }
+      return cell
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedDeviceIndex = (indexPath as NSIndexPath).row
+        performSegue(withIdentifier: "idSeguePresentMainMenu", sender: self)
+    }
+
 }
-
-

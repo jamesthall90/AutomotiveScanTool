@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
                 self.present(loginFailureAlertController, animated: true, completion: nil)
             }
             else {
-                print("Logged in")
+                print("Logged in to Particle!")
                 
                 Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
                     
@@ -100,7 +100,7 @@ class LoginViewController: UIViewController {
                             }
                             print("User has been created and signed-in!")
                             //Once the user has been created, segue switches views to Main Menu
-                            self.performSegue(withIdentifier: "mainMenuSegue", sender: self)
+                            self.performSegue(withIdentifier: "deviceSelectSegue", sender: self)
                         }
                     
                     }
