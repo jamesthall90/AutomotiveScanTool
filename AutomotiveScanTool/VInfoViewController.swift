@@ -39,26 +39,26 @@ class VInfoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let identifier = segue.identifier {
-            if identifier == "vIBackSegue" {
-                let mMenu = segue.destination as! MainMenuViewController
-                
-                if ref != nil{
-                    
-                    mMenu.uid = self.uid
-                    mMenu.ref = self.ref
-                    mMenu.vin = self.vin
-                    mMenu.deviceInfo = self.deviceInfo
-                    
-                } else {
-                    
-                    print("Database reference is nil!")
-                }
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if let identifier = segue.identifier {
+//            if identifier == "vIBackSegue" {
+//                let mMenu = segue.destination as! MainMenuViewController
+//
+//                if ref != nil{
+//
+//                    mMenu.uid = self.uid
+//                    mMenu.ref = self.ref
+//                    mMenu.vin = self.vin
+//                    mMenu.deviceInfo = self.deviceInfo
+//
+//                } else {
+//
+//                    print("Database reference is nil!")
+//                }
+//            }
+//        }
+//    }
     
     @IBAction func vIBackButton(_ sender: Any) {
         

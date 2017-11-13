@@ -12,7 +12,9 @@ target 'AutomotiveScanTool' do
     pod 'SwiftyJSON'
     pod 'Alamofire', '~> 4.5'
     pod 'ZAlertView'
-    pod 'MBProgressHUD', '~> 1.0.0'
+    pod 'MBProgressHUD', '~> 1.0.0'	
+    pod 'Hero'
+
 
   target 'AutomotiveScanToolTests' do
     inherit! :search_paths

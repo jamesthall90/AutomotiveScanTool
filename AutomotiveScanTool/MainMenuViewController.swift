@@ -60,28 +60,7 @@ class MainMenuViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let identifier = segue.identifier {
-            if identifier == "vInfoSegue" {
-                let vInfo = segue.destination as! VInfoViewController
-                
-                if ref != nil{
-                    
-                    vInfo.uid = self.uid
-                    vInfo.ref = self.ref
-                    vInfo.vin = self.vin
-                    vInfo.deviceInfo = self.deviceInfo
-                    
-                } else {
-                    
-                    print("Database reference is nil!")
-                }
-            }
-        }
-    }
-    
     @IBAction func clearCodes(_ sender: Any) {
         
 //        let funcArgs
@@ -121,17 +100,7 @@ class MainMenuViewController: UIViewController {
     
     @IBAction func logout(_ sender: Any) {
         
-        ParticleCloud.sharedInstance().logout()
         
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-        
-        //Once the user is logged out, segue switches views to Login
-        self.performSegue(withIdentifier: "logoutSegue", sender: self)
     }
     
     func pushVehicleInfo(vehicle: VinRequest) -> Void {
