@@ -86,7 +86,7 @@ class CustomSegue: UIStoryboardSegue {
                     
                     dest.uid = source.uid
                     dest.ref = source.ref
-                    dest.vin = source.vin
+//                    dest.vin = source.vin
                     dest.deviceInfo = source.deviceInfo
                     dest.imageView = source.vehicleImage
                     
@@ -116,7 +116,7 @@ class CustomSegue: UIStoryboardSegue {
                     
                     dest.uid = source.uid
                     dest.ref = source.ref
-                    dest.vin = source.vin
+//                    dest.vin = source.vin
                     dest.deviceInfo = source.deviceInfo
                     
                 } else {

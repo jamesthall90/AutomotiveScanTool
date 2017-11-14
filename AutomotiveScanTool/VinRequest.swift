@@ -32,8 +32,14 @@ class VinRequest{
                         
                         do{
                             try json.description.write(toFile: vinPath, atomically: true, encoding: String.Encoding.utf8)
+
+                            print("")
+                            print("Wrote to file")
+                            print("")
+                            
                         } catch let error as NSError {
                             
+                            print("")
                             print("Could not write to file")
                             print(error.localizedDescription)
                             print("")
@@ -80,19 +86,23 @@ class VinRequest{
         let apiURL = URL(string:"https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVINValuesBatch/")
         
         do{
-            try! await(VinRequest.request(URL: apiURL!, method: .post, parameters: parameters, vinPath: self.vinPath))
+            VinRequest.request(URL: apiURL!, method: .post, parameters: parameters, vinPath: self.vinPath)
+            
+            print("")
+            print("System waited for request")
+            print("")
         
         } catch let error as NSError{
+            print("")
             print(error.localizedDescription)
-            print("something bad happened!")
+            print("Request/wait did not work!")
+            print("")
         }
         
         VinRequest.getContentsOfDirectory(dir: AppDelegate.getAppDelegate().getDocDir())
         
         //Creates url from vinPath
         let vinURL = URL(fileURLWithPath: self.vinPath)
-        
-//        print(vinURL.absoluteString)
         
         //Converts the file at the vinURL into a data object,
         //and then into a JSON object

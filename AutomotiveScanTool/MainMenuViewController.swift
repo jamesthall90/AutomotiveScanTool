@@ -40,27 +40,8 @@ class MainMenuViewController: UIViewController {
             //Return's the current user's unique ID
             self.uid = user.uid
         }
-
-        vin = "3GNFK16T5YG164967"
-//        let vehicle = VinRequest(VIN:self.vin)
-
         
-        //Checks to see whether vehicle already exists in database
-//        ref.child("users").child(uid).child("vehicles").observeSingleEvent(of: .value, with: { (snapshot) in
-//
-//            if snapshot.hasChild(self.vin){
-//
-//                print("Vehicle exists in database!")
-//
-//            } else {
-//
-//                self.pushVehicleInfo(vehicle: VinRequest(VIN:self.vin))
-//            }
-//        })
-        
-        
-        
-        self.getVehicleInfo()
+//        self.getVehicleInfo()
         
 //        yMMLabel.text = "\(vehicle.getVehicleYear()) \(vehicle.getVehicleMake()) \(vehicle.getVehicleModel())"
     }
@@ -77,13 +58,34 @@ class MainMenuViewController: UIViewController {
                 print("Performed readVin() function with no errors!")
             }
         }
-        
+        LoadingHud.show(self.view, label: "Loading Data...")
         var handler = ParticleCloud.sharedInstance().subscribeToAllEvents(withPrefix: "vin/result", handler: { (event :ParticleEvent?, error : Error?) in
             if let _ = error {
-                print ("could not subscribe to Vin Event")
+            
+                print ("Could not subscribe to readVIN Event")
+                
+                LoadingHud.hide(self.view)
+            
             } else {
+                
                 DispatchQueue.main.async(execute: {
-                    print("got event with data \(event?.data?.description as! String)")
+                   
+//                   self.vin = event?.data?.description as! String
+                    self.ref.child("users").child(self.uid).child("vehicles").observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        if snapshot.hasChild(event?.data?.description as! String){
+                            
+                            print("Vehicle exists in database!")
+                            self.vin = event?.data?.description as! String
+                            self.getVehicleInfo()
+                            LoadingHud.hide(self.view)
+                        } else {
+                            
+                            self.pushVehicleInfo(vehicle: VinRequest(VIN:(event?.data?.description as! String)))
+                            self.vin = event?.data?.description as! String
+                            self.getVehicleInfo()
+                        }
+                    })
                 })
             }
         })
@@ -105,8 +107,6 @@ class MainMenuViewController: UIViewController {
             } else {
                 DispatchQueue.main.async(execute: {
                     print("got event with data \(event?.data?.description as! String)")
-                    
-                    
                 })
             }
         })
@@ -171,7 +171,7 @@ class MainMenuViewController: UIViewController {
     
     func getVehicleInfo(){
         
-        LoadingHud.show(self.view, label: "Loading Data...")
+//        LoadingHud.show(self.view, label: "Loading Data...")
         self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).observeSingleEvent(of: .value, with: { (snapshot) in
             
             let value = snapshot.value as? NSDictionary
@@ -195,11 +195,5 @@ class MainMenuViewController: UIViewController {
         LoadingHud.hide(self.view)
     }
     
-    func flashDevice(device: ParticleDevice){
-        
-//        func flashFiles(_ filesDict: [AnyHashable: Any], completion: ParticleCompletionBlock?) -> URLSessionDataTask? {
-//
-//
-//        }
-    }
+
 }
