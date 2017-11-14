@@ -11,6 +11,8 @@ import FirebaseAuth
 import ParticleSDK
 import FirebaseDatabase
 import FirebaseAuth
+import AwaitKit
+import SwiftyJSON
 
 class MainMenuViewController: UIViewController {
     
@@ -19,12 +21,13 @@ class MainMenuViewController: UIViewController {
     var ref: DatabaseReference!
     var uid: String!
     var vin: String!
+    @IBOutlet weak var vehicleImage: UIImageView!
     @IBOutlet weak var yMMLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        yMMLabel.text = self.deviceInfo.name?.lowercased() ?? ""
+//        yMMLabel.text = self.deviceInfo.name?.lowercased() ?? ""
         
         //Creates a reference to the database
         self.ref = Database.database().reference()
@@ -38,20 +41,26 @@ class MainMenuViewController: UIViewController {
             self.uid = user.uid
         }
 
-        vin = "1FTSW21R98ED08508"
+        vin = "3GNFK16T5YG164967"
+//        let vehicle = VinRequest(VIN:self.vin)
+
         
         //Checks to see whether vehicle already exists in database
-        ref.child("users").child(uid).child("vehicles").observeSingleEvent(of: .value, with: { (snapshot) in
-
-            if snapshot.hasChild(self.vin){
-
-                print("Vehicle exists in database!")
-
-            } else {
-
-                self.pushVehicleInfo(vehicle: VinRequest(VIN:self.vin))
-            }
-        })
+//        ref.child("users").child(uid).child("vehicles").observeSingleEvent(of: .value, with: { (snapshot) in
+//
+//            if snapshot.hasChild(self.vin){
+//
+//                print("Vehicle exists in database!")
+//
+//            } else {
+//
+//                self.pushVehicleInfo(vehicle: VinRequest(VIN:self.vin))
+//            }
+//        })
+        
+        
+        
+        self.getVehicleInfo()
         
 //        yMMLabel.text = "\(vehicle.getVehicleYear()) \(vehicle.getVehicleMake()) \(vehicle.getVehicleModel())"
     }
@@ -61,10 +70,51 @@ class MainMenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
         
+    @IBAction func codeHistory(_ sender: UIButton) {
+        
+        var task = self.deviceInfo!.callFunction("readVIN", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
+            if (error == nil) {
+                print("Performed readVin() function with no errors!")
+            }
+        }
+        
+        var handler = ParticleCloud.sharedInstance().subscribeToAllEvents(withPrefix: "vin/result", handler: { (event :ParticleEvent?, error : Error?) in
+            if let _ = error {
+                print ("could not subscribe to Vin Event")
+            } else {
+                DispatchQueue.main.async(execute: {
+                    print("got event with data \(event?.data?.description as! String)")
+                })
+            }
+        })
+    }
+    
+    @IBAction func readCodes(_ sender: UIButton) {
+        
+        var task = self.deviceInfo!.callFunction("readCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
+            if (error == nil) {
+                print("Performed readCodes() function with no errors!")
+                let json = JSON(resultCode)
+                print(json)
+            }
+        }
+        
+        var handler = ParticleCloud.sharedInstance().subscribeToAllEvents(withPrefix: "codes/result", handler: { (event :ParticleEvent?, error : Error?) in
+            if let _ = error {
+                print ("Performed readVin() function with no errors!")
+            } else {
+                DispatchQueue.main.async(execute: {
+                    print("got event with data \(event?.data?.description as! String)")
+                    
+                    
+                })
+            }
+        })
+        
+    }
     @IBAction func clearCodes(_ sender: Any) {
         
-//        let funcArgs
-        var task = self.deviceInfo!.callFunction("digitalWrite", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
+        var task = self.deviceInfo!.callFunction("clearCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
             if (error == nil) {
                 
                 //Creates a UIAlertController which will display the success message
@@ -98,12 +148,15 @@ class MainMenuViewController: UIViewController {
         performSegue(withIdentifier: "vInfoSegue", sender: self)
     }
     
-    @IBAction func logout(_ sender: Any) {
+    @IBAction func backButton(_ sender: Any) {
         
-        
+        //Segue's to Device List view
+        performSegue(withIdentifier: "presentDeviceList", sender: self)
     }
     
     func pushVehicleInfo(vehicle: VinRequest) -> Void {
+        
+        self.yMMLabel.text = "\(vehicle.getVehicleYear()) \(vehicle.getVehicleMake()) \(vehicle.getVehicleModel())"
         
         self.ref.child("users").child(self.uid).child("vehicles").child(vehicle.vin).child("vehicle year").setValue(vehicle.getVehicleYear())
         self.ref.child("users").child(self.uid).child("vehicles").child(vehicle.vin).child("vehicle make").setValue(vehicle.getVehicleMake())
@@ -114,5 +167,39 @@ class MainMenuViewController: UIViewController {
         self.ref.child("users").child(self.uid).child("vehicles").child(vehicle.vin).child("vehicle transmission").setValue(vehicle.getVehicleTransmission())
         self.ref.child("users").child(self.uid).child("vehicles").child(vehicle.vin).child("vehicle fuel type").setValue(vehicle.getVehicleFuelType())
         self.ref.child("users").child(self.uid).child("vehicles").child(vehicle.vin).child("vehicle assembly plant").setValue(vehicle.getVehicleAssemblyPlant())
+    }
+    
+    func getVehicleInfo(){
+        
+        LoadingHud.show(self.view, label: "Loading Data...")
+        self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let value = snapshot.value as? NSDictionary
+            
+            self.yMMLabel.text = "\(value?["vehicle year"] as? String ?? "") \(value?["vehicle make"] as? String ?? "") \(value?["vehicle model"] as? String ?? "")".uppercased()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+//        if self.yMMLabel.text == "2012 kia optima"{
+//
+//            self.vehicleImage.image = UIImage(named: "kia-optima")
+//        }
+//
+//        if self.yMMLabel.text == "2003 chevrolet suburban"{
+        
+            self.vehicleImage.image = UIImage(named: "chevy-suburban")
+//        }
+        
+        LoadingHud.hide(self.view)
+    }
+    
+    func flashDevice(device: ParticleDevice){
+        
+//        func flashFiles(_ filesDict: [AnyHashable: Any], completion: ParticleCompletionBlock?) -> URLSessionDataTask? {
+//
+//
+//        }
     }
 }

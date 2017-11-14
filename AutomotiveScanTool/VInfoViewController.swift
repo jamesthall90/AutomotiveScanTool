@@ -27,6 +27,7 @@ class VInfoViewController: UIViewController {
     @IBOutlet weak var vIAssyPlantLabel: UILabel!
     @IBOutlet weak var vIFuelTypeLabel: UILabel!
     @IBOutlet weak var vehicleImageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,40 +40,17 @@ class VInfoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if let identifier = segue.identifier {
-//            if identifier == "vIBackSegue" {
-//                let mMenu = segue.destination as! MainMenuViewController
-//
-//                if ref != nil{
-//
-//                    mMenu.uid = self.uid
-//                    mMenu.ref = self.ref
-//                    mMenu.vin = self.vin
-//                    mMenu.deviceInfo = self.deviceInfo
-//
-//                } else {
-//
-//                    print("Database reference is nil!")
-//                }
-//            }
-//        }
-//    }
-    
     @IBAction func vIBackButton(_ sender: Any) {
         
         self.performSegue(withIdentifier: "vIBackSegue", sender: self)
     }
     
     func fillLabels(){
-        
-        self.vIVINLabel.text = vin
-        
-        self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).observeSingleEvent(of: .value, with: { (snapshot) in
+        LoadingHud.show(self.view, label: "Loading Data...")
+    self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).observeSingleEvent(of: .value, with: { (snapshot) in
             
             let value = snapshot.value as? NSDictionary
-            
+            self.vIVINLabel.text = self.vin
             self.vIYearLabel.text = value?["vehicle year"] as? String ?? ""
             self.vIMakeLabel.text = value?["vehicle make"] as? String ?? ""
             self.vIModelLabel.text = value?["vehicle model"] as? String ?? ""
@@ -85,5 +63,6 @@ class VInfoViewController: UIViewController {
         }) { (error) in
             print(error.localizedDescription)
         }
+        LoadingHud.hide(self.view)
     }
 }

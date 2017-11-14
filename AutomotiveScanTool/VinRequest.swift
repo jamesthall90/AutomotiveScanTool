@@ -9,75 +9,58 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import AwaitKit
+import PromiseKit
 
 class VinRequest{
     
     //Initialization of instance variables
     var vin : String
-    var parameters: Parameters
+    var parameters: Parameters?
     var vinPath: String
-    var imagePath: String
     var vehicleData : JSON
     
-    /*
-     * Function processes an HTTP POST request from NHTSA's Vehicle API
-     * using the VIN parameter passed through init() and writes the
-     * JSON to a file in the application's Documents directory
-     */
-    class func postRequest(vinPath: String, parameters: Parameters){
-        
-        Alamofire.request("https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVINValuesBatch/", method: .post, parameters: parameters).responseJSON { (responseData) -> Void in
-            
-            if((responseData.result.value) != nil) {
-                
-                let responseDataJSON = JSON(responseData.result.value!)
-                
-                //Writes the newly-decoded vin information to a file at the vinPath
-                do{
+    class func request( URL: URL, method: HTTPMethod, parameters: Parameters?, vinPath: String) -> Promise<NSData> {
+        return Promise{ resolve, reject in
+            Alamofire.request(URL, method: method, parameters: parameters).responseJSON { responseData in
+               
+                switch responseData.result {
+                    case .success(let value):
+                        
+                        let json = JSON(value)
+                        print("JSON: \(json)")
+                        
+                        do{
+                            try json.description.write(toFile: vinPath, atomically: true, encoding: String.Encoding.utf8)
+                        } catch let error as NSError {
+                            
+                            print("Could not write to file")
+                            print(error.localizedDescription)
+                            print("")
+                        }
                     
-                    try responseDataJSON.description.write(toFile: vinPath, atomically: false, encoding: String.Encoding.utf8)
-                } catch{
-                    
-                    print("Could not write to file")
+                    case .failure(let error):
+                        print(error)
                 }
             }
         }
     }
-    
-    class func vehicleImageCall(path: String, vin: String){
-        Alamofire.request("https://api.fuelapi.com/v1/json/vehicle/\(vin)/?api_key=daefd14b-9f2b-4968-9e4d-9d4bb4af01d1&productID=1&shotCode=037").responseJSON { (responseData) -> Void in
-            
-            if((responseData.result.value) != nil) {
-                
-                let responseDataJSON = JSON(responseData.result.value!)
-                
-                //Writes the newly-decoded vin information to a file at the vinPath
-                do{
-                    
-                    try responseDataJSON.description.write(toFile: path, atomically: false, encoding: String.Encoding.utf8)
-                } catch{
-                    
-                    print("Could not write to file")
-                }
+
+    class func getContentsOfDirectory(dir: String){
+        
+        let filemgr = FileManager.default
+        
+        do {
+            let filelist = try filemgr.contentsOfDirectory(atPath: dir)
+            print("------------------------")
+            print("")
+            for filename in filelist {
+                print(filename)
             }
-        }
-        //Creates url from vinPath
-        let imageURL = URL(fileURLWithPath: path)
-        
-        print(imageURL.absoluteString)
-        
-        var vehicleData: JSON
-        
-        //Converts the file at the vinURL into a data object,
-        //and then into a JSON object
-        do{
-            
-            vehicleData = JSON(data: try Data(contentsOf: imageURL))
-            
-        } catch{
-            
-            vehicleData = JSON.null
-            print("Could not create JSON")
+            print("")
+            print("------------------------")
+        } catch let error {
+            print("Error: \(error.localizedDescription)")
         }
     }
     
@@ -93,28 +76,37 @@ class VinRequest{
         ]
         
         self.vinPath = "\(AppDelegate.getAppDelegate().getDocDir())/decoded-vin.json"
-        self.imagePath = "\(AppDelegate.getAppDelegate().getDocDir())/image.json"
         
-        VinRequest.postRequest(vinPath: vinPath, parameters: parameters)
+        let apiURL = URL(string:"https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVINValuesBatch/")
+        
+        do{
+            try! await(VinRequest.request(URL: apiURL!, method: .post, parameters: parameters, vinPath: self.vinPath))
+        
+        } catch let error as NSError{
+            print(error.localizedDescription)
+            print("something bad happened!")
+        }
+        
+        VinRequest.getContentsOfDirectory(dir: AppDelegate.getAppDelegate().getDocDir())
         
         //Creates url from vinPath
         let vinURL = URL(fileURLWithPath: self.vinPath)
         
-        print(vinURL.absoluteString)
+//        print(vinURL.absoluteString)
         
         //Converts the file at the vinURL into a data object,
         //and then into a JSON object
         do{
+           try vehicleData = JSON(data: try Data(contentsOf: vinURL))
             
-            vehicleData = JSON(data: try Data(contentsOf: vinURL))
-            
-        } catch{
+        } catch let error as NSError{
             
             vehicleData = JSON.null
-            print("Could not create JSON")
+            print("**********************************")
+            print("Could not open JSON")
+            print(error.localizedDescription)
+            print("**********************************")
         }
-        
-        VinRequest.vehicleImageCall(path: imagePath, vin: self.vin)
     }
     
     func getVehicleYear() -> String{
@@ -236,9 +228,5 @@ class VinRequest{
         }
         
         return (vehicleFuelType!.uppercased())
-    }
-    
-    func getVehicleImages(){
-        
     }
 }

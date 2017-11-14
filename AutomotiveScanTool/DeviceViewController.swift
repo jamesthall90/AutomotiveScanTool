@@ -39,30 +39,29 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if let identifier = segue.identifier {
-//
-//            if identifier == "idSeguePresentMainMenu" {
-//
-//                let mainMenu = segue.destination as! MainMenuViewController
-//
-//
-////                if let deviceObject = self.particleDevices?[selectedDeviceIndex] {
-////
-////                    mainMenu.deviceInfo = deviceObject
-////
-////                } else {
-////                    //handle the case of 'deviceObject' being 'nil'
-////                }
-//
-////                mainMenu.isHeroEnabled = true
-////                mainMenu.heroModalAnimationType = .zoomSlide(direction: HeroDefaultAnimationType.Direction.left)
-////                self.hero_replaceViewController(with: mainMenu)
-//
-//            }
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if let identifier = segue.identifier {
+
+            if identifier == "idSeguePresentMainMenu" {
+
+                let mainMenu = segue.destination as! MainMenuViewController
+                
+                if let deviceObject = self.particleDevices?[selectedDeviceIndex] {
+
+                    mainMenu.deviceInfo = deviceObject
+
+               } else {
+                    //handle the case of 'deviceObject' being 'nil'
+               }
+
+//                mainMenu.isHeroEnabled = true
+//                mainMenu.heroModalAnimationType = .zoomSlide(direction: HeroDefaultAnimationType.Direction.left)
+//                self.hero_replaceViewController(with: mainMenu)
+
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -114,7 +113,7 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func getParticleDevices(indexPath: NSIndexPath, cell: UITableViewCell){
-        
+        LoadingHud.show(self.view, label: "Loading Devices...")
         ParticleCloud.sharedInstance().getDevices { (devices:[ParticleDevice]?, error:Error?) -> Void in
             if let _ = error {
                 print("Check your internet connectivity")
@@ -137,6 +136,7 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
         }
+        LoadingHud.hide(self.view)
     }
 }
     

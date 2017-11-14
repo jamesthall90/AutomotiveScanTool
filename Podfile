@@ -14,7 +14,7 @@ target 'AutomotiveScanTool' do
     pod 'ZAlertView'
     pod 'MBProgressHUD', '~> 1.0.0'	
     pod 'Hero'
-
+    pod 'AwaitKit', '~> 3.0.1'
 
   target 'AutomotiveScanToolTests' do
     inherit! :search_paths

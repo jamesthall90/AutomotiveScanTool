@@ -22,8 +22,12 @@
 		727771001F9FD882004F2241 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727770F91F9FD882004F2241 /* LoginViewController.swift */; };
 		72926AC41F9FDA1600A8BCA5 /* ParticleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72926AC31F9FDA1600A8BCA5 /* ParticleSDK.framework */; };
 		72926AC81F9FDA1E00A8BCA5 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72926AC71F9FDA1D00A8BCA5 /* AFNetworking.framework */; };
-		729E0D371FB1310C00BA4CCE /* ParticleSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729E0D361FB1310C00BA4CCE /* ParticleSpinner.swift */; };
+		729E0D371FB1310C00BA4CCE /* LoadingHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729E0D361FB1310C00BA4CCE /* LoadingHud.swift */; };
 		729E0D391FB1319100BA4CCE /* ParticleUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729E0D381FB1319100BA4CCE /* ParticleUtils.swift */; };
+		729E64C51FBB3EAC00246B0C /* Particle-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 729E64C11FBB3EAB00246B0C /* Particle-Logo.png */; };
+		729E64C61FBB3EAC00246B0C /* AST Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 729E64C21FBB3EAB00246B0C /* AST Logo.png */; };
+		729E64C71FBB3EAC00246B0C /* kia-optima.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 729E64C31FBB3EAC00246B0C /* kia-optima.jpg */; };
+		729E64C81FBB3EAC00246B0C /* chevy-suburban.png in Resources */ = {isa = PBXBuildFile; fileRef = 729E64C41FBB3EAC00246B0C /* chevy-suburban.png */; };
 		72FC571C1FB4166C0005FD04 /* DeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC571B1FB4166C0005FD04 /* DeviceTableViewCell.swift */; };
 		A5D6DE94631699D1FC8C8EE9 /* Pods_AutomotiveScanTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8240C1EA87ED660AAE625 /* Pods_AutomotiveScanTool.framework */; };
 		E1E991B8B53FB1AB24BE0217 /* Pods_AutomotiveScanToolUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE30ED95563C507B274AD8A1 /* Pods_AutomotiveScanToolUITests.framework */; };
@@ -75,8 +79,12 @@
 		72926AC71F9FDA1D00A8BCA5 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
 		72926ACB1F9FDA5E00A8BCA5 /* ParticleSDK.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ParticleSDK.framework.dSYM; path = Carthage/Build/iOS/ParticleSDK.framework.dSYM; sourceTree = "<group>"; };
 		72926ACD1F9FDA6600A8BCA5 /* AFNetworking.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = AFNetworking.framework.dSYM; path = Carthage/Build/iOS/AFNetworking.framework.dSYM; sourceTree = "<group>"; };
-		729E0D361FB1310C00BA4CCE /* ParticleSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleSpinner.swift; sourceTree = "<group>"; };
+		729E0D361FB1310C00BA4CCE /* LoadingHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHud.swift; sourceTree = "<group>"; };
 		729E0D381FB1319100BA4CCE /* ParticleUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleUtils.swift; sourceTree = "<group>"; };
+		729E64C11FBB3EAB00246B0C /* Particle-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Particle-Logo.png"; path = "img/Particle-Logo.png"; sourceTree = "<group>"; };
+		729E64C21FBB3EAB00246B0C /* AST Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AST Logo.png"; path = "img/AST Logo.png"; sourceTree = "<group>"; };
+		729E64C31FBB3EAC00246B0C /* kia-optima.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "kia-optima.jpg"; path = "img/kia-optima.jpg"; sourceTree = "<group>"; };
+		729E64C41FBB3EAC00246B0C /* chevy-suburban.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chevy-suburban.png"; path = "img/chevy-suburban.png"; sourceTree = "<group>"; };
 		72FC571B1FB4166C0005FD04 /* DeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCell.swift; sourceTree = "<group>"; };
 		A07F900895DE522BA641694B /* Pods-AutomotiveScanToolTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanToolTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanToolTests/Pods-AutomotiveScanToolTests.release.xcconfig"; sourceTree = "<group>"; };
 		C692D2A5BAEA437E271D551C /* Pods-AutomotiveScanTool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanTool.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanTool/Pods-AutomotiveScanTool.release.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +155,10 @@
 			isa = PBXGroup;
 			children = (
 				727770CC1F9FD7E9004F2241 /* Assets.xcassets */,
+				729E64C21FBB3EAB00246B0C /* AST Logo.png */,
+				729E64C41FBB3EAC00246B0C /* chevy-suburban.png */,
+				729E64C31FBB3EAC00246B0C /* kia-optima.jpg */,
+				729E64C11FBB3EAB00246B0C /* Particle-Logo.png */,
 				F853197D1FA7A6550065B2EC /* MainMenuViewController.swift */,
 				727770F51F9FD881004F2241 /* DeviceViewController.swift */,
 				727770F91F9FD882004F2241 /* LoginViewController.swift */,
@@ -158,7 +170,7 @@
 				727770CE1F9FD7E9004F2241 /* LaunchScreen.storyboard */,
 				720D8E4B1F9FE10100DAF53E /* GoogleService-Info.plist */,
 				727770D11F9FD7E9004F2241 /* Info.plist */,
-				729E0D361FB1310C00BA4CCE /* ParticleSpinner.swift */,
+				729E0D361FB1310C00BA4CCE /* LoadingHud.swift */,
 				729E0D381FB1319100BA4CCE /* ParticleUtils.swift */,
 				72FC571B1FB4166C0005FD04 /* DeviceTableViewCell.swift */,
 				725D2D7D1FBA4F6500B21143 /* CustomSegue.swift */,
@@ -324,10 +336,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				729E64C61FBB3EAC00246B0C /* AST Logo.png in Resources */,
 				727770D01F9FD7E9004F2241 /* LaunchScreen.storyboard in Resources */,
 				720D8E4C1F9FE10100DAF53E /* GoogleService-Info.plist in Resources */,
+				729E64C81FBB3EAC00246B0C /* chevy-suburban.png in Resources */,
 				727770CD1F9FD7E9004F2241 /* Assets.xcassets in Resources */,
 				727770CB1F9FD7E9004F2241 /* Main.storyboard in Resources */,
+				729E64C71FBB3EAC00246B0C /* kia-optima.jpg in Resources */,
+				729E64C51FBB3EAC00246B0C /* Particle-Logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,10 +405,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AutomotiveScanTool/Pods-AutomotiveScanTool-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AwaitKit/AwaitKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/ZAlertView/ZAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -401,10 +419,12 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AwaitKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -540,7 +560,7 @@
 				F853197C1FA7A6440065B2EC /* AppDelegate.swift in Sources */,
 				727771001F9FD882004F2241 /* LoginViewController.swift in Sources */,
 				727770FA1F9FD882004F2241 /* UIViewExtension.swift in Sources */,
-				729E0D371FB1310C00BA4CCE /* ParticleSpinner.swift in Sources */,
+				729E0D371FB1310C00BA4CCE /* LoadingHud.swift in Sources */,
 				72FC571C1FB4166C0005FD04 /* DeviceTableViewCell.swift in Sources */,
 				727770FB1F9FD882004F2241 /* VinRequest.swift in Sources */,
 				F853197E1FA7A6550065B2EC /* MainMenuViewController.swift in Sources */,
@@ -722,7 +742,7 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = AutomotiveScanTool/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.OP.AutomotiveScanTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -745,7 +765,7 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = 2;
 				INFOPLIST_FILE = AutomotiveScanTool/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.OP.AutomotiveScanTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";

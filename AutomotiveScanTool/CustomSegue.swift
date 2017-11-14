@@ -88,6 +88,7 @@ class CustomSegue: UIStoryboardSegue {
                     dest.ref = source.ref
                     dest.vin = source.vin
                     dest.deviceInfo = source.deviceInfo
+                    dest.imageView = source.vehicleImage
                     
                 } else {
                     
