@@ -39,11 +39,13 @@ class MainMenuViewController: UIViewController {
             //Return's the current user's unique ID
             self.uid = user.uid
         }
-        
-        self.getVIN()
-//        self.getVehicleInfo()
-        
-//        yMMLabel.text = "\(vehicle.getVehicleYear()) \(vehicle.getVehicleMake()) \(vehicle.getVehicleModel())"
+        if (self.vin == nil){
+          
+            self.getVIN()
+        } else {
+            
+            self.getVehicleInfo()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -146,6 +148,8 @@ class MainMenuViewController: UIViewController {
             
             self.yMMLabel.text = "\(value?["vehicle year"] as? String ?? "") \(value?["vehicle make"] as? String ?? "") \(value?["vehicle model"] as? String ?? "")".uppercased()
             
+            self.vehicleImage.contentMode = UIViewContentMode.scaleAspectFit
+            self.vehicleImage.clipsToBounds = true
             self.vehicleImage.image = UIImage(named: "chevy-suburban")
             
             LoadingHud.hideHud(self.view)

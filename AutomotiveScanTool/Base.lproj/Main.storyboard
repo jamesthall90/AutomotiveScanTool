@@ -550,11 +550,22 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l3H-jP-VCU">
                                 <rect key="frame" x="16" y="86" width="343" height="187"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBA-e4-9hM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBA-e4-9hM">
                                 <rect key="frame" x="187" y="289" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Oa-jt-RAc">
@@ -665,11 +676,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8F-FV-EQg">
-                                <rect key="frame" x="167" y="297" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8F-FV-EQg">
+                                <rect key="frame" x="49" y="297" width="277" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="277" id="Xfd-sE-ZGB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -679,12 +692,15 @@
                             <constraint firstItem="5jh-FC-LAT" firstAttribute="top" secondItem="CLC-WL-4kb" secondAttribute="bottom" constant="8" symbolic="YES" id="35K-KC-LvL"/>
                             <constraint firstItem="l3H-jP-VCU" firstAttribute="centerX" secondItem="6Oa-jt-RAc" secondAttribute="centerX" id="3Da-Ie-Gp9"/>
                             <constraint firstItem="OR9-HQ-kjd" firstAttribute="leading" secondItem="GEC-Ze-U9i" secondAttribute="leading" id="7r1-1h-Ckb"/>
+                            <constraint firstItem="6Oa-jt-RAc" firstAttribute="top" secondItem="I8F-FV-EQg" secondAttribute="bottom" constant="15" id="DjM-WU-0TT"/>
                             <constraint firstItem="eJ6-vu-hir" firstAttribute="trailing" secondItem="5jh-FC-LAT" secondAttribute="trailing" id="Gc1-gV-Qiq"/>
                             <constraint firstItem="RFH-2A-4Oe" firstAttribute="top" secondItem="5jh-FC-LAT" secondAttribute="bottom" constant="46" id="JGe-tF-qL8"/>
                             <constraint firstItem="6Oa-jt-RAc" firstAttribute="leading" secondItem="CLC-WL-4kb" secondAttribute="leading" id="LB7-ua-S6V"/>
                             <constraint firstItem="l3H-jP-VCU" firstAttribute="leading" secondItem="GEC-Ze-U9i" secondAttribute="leadingMargin" id="NPO-xO-Ie0"/>
                             <constraint firstItem="6Oa-jt-RAc" firstAttribute="leading" secondItem="GEC-Ze-U9i" secondAttribute="leadingMargin" constant="33" id="OLc-vh-a9m"/>
                             <constraint firstAttribute="trailing" secondItem="OR9-HQ-kjd" secondAttribute="trailing" id="RGp-41-paT"/>
+                            <constraint firstItem="I8F-FV-EQg" firstAttribute="top" secondItem="uBA-e4-9hM" secondAttribute="bottom" constant="8" symbolic="YES" id="ViE-w2-3g6"/>
+                            <constraint firstItem="I8F-FV-EQg" firstAttribute="centerX" secondItem="6Oa-jt-RAc" secondAttribute="centerX" id="Yuf-E0-HPW"/>
                             <constraint firstItem="uBA-e4-9hM" firstAttribute="centerX" secondItem="eJ6-vu-hir" secondAttribute="centerX" id="af0-C4-Pya"/>
                             <constraint firstItem="l3H-jP-VCU" firstAttribute="centerX" secondItem="uBA-e4-9hM" secondAttribute="centerX" id="b5v-61-8sj"/>
                             <constraint firstItem="eJ6-vu-hir" firstAttribute="leading" secondItem="GEC-Ze-U9i" secondAttribute="leadingMargin" constant="32" id="bsc-uZ-cQT"/>
@@ -716,7 +732,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kpg-Te-2gD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2362" y="89"/>
+            <point key="canvasLocation" x="2360.8000000000002" y="88.605697151424295"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="sp2-mR-JYp">
@@ -742,7 +758,7 @@
         <image name="Particle-Logo" width="3796" height="890"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5dU-xd-CuK"/>
+        <segue reference="eSR-rS-DqA"/>
         <segue reference="lH3-M6-zlu"/>
     </inferredMetricsTieBreakers>
 </document>

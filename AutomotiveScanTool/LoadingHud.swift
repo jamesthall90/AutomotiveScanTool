@@ -22,16 +22,9 @@ import MBProgressHUD
         hud.label.text = label
         hud.label.textColor = UIColor.white
         hud.minShowTime = 1
-        
-        if label == "Logging In..."{
-            
-            hud.color = UIColor.clear
-            hud.contentColor = UIColor.blue
-        
-        } else {
-            hud.color = UIColor.darkGray
-            hud.contentColor = UIColor.white
-        }
+        hud.color = UIColor.clear
+        hud.contentColor = UIColor.blue
+        hud.backgroundView.color = UIColor.white
     }
     
     class func hideHud(_ view : UIView) {
