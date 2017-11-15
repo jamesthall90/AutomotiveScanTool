@@ -92,6 +92,11 @@ class MainMenuViewController: UIViewController {
     }
     
     @IBAction func readCodes(_ sender: UIButton) {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yy.hh:mm"
+        let dateString = dateFormatter.string(from: date)
+        
         
         var task = self.deviceInfo!.callFunction("readCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
             if (error == nil) {
@@ -107,6 +112,16 @@ class MainMenuViewController: UIViewController {
             } else {
                 DispatchQueue.main.async(execute: {
                     print("got event with data \(event?.data?.description as! String)")
+                    
+                    //put codes int an array to push to firebase
+                    var codesArr = event?.data?.components(separatedBy: ",")
+                    
+                    for code in codesArr! {
+                        //push each code to firebase with the specified date to make a history.
+                    self.ref.child("users").child(self.uid).child("vehicles").child(self.vehicle.vin).child("storedCodes").child(dateString).setValue(code)
+                        
+                    }
+                    
                 })
             }
         })
