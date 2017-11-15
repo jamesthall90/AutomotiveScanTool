@@ -58,6 +58,7 @@ class MainMenuViewController: UIViewController {
         
     }
     
+    //returns a string of the current date and time
     func getDate() -> String {
         let date = Date()
         let dateFormatter = DateFormatter()
@@ -68,10 +69,10 @@ class MainMenuViewController: UIViewController {
     @IBAction func readCodes(_ sender: UIButton) {
         let dateString = getDate();
         
-        
         var task = self.deviceInfo!.callFunction("readCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
             if (error == nil) {
-                print("Performed readCodes() function with no errors!")
+                //testing line
+//                print("Performed readCodes() function with no errors!")
                 let json = JSON(resultCode)
                 print(json)
             }
@@ -82,15 +83,23 @@ class MainMenuViewController: UIViewController {
                 print ("Performed readVin() function with no errors!")
             } else {
                 DispatchQueue.main.async(execute: {
-                    print("got event with data \(event?.data?.description as! String)")
+                    //testing line
+//                     print("got event with data \(event?.data?.description as! String)")
                     
-                    //put codes int an array to push to firebase
+                    //put codes into an array
                     var codesArr : [String] = (event?.data?.components(separatedBy: ","))!
                     
+                    /*
+                     filters the 'p' or 'c' out of the code and add the corresponding
+                     "pending" or "current" to the beginning of the code description.
+                     
+                     Then stores this code under the vehicle document as a child of the date and time
+                     */
                     for s in codesArr {
-                        //push each code to firebase with the specified date to make a history.
+                        
                         var code = s
                         var description = ""
+                        //filter the letter out of the code
                         if let i = code.characters.index(of:"p"){
                             code.remove(at: i)
                             description = "Pending: "
@@ -99,15 +108,17 @@ class MainMenuViewController: UIViewController {
                             code.remove(at: i)
                             description = "Current: "
                         }
+                        
+                        //find code descriptions in firebase and add them to the description variable
                         self.ref.child("trouble-codes").child(code).observeSingleEvent(of: .value, with: { (snapshot) in
                             description += (snapshot.value as? NSString)! as String
-//                            let description = value?[code] as? String ?? ""
-                            print("Code is: \(code)  Description is: \(description)")
-//                        })
+                            //testing line
+//                            print("Code is: \(code)  Description is: \(description)")
+                            
+                            //push the codes and their descriptions to firebase under the respective vehicle
                         self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(dateString).child(code).setValue(description)
                         })
                     }
-                    
                 })
             }
         })
