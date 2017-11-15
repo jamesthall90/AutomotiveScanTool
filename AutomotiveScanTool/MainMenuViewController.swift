@@ -12,6 +12,7 @@ import ParticleSDK
 import FirebaseDatabase
 import AwaitKit
 import SwiftyJSON
+import ZAlertView
 
 class MainMenuViewController: UIViewController {
     
@@ -24,9 +25,18 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var vehicleImage: UIImageView!
     @IBOutlet weak var yMMLabel: UILabel!
     @IBOutlet weak var vinLabel: UILabel!
+    var dialog: ZAlertView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let astColor = UIColor(red:0.00, green:0.20, blue:0.40, alpha:1.0)
+        ZAlertView.blurredBackground = true
+        ZAlertView.showAnimation = .bounceBottom
+        ZAlertView.hideAnimation = .bounceRight
+        ZAlertView.alertTitleFont = UIFont(name: "Copperplate", size: 19)!
+        ZAlertView.positiveColor = astColor
+        ZAlertView.titleColor = astColor
         
         //Creates a reference to the database
         self.ref = Database.database().reference()
@@ -131,30 +141,37 @@ class MainMenuViewController: UIViewController {
     
     @IBAction func clearCodes(_ sender: Any) {
         
+        LoadingHud.showHud(self.view, label: "Clearing codes...")
         var task = self.deviceInfo!.callFunction("clearCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
             if (error == nil) {
                 
-                //Creates a UIAlertController which will display the success message
-                let clearedAlertController = UIAlertController(title: "Codes Cleared", message:
-                    "Your codes have been successfully cleared!", preferredStyle: UIAlertControllerStyle.alert)
+                LoadingHud.hideHud(self.view)
                 
-                //Specifies the text and behavior of the button attached to the UIAlertController
-                clearedAlertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
+                self.dialog = ZAlertView(title: "Codes Cleared",
+                                    message: "Trouble codes were successfully cleared from the vehicle!",
+                                    closeButtonText: "OK",
+                                    closeButtonHandler: { (alertView) -> () in
+                                        alertView.dismissAlertView()
+                })
                 
-                //Causes the controller to display on-screen with animation
-                self.present(clearedAlertController, animated: true, completion: nil)
+                self.dialog.allowTouchOutsideToDismiss = false
+                
+                self.dialog.show()
             
             } else{
                 
-                //Creates a UIAlertController which will display the failure message
-                let notClearedAlertController = UIAlertController(title: "Codes Not Cleared", message:
-                    "The code-clearing operation was unsuccessful! See error message below.\n \(error?.localizedDescription ?? "")", preferredStyle: UIAlertControllerStyle.alert)
+                LoadingHud.hideHud(self.view)
                 
-                //Specifies the text and behavior of the button attached to the UIAlertController
-                notClearedAlertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
+                self.dialog = ZAlertView(title: "Codes Not Cleared",
+                                         message: "The code-clearing operation was unsuccessful! See error message below.\n \(error?.localizedDescription ?? "")",
+                                         closeButtonText: "OK",
+                                         closeButtonHandler: { (alertView) -> () in
+                                            alertView.dismissAlertView()
+                })
                 
-                //Causes the controller to display on-screen with animation
-                self.present(notClearedAlertController, animated: true, completion: nil)
+                self.dialog.allowTouchOutsideToDismiss = false
+                
+                self.dialog.show()
             }
         }
     }
@@ -197,7 +214,7 @@ class MainMenuViewController: UIViewController {
             
             self.vehicleImage.contentMode = UIViewContentMode.scaleAspectFit
             self.vehicleImage.clipsToBounds = true
-            self.vehicleImage.image = UIImage(named: "chevy-suburban")
+            self.vehicleImage.image = UIImage(named: "camaro")
             
             LoadingHud.hideHud(self.view)
             
