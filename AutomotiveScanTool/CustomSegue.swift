@@ -150,6 +150,35 @@ class CustomSegue: UIStoryboardSegue {
                 //Performs the segue
                 source.hero_replaceViewController(with: dest)
             }
+            else if identifier == "readCodesSegue" {
+                
+                //Sets the segue's destination VC
+                let dest = self.destination as! ReadCodesViewController
+                
+                //Sets the segue's source VC
+                let source = self.source as! MainMenuViewController
+                
+                if source.ref != nil{
+                    
+                    dest.uid = source.uid
+                    dest.ref = source.ref
+                    dest.vin = source.vinLabel.text
+                    dest.dateString = source.dateString
+                    
+                } else {
+                    
+                    print("Database reference is nil!")
+                }
+                
+                //Enables Hero animations for the destination VC
+                dest.isHeroEnabled = true
+                
+                //Sets the animation type for the segue
+                dest.heroModalAnimationType = .zoom
+                
+                //Performs the segue
+                source.hero_replaceViewController(with: dest)
+            }
         }
     }
 }

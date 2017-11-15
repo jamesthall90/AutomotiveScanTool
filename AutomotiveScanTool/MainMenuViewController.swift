@@ -10,7 +10,6 @@ import UIKit
 import FirebaseAuth
 import ParticleSDK
 import FirebaseDatabase
-import FirebaseAuth
 import AwaitKit
 import SwiftyJSON
 
@@ -21,6 +20,7 @@ class MainMenuViewController: UIViewController {
     var ref: DatabaseReference!
     var uid: String!
     var vin: String!
+    var dateString: String!
     @IBOutlet weak var vehicleImage: UIImageView!
     @IBOutlet weak var yMMLabel: UILabel!
     @IBOutlet weak var vinLabel: UILabel!
@@ -67,7 +67,7 @@ class MainMenuViewController: UIViewController {
     }
     
     @IBAction func readCodes(_ sender: UIButton) {
-        let dateString = getDate();
+        dateString = getDate();
         
         var task = self.deviceInfo!.callFunction("readCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
             if (error == nil) {
@@ -116,12 +116,17 @@ class MainMenuViewController: UIViewController {
 //                            print("Code is: \(code)  Description is: \(description)")
                             
                             //push the codes and their descriptions to firebase under the respective vehicle
-                        self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(dateString).child(code).setValue(description)
+                        self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(self.dateString).child(code).setValue(description)
+                            self.performSegue(withIdentifier: "readCodesSegue", sender: self)
+
                         })
                     }
                 })
+                
             }
         })
+//        print("Performing segue")
+//        performSegue(withIdentifier: "readCodesSegue", sender: self)
     }
     
     @IBAction func clearCodes(_ sender: Any) {

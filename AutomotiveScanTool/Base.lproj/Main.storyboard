@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -728,11 +728,30 @@
                         <segue destination="amu-3i-Lzi" kind="show" identifier="vInfoSegue" customClass="CustomSegue" customModule="AutomotiveScanTool" customModuleProvider="target" id="lZm-sE-Da1"/>
                         <segue destination="cj6-Az-plh" kind="show" identifier="presentDeviceList" customClass="CustomSegue" customModule="AutomotiveScanTool" customModuleProvider="target" id="lH3-M6-zlu"/>
                         <segue destination="8qb-QH-Ky7" kind="show" id="HSC-uO-1r6"/>
+                        <segue destination="b1l-GK-aHU" kind="show" identifier="readCodesSegue" customClass="CustomSegue" customModule="AutomotiveScanTool" customModuleProvider="target" id="hTs-4y-r6f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kpg-Te-2gD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2360.8000000000002" y="88.605697151424295"/>
+        </scene>
+        <!--Read Codes View Controller-->
+        <scene sceneID="kQV-Uy-Dct">
+            <objects>
+                <viewController id="b1l-GK-aHU" customClass="ReadCodesViewController" customModule="AutomotiveScanTool" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zw9-XH-g6M"/>
+                        <viewControllerLayoutGuide type="bottom" id="F8d-Jb-Kaf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vgz-eF-IAa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tLq-Zu-56t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3598" y="825"/>
         </scene>
         <!--Code History View Controller-->
         <scene sceneID="sp2-mR-JYp">
