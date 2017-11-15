@@ -46,26 +46,6 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.dismiss(animated: true, completion: nil)
     }
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if let identifier = segue.identifier {
-//
-//            if identifier == "idSeguePresentMainMenu" {
-//
-//                let mainMenu = segue.destination as! MainMenuViewController
-//
-//                if let deviceObject = self.particleDevices?[selectedDeviceIndex] {
-//
-//                    mainMenu.deviceInfo = deviceObject
-//
-//               } else {
-//                    //handle the case of 'deviceObject' being 'nil'
-//               }
-//            }
-//        }
-//    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         tableView.register(DeviceTableViewCell.self, forCellReuseIdentifier: "deviceCell")
