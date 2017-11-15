@@ -23,11 +23,10 @@ class MainMenuViewController: UIViewController {
     var vin: String!
     @IBOutlet weak var vehicleImage: UIImageView!
     @IBOutlet weak var yMMLabel: UILabel!
+    @IBOutlet weak var vinLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        yMMLabel.text = self.deviceInfo.name?.lowercased() ?? ""
         
         //Creates a reference to the database
         self.ref = Database.database().reference()
@@ -41,6 +40,7 @@ class MainMenuViewController: UIViewController {
             self.uid = user.uid
         }
         
+        self.getVIN()
 //        self.getVehicleInfo()
         
 //        yMMLabel.text = "\(vehicle.getVehicleYear()) \(vehicle.getVehicleMake()) \(vehicle.getVehicleModel())"
@@ -53,45 +53,13 @@ class MainMenuViewController: UIViewController {
         
     @IBAction func codeHistory(_ sender: UIButton) {
         
-        var task = self.deviceInfo!.callFunction("readVIN", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
-            if (error == nil) {
-                print("Performed readVin() function with no errors!")
-            }
-        }
-        LoadingHud.show(self.view, label: "Loading Data...")
-        var handler = ParticleCloud.sharedInstance().subscribeToAllEvents(withPrefix: "vin/result", handler: { (event :ParticleEvent?, error : Error?) in
-            if let _ = error {
-            
-                print ("Could not subscribe to readVIN Event")
-                
-                LoadingHud.hide(self.view)
-            
-            } else {
-                
-                DispatchQueue.main.async(execute: {
-                   
-//                   self.vin = event?.data?.description as! String
-                    self.ref.child("users").child(self.uid).child("vehicles").observeSingleEvent(of: .value, with: { (snapshot) in
-                        
-                        if snapshot.hasChild(event?.data?.description as! String){
-                            
-                            print("Vehicle exists in database!")
-                            self.vin = event?.data?.description as! String
-                            self.getVehicleInfo()
-                            LoadingHud.hide(self.view)
-                        } else {
-                            
-                            self.pushVehicleInfo(vehicle: VinRequest(VIN:(event?.data?.description as! String)))
-                            self.vin = event?.data?.description as! String
-                            self.getVehicleInfo()
-                        }
-                    })
-                })
-            }
-        })
+        
     }
     
     @IBAction func readCodes(_ sender: UIButton) {
+        print("")
+        print("The Vin Is: \(vinLabel.text)")
+        print("")
         
         var task = self.deviceInfo!.callFunction("readCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
             if (error == nil) {
@@ -178,22 +146,53 @@ class MainMenuViewController: UIViewController {
             
             self.yMMLabel.text = "\(value?["vehicle year"] as? String ?? "") \(value?["vehicle make"] as? String ?? "") \(value?["vehicle model"] as? String ?? "")".uppercased()
             
+            self.vehicleImage.image = UIImage(named: "chevy-suburban")
+            
+            LoadingHud.hideHud(self.view)
+            
         }) { (error) in
             print(error.localizedDescription)
         }
-        
-//        if self.yMMLabel.text == "2012 kia optima"{
-//
-//            self.vehicleImage.image = UIImage(named: "kia-optima")
-//        }
-//
-//        if self.yMMLabel.text == "2003 chevrolet suburban"{
-        
-            self.vehicleImage.image = UIImage(named: "chevy-suburban")
-//        }
-        
-        LoadingHud.hide(self.view)
     }
     
-
+    func getVIN(){
+        
+        var task = self.deviceInfo!.callFunction("readVIN", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
+            if (error == nil) {
+                print("Performed readVin() function with no errors!")
+            }
+        }
+        LoadingHud.showHud(self.view, label: "Loading Data...")
+        var handler = ParticleCloud.sharedInstance().subscribeToAllEvents(withPrefix: "vin/result", handler: { (event :ParticleEvent?, error : Error?) in
+            if let _ = error {
+                
+                print ("Could not subscribe to readVIN Event")
+                
+                LoadingHud.hideHud(self.view)
+                
+            } else {
+                
+                DispatchQueue.main.async(execute: {
+                    
+                    self.ref.child("users").child(self.uid).child("vehicles").observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        if snapshot.hasChild(event?.data?.description as! String){
+                            
+                            print("Vehicle exists in database!")
+                            self.vin = event?.data?.description as! String
+                            self.vinLabel.text = event?.data?.description as! String
+                            self.getVehicleInfo()
+                            LoadingHud.hideHud(self.view)
+                        } else {
+                            
+                            self.pushVehicleInfo(vehicle: VinRequest(VIN:(event?.data?.description as! String)))
+                            self.vin = event?.data?.description as! String
+                            self.vinLabel.text = event?.data?.description as! String
+                            self.getVehicleInfo()
+                        }
+                    })
+                })
+            }
+        })
+    }
 }

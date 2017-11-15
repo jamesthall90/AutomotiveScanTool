@@ -15,7 +15,6 @@ class VInfoViewController: UIViewController {
 
     var uid: String!
     var ref: DatabaseReference!
-//    var vin: String!
     var deviceInfo: ParticleDevice!
     @IBOutlet weak var vIYearLabel: UILabel!
     @IBOutlet weak var vIMakeLabel: UILabel!
@@ -30,25 +29,19 @@ class VInfoViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var yearTitle: UILabel!
+    @IBOutlet weak var makeTitle: UILabel!
+    @IBOutlet weak var modelTitle: UILabel!
+    @IBOutlet weak var vinTitle: UILabel!
+    @IBOutlet weak var engineTitle: UILabel!
+    @IBOutlet weak var dTTitle: UILabel!
+    @IBOutlet weak var transTitle: UILabel!
+    @IBOutlet weak var aPlantTitle: UILabel!
+    @IBOutlet weak var fuelTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.vIVINLabel.isHidden = true
-//        self.vIYearLabel.isHidden = true
-//        self.vIMakeLabel.isHidden = true
-//        self.vIModelLabel.isHidden = true
-//        self.vIEngineLabel.isHidden = true
-//        self.vIDriveTypeLabel.isHidden = true
-//        self.vITransmissionLabel.isHidden = true
-//        self.vIAssyPlantLabel.isHidden = true
-//        self.vIFuelTypeLabel.isHidden = true
-        
         fillLabels()
-    }
-    
-    override func loadView() {
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,7 +56,7 @@ class VInfoViewController: UIViewController {
     
     func fillLabels(){
         
-        LoadingHud.show(self.view, label: "Loading Data...")
+        LoadingHud.showHud(self.view, label: "Loading Data...")
         
         var task = self.deviceInfo!.callFunction("readVIN", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
             if (error == nil) {
@@ -93,17 +86,17 @@ class VInfoViewController: UIViewController {
                             self.vIAssyPlantLabel.text = value?["vehicle assembly plant"] as? String ?? ""
                             self.vIFuelTypeLabel.text = value?["vehicle fuel type"] as? String ?? ""
                         
-                            self.vIVINLabel.isHidden = false
-                            self.vIYearLabel.isHidden = false
-                            self.vIMakeLabel.isHidden = false
-                            self.vIModelLabel.isHidden = false
-                            self.vIEngineLabel.isHidden = false
-                            self.vIDriveTypeLabel.isHidden = false
-                            self.vITransmissionLabel.isHidden = false
-                            self.vIAssyPlantLabel.isHidden = false
-                            self.vIFuelTypeLabel.isHidden = false
+                            self.yearTitle.text = "Year"
+                            self.makeTitle.text = "Make"
+                            self.modelTitle.text = "Model"
+                            self.vinTitle.text = "VIN"
+                            self.engineTitle.text = "Engine"
+                            self.dTTitle.text = "Drive Type"
+                            self.transTitle.text = "Transmission"
+                            self.aPlantTitle.text = "Assy. Plant"
+                            self.fuelTitle.text = "Fuel Type"
                         
-                            LoadingHud.hide(self.view)
+                            LoadingHud.hideHud(self.view)
                         
                         }) { (error) in
                             
