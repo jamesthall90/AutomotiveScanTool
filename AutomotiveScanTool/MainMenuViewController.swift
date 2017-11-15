@@ -56,11 +56,15 @@ class MainMenuViewController: UIViewController {
         
     }
     
-    @IBAction func readCodes(_ sender: UIButton) {
+    func getDate() -> String {
         let date = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yy.hh:mm"
-        let dateString = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = "MM-dd-yy-hh:mm"
+        return dateFormatter.string(from: date)
+    }
+    
+    @IBAction func readCodes(_ sender: UIButton) {
+        let dateString = getDate();
         
         
         var task = self.deviceInfo!.callFunction("readCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
@@ -79,19 +83,34 @@ class MainMenuViewController: UIViewController {
                     print("got event with data \(event?.data?.description as! String)")
                     
                     //put codes int an array to push to firebase
-                    var codesArr = event?.data?.components(separatedBy: ",")
+                    var codesArr : [String] = (event?.data?.components(separatedBy: ","))!
                     
-                    for code in codesArr! {
+                    for s in codesArr {
                         //push each code to firebase with the specified date to make a history.
-                    self.ref.child("users").child(self.uid).child("vehicles").child(self.vehicle.vin).child("storedCodes").child(dateString).setValue(code)
-                        
+                        var code = s
+                        var description = ""
+                        if let i = code.characters.index(of:"p"){
+                            code.remove(at: i)
+                            description = "Pending: "
+                        }
+                        if let i = code.characters.index(of:"c"){
+                            code.remove(at: i)
+                            description = "Current: "
+                        }
+                        self.ref.child("trouble-codes").child(code).observeSingleEvent(of: .value, with: { (snapshot) in
+                            description += (snapshot.value as? NSString)! as String
+//                            let description = value?[code] as? String ?? ""
+                            print("Code is: \(code)  Description is: \(description)")
+//                        })
+                        self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(dateString).child(code).setValue(description)
+                        })
                     }
                     
                 })
             }
         })
-        
     }
+    
     @IBAction func clearCodes(_ sender: Any) {
         
         var task = self.deviceInfo!.callFunction("clearCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
