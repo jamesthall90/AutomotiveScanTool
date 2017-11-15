@@ -50,15 +50,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 
         // Creates a FileManager instance
-        let fileManager = FileManager.default
-
-        // Deletes the old decoded-vin.json file, if it exists
-        do {
-            try fileManager.removeItem(atPath: "\(self.getDocDir())/decoded-vin.json")
-        }
-        catch let error as NSError {
-            print("Ooops! Something went wrong: \(error)")
-        }
+//        let fileManager = FileManager.default
+//
+//        // Deletes the old decoded-vin.json file, if it exists
+//        do {
+//            try fileManager.removeItem(atPath: "\(self.getDocDir())/decoded-vin.json")
+//        }
+//        catch let error as NSError {
+//            print("Ooops! Something went wrong: \(error)")
+//        }
     }
     
     func getDocDir() -> String {

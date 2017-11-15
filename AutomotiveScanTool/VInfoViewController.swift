@@ -14,8 +14,10 @@ import ParticleSDK
 class VInfoViewController: UIViewController {
 
     var uid: String!
+    var vin: String!
     var ref: DatabaseReference!
     var deviceInfo: ParticleDevice!
+    var newImage: UIImage!
     @IBOutlet weak var vIYearLabel: UILabel!
     @IBOutlet weak var vIMakeLabel: UILabel!
     @IBOutlet weak var vIModelLabel: UILabel!
@@ -58,52 +60,35 @@ class VInfoViewController: UIViewController {
         
         LoadingHud.showHud(self.view, label: "Loading Data...")
         
-        var task = self.deviceInfo!.callFunction("readVIN", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
-            if (error == nil) {
-                print("Performed readVin() function with no errors!")
-            }
-        }
+            self.imageView.contentMode = UIViewContentMode.scaleAspectFit
+            self.imageView.clipsToBounds = true
+            self.imageView.image = newImage
         
-        var handler = ParticleCloud.sharedInstance().subscribeToAllEvents(withPrefix: "vin/result", handler: { (event :ParticleEvent?, error : Error?) in
-            if let _ = error {
+            self.ref.child("users").child(self.uid).child("vehicles").child(self.vin as!
+                String).observeSingleEvent(of: .value, with: { (snapshot) in
                 
-                print ("Could not subscribe to readVIN Event")
+                    let value = snapshot.value as? NSDictionary
+                    self.vIVINLabel.text = self.vin
+                    self.vIYearLabel.text = value?["vehicle year"] as? String ?? ""
+                    self.vIMakeLabel.text = value?["vehicle make"] as? String ?? ""
+                    self.vIModelLabel.text = value?["vehicle model"] as? String ?? ""
+                    self.vIEngineLabel.text = value?["vehicle engine"] as? String ?? ""
+                    self.vIDriveTypeLabel.text = value?["vehicle drive type"] as? String ?? ""
+                    self.vITransmissionLabel.text = value?["vehicle transmission"] as? String ?? ""
+                    self.vIAssyPlantLabel.text = value?["vehicle assembly plant"] as? String ?? ""
+                    self.vIFuelTypeLabel.text = value?["vehicle fuel type"] as? String ?? ""
+
+                    self.yearTitle.text = "Year"
+                    self.makeTitle.text = "Make"
+                    self.modelTitle.text = "Model"
+                    self.vinTitle.text = "VIN"
+                    self.engineTitle.text = "Engine"
+                    self.dTTitle.text = "Drive Type"
+                    self.transTitle.text = "Transmission"
+                    self.aPlantTitle.text = "Assy. Plant"
+                    self.fuelTitle.text = "Fuel Type"
                 
-            } else {
-                
-                DispatchQueue.main.async(execute: {
-                    
-                    self.ref.child("users").child(self.uid).child("vehicles").child(event?.data?.description as! String).observeSingleEvent(of: .value, with: { (snapshot) in
-                        
-                            let value = snapshot.value as? NSDictionary
-                            self.vIVINLabel.text = event?.data?.description as! String
-                            self.vIYearLabel.text = value?["vehicle year"] as? String ?? ""
-                            self.vIMakeLabel.text = value?["vehicle make"] as? String ?? ""
-                            self.vIModelLabel.text = value?["vehicle model"] as? String ?? ""
-                            self.vIEngineLabel.text = value?["vehicle engine"] as? String ?? ""
-                            self.vIDriveTypeLabel.text = value?["vehicle drive type"] as? String ?? ""
-                            self.vITransmissionLabel.text = value?["vehicle transmission"] as? String ?? ""
-                            self.vIAssyPlantLabel.text = value?["vehicle assembly plant"] as? String ?? ""
-                            self.vIFuelTypeLabel.text = value?["vehicle fuel type"] as? String ?? ""
-                        
-                            self.yearTitle.text = "Year"
-                            self.makeTitle.text = "Make"
-                            self.modelTitle.text = "Model"
-                            self.vinTitle.text = "VIN"
-                            self.engineTitle.text = "Engine"
-                            self.dTTitle.text = "Drive Type"
-                            self.transTitle.text = "Transmission"
-                            self.aPlantTitle.text = "Assy. Plant"
-                            self.fuelTitle.text = "Fuel Type"
-                        
-                            LoadingHud.hideHud(self.view)
-                        
-                        }) { (error) in
-                            
-                            print(error.localizedDescription)
-                        }
-                })
-            }
-        })
+                    LoadingHud.hideHud(self.view)
+            })
     }
 }
