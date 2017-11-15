@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -728,16 +727,17 @@
                         <outlet property="yMMLabel" destination="uBA-e4-9hM" id="QOK-oQ-7he"/>
                         <segue destination="amu-3i-Lzi" kind="show" identifier="vInfoSegue" customClass="CustomSegue" customModule="AutomotiveScanTool" customModuleProvider="target" id="lZm-sE-Da1"/>
                         <segue destination="cj6-Az-plh" kind="show" identifier="presentDeviceList" customClass="CustomSegue" customModule="AutomotiveScanTool" customModuleProvider="target" id="lH3-M6-zlu"/>
+                        <segue destination="8qb-QH-Ky7" kind="show" id="HSC-uO-1r6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kpg-Te-2gD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2360.8000000000002" y="88.605697151424295"/>
         </scene>
-        <!--View Controller-->
+        <!--Code History View Controller-->
         <scene sceneID="sp2-mR-JYp">
             <objects>
-                <viewController id="8qb-QH-Ky7" sceneMemberID="viewController">
+                <viewController id="8qb-QH-Ky7" customClass="CodeHistoryViewController" customModule="AutomotiveScanTool" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="G7K-4Z-1gL"/>
                         <viewControllerLayoutGuide type="bottom" id="ec5-DN-ToE"/>
@@ -745,6 +745,21 @@
                     <view key="view" contentMode="scaleToFill" id="gen-q9-bc9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iZ9-y1-RV0">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Main Menu" id="S2U-3o-YzG">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="LX7-oh-YYD">
+                                            <connections>
+                                                <action selector="backButton:" destination="FAa-d9-6mW" id="g6V-RU-WVc"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>

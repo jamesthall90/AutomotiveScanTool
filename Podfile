@@ -15,6 +15,7 @@ target 'AutomotiveScanTool' do
     pod 'MBProgressHUD', '~> 1.0.0'	
     pod 'Hero'
     pod 'AwaitKit', '~> 3.0.1'
+    pod 'CollapsibleTableSectionViewController', '~> 1.0.0'
 
   target 'AutomotiveScanToolTests' do
     inherit! :search_paths

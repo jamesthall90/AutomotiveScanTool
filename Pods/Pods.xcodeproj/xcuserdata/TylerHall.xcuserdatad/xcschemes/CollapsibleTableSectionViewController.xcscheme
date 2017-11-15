@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E715B28AFDA773ED8B84EC12C17687B8'
-               BlueprintName = 'SwiftyJSON'
+               BlueprintIdentifier = 'A55696F272FF688344C4A01C6393E2F7'
+               BlueprintName = 'CollapsibleTableSectionViewController'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SwiftyJSON.framework'>
+               BuildableName = 'CollapsibleTableSectionViewController.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
