@@ -12,7 +12,6 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var selectedDeviceIndex: Int!
     var deviceImage: UIImage!
     var deviceType: String!
-//    var mainMenu: MainMenuViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,11 +53,6 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                } else {
                     //handle the case of 'deviceObject' being 'nil'
                }
-
-//                mainMenu.isHeroEnabled = true
-//                mainMenu.heroModalAnimationType = .zoomSlide(direction: HeroDefaultAnimationType.Direction.left)
-//                self.hero_replaceViewController(with: mainMenu)
-
             }
         }
     }
@@ -113,7 +107,7 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func getParticleDevices(indexPath: NSIndexPath, cell: UITableViewCell){
-        LoadingHud.show(self.view, label: "Loading Devices...")
+        LoadingHud.showHud(self.view, label: "Loading Devices...")
         ParticleCloud.sharedInstance().getDevices { (devices:[ParticleDevice]?, error:Error?) -> Void in
             if let _ = error {
                 print("Check your internet connectivity")
@@ -136,7 +130,7 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
         }
-        LoadingHud.hide(self.view)
+        LoadingHud.hideHud(self.view)
     }
 }
     

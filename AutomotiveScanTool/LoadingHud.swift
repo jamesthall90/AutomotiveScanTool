@@ -1,17 +1,19 @@
 //
-//  ParticleSpinner.swift
-//  Particle
+//  VInfoViewController.swift
+//  AST
 //
-//  Created by Ido Kleinman on 6/24/16.
-//  Copyright © 2016 spark. All rights reserved.
+//  Created by James Hall on 10/22/17.
+//  Copyright © 2017 OP. All rights reserved.
 //
+
 import Foundation
 import UIKit
 import MBProgressHUD
 
 @objc open class LoadingHud : NSObject {
     
-    class func show(_ view : UIView, label: String) {
+    class func showHud(_ view : UIView, label: String) {
+        
         var hud : MBProgressHUD
         
         hud = MBProgressHUD.showAdded(to: view, animated: true)
@@ -32,9 +34,9 @@ import MBProgressHUD
         }
     }
     
-    class func hide(_ view : UIView) {
+    class func hideHud(_ view : UIView) {
+        
         MBProgressHUD.hide(for: view, animated: true)
     }
-    
 }
 

@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
         guard let email = emailField.text, let password = passwordField.text else{ //
             return
         }
-        LoadingHud.show(self.view, label: "Logging In...")
+        LoadingHud.showHud(self.view, label: "Logging In...")
         
         ParticleCloud.sharedInstance().login(withUser: email, password: password) { (error:Error?) -> Void in
             if let _ = error {
@@ -112,7 +112,7 @@ class LoginViewController: UIViewController {
                         //Once the user has been created, segue switches views to Main Menu
                         self.performSegue(withIdentifier: "deviceSelectSegue", sender: self)
                         
-                        LoadingHud.hide(self.view)
+                        LoadingHud.hideHud(self.view)
                     }
                 }
             }

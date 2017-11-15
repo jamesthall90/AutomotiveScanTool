@@ -66,9 +66,7 @@ extension UIView {
     
 }
 
-//
 // View for UILabel Accessory
-//
 extension UIView {
     
     func rightValidAccessoryView() -> UIView {
