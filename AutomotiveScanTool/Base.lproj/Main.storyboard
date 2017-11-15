@@ -727,7 +727,7 @@
                         <outlet property="yMMLabel" destination="uBA-e4-9hM" id="QOK-oQ-7he"/>
                         <segue destination="amu-3i-Lzi" kind="show" identifier="vInfoSegue" customClass="CustomSegue" customModule="AutomotiveScanTool" customModuleProvider="target" id="lZm-sE-Da1"/>
                         <segue destination="cj6-Az-plh" kind="show" identifier="presentDeviceList" customClass="CustomSegue" customModule="AutomotiveScanTool" customModuleProvider="target" id="lH3-M6-zlu"/>
-                        <segue destination="8qb-QH-Ky7" kind="show" id="HSC-uO-1r6"/>
+                        <segue destination="8qb-QH-Ky7" kind="show" identifier="codeHistorySegue" customClass="CustomSegue" customModule="AutomotiveScanTool" customModuleProvider="target" id="HSC-uO-1r6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kpg-Te-2gD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -750,18 +750,37 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Main Menu" id="S2U-3o-YzG">
+                                    <navigationItem title="Code History" id="S2U-3o-YzG">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="LX7-oh-YYD">
                                             <connections>
-                                                <action selector="backButton:" destination="FAa-d9-6mW" id="g6V-RU-WVc"/>
+                                                <action selector="cHBack:" destination="8qb-QH-Ky7" id="nsf-kj-IAA"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hpW-Do-sgj">
+                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ffW-qI-ego">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ffW-qI-ego" id="rS9-Xz-7kF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <connections>
+                        <outlet property="cHTableView" destination="hpW-Do-sgj" id="8H1-kd-iwv"/>
+                        <segue destination="FAa-d9-6mW" kind="show" identifier="cHBackSegue" customClass="CustomSegue" customModule="AutomotiveScanTool" customModuleProvider="target" id="JTf-wt-zzU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Abx-EK-zyt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -773,7 +792,8 @@
         <image name="Particle-Logo" width="3796" height="890"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eSR-rS-DqA"/>
-        <segue reference="lH3-M6-zlu"/>
+        <segue reference="HSC-uO-1r6"/>
+        <segue reference="JTf-wt-zzU"/>
+        <segue reference="1cR-uT-PFS"/>
     </inferredMetricsTieBreakers>
 </document>

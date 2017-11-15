@@ -7,30 +7,58 @@
 //
 
 import UIKit
+import Firebase
 import CollapsibleTableSectionViewController
 
-class CodeHistoryViewController: UIViewController {
+class CodeHistoryViewController: CollapsibleTableSectionViewController {
 
+    @IBOutlet weak var cHTableView: UITableView!
+    var uid: String!
+    var vin: String!
+    var ref: DatabaseReference!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        cHTableView.delegate = self
+        cHTableView.dataSource = self
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+ 
+    func pullHistoryCodes(){
+        
+        self.ref.child("users").child(self.uid).child("vehicles").child(self.vin as!
+            String).child("storedCodes").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                
+        })
     }
-    */
+    
+    @IBAction func cHBack(_ sender: Any) {
+    
+        performSegue(withIdentifier: "cHBackSegue", sender: self)
+    }
+}
 
+extension CodeHistoryViewController: CollapsibleTableSectionDelegate{
+    
+    func collapsibleTableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "Cell")
+        cell.textLabel?.text = "Cell Text"
+        return cell
+    }
+    
+    func numberOfSections(_ tableView: UITableView) -> Int {
+        return 10
+    }
+    
+    func collapsibleTableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
 }

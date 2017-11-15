@@ -12,9 +12,18 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var selectedDeviceIndex: Int!
     var deviceImage: UIImage!
     var deviceType: String!
+    var dialog: ZAlertView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let astColor = UIColor(red:0.00, green:0.20, blue:0.40, alpha:1.0)
+        ZAlertView.blurredBackground = true
+        ZAlertView.showAnimation = .bounceBottom
+        ZAlertView.hideAnimation = .bounceRight
+        ZAlertView.alertTitleFont = UIFont(name: "Copperplate", size: 19)!
+        ZAlertView.positiveColor = astColor
+        ZAlertView.titleColor = astColor
         
         deviceTable.delegate = self
         deviceTable.dataSource = self
@@ -38,24 +47,24 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        if let identifier = segue.identifier {
-
-            if identifier == "idSeguePresentMainMenu" {
-
-                let mainMenu = segue.destination as! MainMenuViewController
-                
-                if let deviceObject = self.particleDevices?[selectedDeviceIndex] {
-
-                    mainMenu.deviceInfo = deviceObject
-
-               } else {
-                    //handle the case of 'deviceObject' being 'nil'
-               }
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if let identifier = segue.identifier {
+//
+//            if identifier == "idSeguePresentMainMenu" {
+//
+//                let mainMenu = segue.destination as! MainMenuViewController
+//
+//                if let deviceObject = self.particleDevices?[selectedDeviceIndex] {
+//
+//                    mainMenu.deviceInfo = deviceObject
+//
+//               } else {
+//                    //handle the case of 'deviceObject' being 'nil'
+//               }
+//            }
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -80,17 +89,20 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func logOutButtonTapped(_ sender: Any) {
         
         ParticleCloud.sharedInstance().logout()
-        
+
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-        
+
         //Once the user is logged out, segue switches views to Login
         self.performSegue(withIdentifier: "logoutSegue", sender: self)
+        
+//        UIApplication.shared.openURL(URL(string: "http://www.google.com/#q=2012+kia+optima+p0303")!)
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -103,7 +115,22 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         selectedDeviceIndex = (indexPath as NSIndexPath).row
         
-        performSegue(withIdentifier: "idSeguePresentMainMenu", sender: self)
+        dialog = ZAlertView(title: "Device Not Connected",
+                            message: "The device is not connected to the vehicle! \n\nPlug the device into your vehicle's OBDII port, turn the ignition to the \"ON\" position, and try again.",
+                            closeButtonText: "OK",
+                            closeButtonHandler: { (alertView) -> () in
+                                alertView.dismissAlertView()
+        })
+        
+        dialog.allowTouchOutsideToDismiss = false
+        
+        if(particleDevices![selectedDeviceIndex].connected){
+            
+            performSegue(withIdentifier: "idSeguePresentMainMenu", sender: self)
+        } else{
+            
+            dialog.show()
+        }
     }
     
     func getParticleDevices(indexPath: NSIndexPath, cell: UITableViewCell){
