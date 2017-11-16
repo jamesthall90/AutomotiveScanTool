@@ -13,6 +13,7 @@ import FirebaseDatabase
 import AwaitKit
 import SwiftyJSON
 import ZAlertView
+import Alamofire
 
 class MainMenuViewController: UIViewController {
     
@@ -22,10 +23,15 @@ class MainMenuViewController: UIViewController {
     var uid: String!
     var vin: String!
     var dateString: String!
+    var parameters: Parameters?
+    var apiURL: URL!
+    var vinPath: String!
+    var vehicleData: JSON!
+    var dialog: ZAlertView!
     @IBOutlet weak var vehicleImage: UIImageView!
     @IBOutlet weak var yMMLabel: UILabel!
     @IBOutlet weak var vinLabel: UILabel!
-    var dialog: ZAlertView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +46,11 @@ class MainMenuViewController: UIViewController {
         
         //Creates a reference to the database
         self.ref = Database.database().reference()
-
+        
+        self.vinPath = "\(AppDelegate.getAppDelegate().getDocDir())/decoded-vin.json"
+        
+        self.apiURL = URL(string:"https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVINValuesBatch/")!
+        
         //Returns an object containing the current user's information
         let user = Auth.auth().currentUser
 
@@ -188,41 +198,6 @@ class MainMenuViewController: UIViewController {
         performSegue(withIdentifier: "presentDeviceList", sender: self)
     }
     
-    func pushVehicleInfo(vehicle: VinRequest) -> Void {
-        
-        self.yMMLabel.text = "\(vehicle.getVehicleYear()) \(vehicle.getVehicleMake()) \(vehicle.getVehicleModel())"
-        
-        self.ref.child("users").child(self.uid).child("vehicles").child(vehicle.vin).child("vehicle year").setValue(vehicle.getVehicleYear())
-        self.ref.child("users").child(self.uid).child("vehicles").child(vehicle.vin).child("vehicle make").setValue(vehicle.getVehicleMake())
-        self.ref.child("users").child(self.uid).child("vehicles").child(vehicle.vin).child("vehicle model").setValue(vehicle.getVehicleModel())
-        self.ref.child("users").child(self.uid).child("vehicles").child(vehicle.vin).child("vehicle engine").setValue(vehicle.getVehicleEngineSize())
-        self.ref.child("users").child(self.uid).child("vehicles").child(vehicle.vin).child("vehicle type").setValue(vehicle.getVehicleType())
-        self.ref.child("users").child(self.uid).child("vehicles").child(vehicle.vin).child("vehicle drive type").setValue(vehicle.getVehicleDriveType())
-        self.ref.child("users").child(self.uid).child("vehicles").child(vehicle.vin).child("vehicle transmission").setValue(vehicle.getVehicleTransmission())
-        self.ref.child("users").child(self.uid).child("vehicles").child(vehicle.vin).child("vehicle fuel type").setValue(vehicle.getVehicleFuelType())
-        self.ref.child("users").child(self.uid).child("vehicles").child(vehicle.vin).child("vehicle assembly plant").setValue(vehicle.getVehicleAssemblyPlant())
-    }
-    
-    func getVehicleInfo(){
-        
-//        LoadingHud.show(self.view, label: "Loading Data...")
-        self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            let value = snapshot.value as? NSDictionary
-            
-            self.yMMLabel.text = "\(value?["vehicle year"] as? String ?? "") \(value?["vehicle make"] as? String ?? "") \(value?["vehicle model"] as? String ?? "")".uppercased()
-            
-            self.vehicleImage.contentMode = UIViewContentMode.scaleAspectFit
-            self.vehicleImage.clipsToBounds = true
-            self.vehicleImage.image = UIImage(named: "camaro")
-            
-            LoadingHud.hideHud(self.view)
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
-    
     func getVIN(){
         
         var task = self.deviceInfo!.callFunction("readVIN", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
@@ -253,7 +228,7 @@ class MainMenuViewController: UIViewController {
                             LoadingHud.hideHud(self.view)
                         } else {
                             
-                            self.pushVehicleInfo(vehicle: VinRequest(VIN:(event?.data?.description as! String)))
+                            self.pushVehicleInfo(vin: event?.data?.description as! String)
                             self.vin = event?.data?.description as! String
                             self.vinLabel.text = event?.data?.description as! String
                             self.getVehicleInfo()
@@ -262,5 +237,62 @@ class MainMenuViewController: UIViewController {
                 })
             }
         })
+    }
+    
+    func pushVehicleInfo(vin: String) -> Void {
+        
+        var vehicle: VinRequest!
+        
+        self.parameters = [
+                            "data":"\(vin);",
+                            "format":"json"
+        ]
+        
+        VinRequest.request(URL: apiURL, method: .post, parameters: self.parameters).then {
+            
+            apiData in VinRequest.saveJSON(value: apiData, vinPath: self.vinPath)
+            
+            }.then{ stuff -> Void in
+                
+                self.vehicleData = VinRequest.getJSON(vinPath: self.vinPath)
+                
+                vehicle = VinRequest(vehicle: self.vehicleData)
+                
+                self.yMMLabel.text = "\(vehicle.getVehicleYear()) \(vehicle.getVehicleMake()) \(vehicle.getVehicleModel())"
+                
+                self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle year").setValue(vehicle.getVehicleYear())
+                self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle make").setValue(vehicle.getVehicleMake())
+                self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle model").setValue(vehicle.getVehicleModel())
+                self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle engine").setValue(vehicle.getVehicleEngineSize())
+                self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle type").setValue(vehicle.getVehicleType())
+                self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle drive type").setValue(vehicle.getVehicleDriveType())
+                self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle transmission").setValue(vehicle.getVehicleTransmission())
+                self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle fuel type").setValue(vehicle.getVehicleFuelType())
+                self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle assembly plant").setValue(vehicle.getVehicleAssemblyPlant())
+            
+            } .catch { error in
+                
+                print(error)
+        }
+    }
+    
+    func getVehicleInfo(){
+        
+//        LoadingHud.show(self.view, label: "Loading Data...")
+        self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let value = snapshot.value as? NSDictionary
+            
+            self.yMMLabel.text = "\(value?["vehicle year"] as? String ?? "") \(value?["vehicle make"] as? String ?? "") \(value?["vehicle model"] as? String ?? "")".uppercased()
+            
+            self.vehicleImage.contentMode = UIViewContentMode.scaleAspectFit
+            self.vehicleImage.clipsToBounds = true
+            self.vehicleImage.image = UIImage(named: "camaro")
+            
+            LoadingHud.hideHud(self.view)
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
 }

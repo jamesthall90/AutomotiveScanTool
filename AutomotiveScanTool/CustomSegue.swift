@@ -153,7 +153,8 @@ class CustomSegue: UIStoryboardSegue {
             else if identifier == "readCodesSegue" {
                 
                 //Sets the segue's destination VC
-                let dest = self.destination as! ReadCodesViewController
+//                let dest = self.destination as! ReadCodesViewController
+                let dest = self.destination as! RCViewController
                 
                 //Sets the segue's source VC
                 let source = self.source as! MainMenuViewController

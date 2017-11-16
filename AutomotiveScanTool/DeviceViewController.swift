@@ -104,13 +104,13 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         dialog.allowTouchOutsideToDismiss = false
         
-        if(particleDevices![selectedDeviceIndex].connected){
-            
+//        if(particleDevices![selectedDeviceIndex].connected){
+//
             performSegue(withIdentifier: "idSeguePresentMainMenu", sender: self)
-        } else{
-            
-            dialog.show()
-        }
+//        } else{
+//
+//            dialog.show()
+//        }
     }
     
     func getParticleDevices(indexPath: NSIndexPath, cell: UITableViewCell){

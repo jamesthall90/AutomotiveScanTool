@@ -66,20 +66,17 @@ class ReadCodesViewController: CollapsibleTableSectionViewController {
 //    }
     
     func buildSectionData (){
-        self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).child("storedCodes").child(self.dateString).observe(eventType: .value, with: {(snapshot) in
-            let codes = snapshot.value as? [String: AnyObject] ?? [:]
-            print(codes)
-            for d in codes {
-//                print("key: ", d.key as? String, " value: ", d.value as? String)
-                self.sectionData.append(Section(code: (d.key as? String)!, codeData: [
-                    codeData(description: (d.value as? String)!, googleLink: "link")
-                ]))
-                
-            }
-//            for c in self.sectionData {
-//                print("sectionData: ", c.code , "__" , c.codeData.description)
+//    self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).child("storedCodes").child(self.dateString).observe(DataEventType.childAdded, with: DataSnapshot.init())
+//            let codes = snapshot.value as? [String: AnyObject] ?? [:]
+//            print(codes)
+//            for d in codes {
+////                print("key: ", d.key as? String, " value: ", d.value as? String)
+//                self.sectionData.append(Section(code: (d.key as? String)!, codeData: [
+//                    codeData(description: (d.value as? String)!, googleLink: "link")
+//                ]))
 //            }
-        })
+//
+//        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,4 +124,5 @@ extension ReadCodesViewController: CollapsibleTableSectionDelegate {
 //        }
 //    }
 //}
+
 

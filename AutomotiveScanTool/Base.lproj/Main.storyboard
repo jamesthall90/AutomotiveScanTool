@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -738,7 +738,7 @@
         <!--Read Codes View Controller-->
         <scene sceneID="kQV-Uy-Dct">
             <objects>
-                <viewController id="b1l-GK-aHU" customClass="ReadCodesViewController" customModule="AutomotiveScanTool" sceneMemberID="viewController">
+                <viewController id="b1l-GK-aHU" customClass="ReadCodesViewController" customModule="AutomotiveScanTool" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zw9-XH-g6M"/>
                         <viewControllerLayoutGuide type="bottom" id="F8d-Jb-Kaf"/>
@@ -751,7 +751,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tLq-Zu-56t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3598" y="825"/>
+            <point key="canvasLocation" x="3598" y="931"/>
         </scene>
         <!--Code History View Controller-->
         <scene sceneID="sp2-mR-JYp">
@@ -803,7 +803,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Abx-EK-zyt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3598" y="104"/>
+            <point key="canvasLocation" x="3598" y="125"/>
         </scene>
     </scenes>
     <resources>
@@ -811,8 +811,7 @@
         <image name="Particle-Logo" width="3796" height="890"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HSC-uO-1r6"/>
         <segue reference="JTf-wt-zzU"/>
-        <segue reference="1cR-uT-PFS"/>
+        <segue reference="lH3-M6-zlu"/>
     </inferredMetricsTieBreakers>
 </document>

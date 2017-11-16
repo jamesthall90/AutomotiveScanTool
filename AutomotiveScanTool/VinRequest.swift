@@ -15,43 +15,69 @@ import PromiseKit
 class VinRequest{
     
     //Initialization of instance variables
-    var vin : String
-    var parameters: Parameters?
-    var vinPath: String
-    var vehicleData : JSON
-    
-    class func request( URL: URL, method: HTTPMethod, parameters: Parameters?, vinPath: String) -> Promise<NSData> {
-        return Promise{ resolve, reject in
-            Alamofire.request(URL, method: method, parameters: parameters).responseJSON { responseData in
-               
-                switch responseData.result {
-                    case .success(let value):
-                        
-                        let json = JSON(value)
-                        print("JSON: \(json)")
-                        
-                        do{
-                            try json.description.write(toFile: vinPath, atomically: true, encoding: String.Encoding.utf8)
+    var vehicleData: JSON!
 
-                            print("")
-                            print("Wrote to file")
-                            print("")
-                            
-                        } catch let error as NSError {
-                            
-                            print("")
-                            print("Could not write to file")
-                            print(error.localizedDescription)
-                            print("")
-                        }
+    class func request( URL: URL, method: HTTPMethod, parameters: Parameters?) -> Promise<[String : AnyObject]> {
+        return Promise{ fulfill, reject in
+            
+            Alamofire.request(URL, method: method, parameters: parameters).responseJSON { response in
+                
+                if let apiData = response.result.value {
                     
-                    case .failure(let error):
-                        print(error)
+                    print("API data downloaded")
+                    
+                    fulfill(apiData as! [String : AnyObject])
+                } else{
+                    
+                    print("something went wayyyyy wrong!")
+                    
+                    reject(response.error!)
                 }
             }
         }
     }
+    
+    class func saveJSON(value: [String : AnyObject], vinPath: String) {
+        
+        let json = JSON(value)
+        
+        print("JSON: \(json)")
+        
+        do{
+            try json.description.write(toFile: vinPath, atomically: true, encoding: String.Encoding.utf8)
+            
+            print("")
+            print("Wrote to file")
+            print("")
+            
+        } catch let error as NSError {
+            
+            print("")
+            print("Could not write to file")
+            print(error.localizedDescription)
+            print("")
+        }
+    }
+    
+    class func getJSON(vinPath: String) -> JSON{
+        
+        var vehicle: JSON
+        
+        do{
+            try vehicle = JSON(data: try Data(contentsOf: URL(fileURLWithPath: vinPath)))
+            
+        } catch let error as NSError{
+            
+            vehicle = JSON.null
+            print("**********************************")
+            print("Could not open JSON")
+            print(error.localizedDescription)
+            print("**********************************")
+        }
+        return vehicle
+    }
 
+    
     class func getContentsOfDirectory(dir: String){
         
         let filemgr = FileManager.default
@@ -70,53 +96,9 @@ class VinRequest{
         }
     }
     
-    //Specifies how parameters are handled upon object initialization
-    init(VIN : String) {
+    init(vehicle: JSON) {
         
-        self.vin = VIN
-        
-        //Sets passed-in VIN as parameter data to be used in POST / decode request
-        parameters = [
-            "data":"\(vin);",
-            "format":"json"
-        ]
-        
-        self.vinPath = "\(AppDelegate.getAppDelegate().getDocDir())/decoded-vin.json"
-        
-        let apiURL = URL(string:"https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVINValuesBatch/")
-        
-        do{
-            VinRequest.request(URL: apiURL!, method: .post, parameters: parameters, vinPath: self.vinPath)
-            
-            print("")
-            print("System waited for request")
-            print("")
-        
-        } catch let error as NSError{
-            print("")
-            print(error.localizedDescription)
-            print("Request/wait did not work!")
-            print("")
-        }
-        
-        VinRequest.getContentsOfDirectory(dir: AppDelegate.getAppDelegate().getDocDir())
-        
-        //Creates url from vinPath
-        let vinURL = URL(fileURLWithPath: self.vinPath)
-        
-        //Converts the file at the vinURL into a data object,
-        //and then into a JSON object
-        do{
-           try vehicleData = JSON(data: try Data(contentsOf: vinURL))
-            
-        } catch let error as NSError{
-            
-            vehicleData = JSON.null
-            print("**********************************")
-            print("Could not open JSON")
-            print(error.localizedDescription)
-            print("**********************************")
-        }
+        self.vehicleData = vehicle
     }
     
     func getVehicleYear() -> String{
@@ -239,4 +221,5 @@ class VinRequest{
         
         return (vehicleFuelType!.uppercased())
     }
+    
 }
