@@ -34,6 +34,7 @@
 		A5D6DE94631699D1FC8C8EE9 /* Pods_AutomotiveScanTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8240C1EA87ED660AAE625 /* Pods_AutomotiveScanTool.framework */; };
 		E1E991B8B53FB1AB24BE0217 /* Pods_AutomotiveScanToolUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE30ED95563C507B274AD8A1 /* Pods_AutomotiveScanToolUITests.framework */; };
 		F83EDAD21FBCB0980045079D /* ReadCodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83EDAD11FBCB0980045079D /* ReadCodesViewController.swift */; };
+		F83EDAD61FBE2DAD0045079D /* CodesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83EDAD51FBE2DAD0045079D /* CodesTableViewCell.swift */; };
 		F853197C1FA7A6440065B2EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F853197B1FA7A6440065B2EC /* AppDelegate.swift */; };
 		F853197E1FA7A6550065B2EC /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F853197D1FA7A6550065B2EC /* MainMenuViewController.swift */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,7 @@
 		E2BF0CC7F765CD4BE42C2738 /* Pods-AutomotiveScanToolTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanToolTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanToolTests/Pods-AutomotiveScanToolTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E8DD77C21B8B553607C2FA81 /* Pods-AutomotiveScanToolUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanToolUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanToolUITests/Pods-AutomotiveScanToolUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F83EDAD11FBCB0980045079D /* ReadCodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCodesViewController.swift; sourceTree = "<group>"; };
+		F83EDAD51FBE2DAD0045079D /* CodesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesTableViewCell.swift; sourceTree = "<group>"; };
 		F853197B1FA7A6440065B2EC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F853197D1FA7A6550065B2EC /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +170,7 @@
 				F853197B1FA7A6440065B2EC /* AppDelegate.swift */,
 				725D2D7D1FBA4F6500B21143 /* CustomSegue.swift */,
 				72FC571B1FB4166C0005FD04 /* DeviceTableViewCell.swift */,
+				F83EDAD51FBE2DAD0045079D /* CodesTableViewCell.swift */,
 				729E0D361FB1310C00BA4CCE /* LoadingHud.swift */,
 				729E0D381FB1319100BA4CCE /* ParticleUtils.swift */,
 				727770F41F9FD881004F2241 /* VinRequest.swift */,
@@ -572,6 +575,7 @@
 				F853197C1FA7A6440065B2EC /* AppDelegate.swift in Sources */,
 				727771001F9FD882004F2241 /* LoginViewController.swift in Sources */,
 				727770FA1F9FD882004F2241 /* UIViewExtension.swift in Sources */,
+				F83EDAD61FBE2DAD0045079D /* CodesTableViewCell.swift in Sources */,
 				729E0D371FB1310C00BA4CCE /* LoadingHud.swift in Sources */,
 				F83EDAD21FBCB0980045079D /* ReadCodesViewController.swift in Sources */,
 				72FC571C1FB4166C0005FD04 /* DeviceTableViewCell.swift in Sources */,

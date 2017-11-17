@@ -7,9 +7,20 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
+import FirebaseDatabase
+import PromiseKit
 
 class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    public struct Section{
+        public var code: String
+        public var codeItems: [String]
+        
+        public init(code: String, codeItems: [String]) {
+            self.code = code
+            self.codeItems = codeItems
+        }
+    }
     
     var ref: DatabaseReference!
     var uid: String!
@@ -18,23 +29,39 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     let kHeaderSectionTag: Int = 6900;
     
-    @IBOutlet weak var rCTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     var expandedSectionHeaderNumber: Int = -1
     var expandedSectionHeader: UITableViewHeaderFooterView!
-    var sectionItems: Array<Any> = []
-    var sectionNames: Array<Any> = []
+    var sections : [Section] = []
+    var codeItems : [String] = []
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        sectionNames = [ "iPhone", "iPad", "Apple Watch" ];
-        sectionItems = [ ["iPhone 5", "iPhone 5s", "iPhone 6", "iPhone 6 Plus", "iPhone 7", "iPhone 7 Plus"],
-                         ["iPad Mini", "iPad Air 2", "iPad Pro", "iPad Pro 9.7"],
-                         ["Apple Watch", "Apple Watch 2", "Apple Watch 2 (Nike)"]
-        ];
-        self.rCTableView!.tableFooterView = UIView()
-    }
+        print("-----loading screen closing-----")
+        LoadingHud.hideHud(self.view)
+
+        DispatchQueue.main.async {
+            //query firebase for codes with a specific date .datestring).observe(...)
+            self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).child("storedCodes").child(self.dateString).observe(DataEventType.value, with: { (snapshot) in
+                
+                let values = snapshot.value as? [String : String] ?? [:]
+                
+                //add Sections to the sections array for each code that was in the snapshot.
+                for k in values {
+                    let link = "https://www.google.com/search?q=" + (k.key as? String)!
+                    let newSection: Section = (Section(code: (k.key as? String)!, codeItems: [
+                        (k.value as? String)!, link]))
+                    self.sections.append(newSection)
+                }//end for
+                self.tableView.reloadData()
+            })//end firebase query
+        }//end DispatchQueue
+        self.tableView!.tableFooterView = UIView()
+    }//end viewDidLoad
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -49,9 +76,9 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     // MARK: - Tableview Methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if sectionNames.count > 0 {
+        if self.sections.count > 0 {
             tableView.backgroundView = nil
-            return sectionNames.count
+            return self.sections.count
         } else {
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height))
             messageLabel.text = "Retrieving data.\nPlease wait."
@@ -59,14 +86,14 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             messageLabel.textAlignment = .center;
             messageLabel.font = UIFont(name: "HelveticaNeue", size: 20.0)!
             messageLabel.sizeToFit()
-            self.rCTableView.backgroundView = messageLabel;
+            self.tableView.backgroundView = messageLabel;
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (self.expandedSectionHeaderNumber == section) {
-            let arrayOfItems = self.sectionItems[section] as! NSArray
+            let arrayOfItems = self.sections[section].codeItems as! NSArray
             return arrayOfItems.count;
         } else {
             return 0;
@@ -74,8 +101,8 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if (self.sectionNames.count != 0) {
-            return self.sectionNames[section] as? String
+        if (self.sections.count != 0) {
+            return self.sections[section].code as? String
         }
         return ""
     }
@@ -93,9 +120,7 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         header.contentView.backgroundColor = UIColor.blue
         
-        
-//        colorWithHexString(hexStr: "#408000")
-        
+        //        colorWithHexString(hexStr: "#408000")
         
         header.textLabel?.textColor = UIColor.white
         
@@ -116,11 +141,22 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as UITableViewCell
-        let section = self.sectionItems[indexPath.section] as! NSArray
-        cell.textLabel?.textColor = UIColor.black
-        cell.textLabel?.text = section[indexPath.row] as? String
+        let cell = tableView.dequeueReusableCell(withIdentifier: "codeCell", for: indexPath) as! CodesTableViewCell
+        let section = self.sections[indexPath.section].codeItems
         
+        //line wrapping
+        cell.rowDescription?.lineBreakMode = NSLineBreakMode.byWordWrapping;
+        cell.rowDescription?.numberOfLines = 0;
+
+        //there will only ever be two items in each section. First is Code Description
+        //second is the google search link
+        if (indexPath[1] == 0) { //code
+            cell.title?.text = "Code Description: "
+        } else if (indexPath[1] == 1) { //link
+            cell.title?.text = "Search Google: "
+        }
+        cell.rowDescription?.text = section[indexPath[1]]
+
         return cell
     }
     
@@ -150,7 +186,7 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableViewCollapeSection(_ section: Int, imageView: UIImageView) {
-        let sectionData = self.sectionItems[section] as! NSArray
+        let sectionData = self.sections[section].codeItems as! NSArray
         
         self.expandedSectionHeaderNumber = -1;
         if (sectionData.count == 0) {
@@ -164,14 +200,14 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 let index = IndexPath(row: i, section: section)
                 indexesPath.append(index)
             }
-            self.rCTableView!.beginUpdates()
-            self.rCTableView!.deleteRows(at: indexesPath, with: UITableViewRowAnimation.fade)
-            self.rCTableView!.endUpdates()
+            self.tableView!.beginUpdates()
+            self.tableView!.deleteRows(at: indexesPath, with: UITableViewRowAnimation.fade)
+            self.tableView!.endUpdates()
         }
     }
     
     func tableViewExpandSection(_ section: Int, imageView: UIImageView) {
-        let sectionData = self.sectionItems[section] as! NSArray
+        let sectionData = self.sections[section].codeItems as! NSArray
         
         if (sectionData.count == 0) {
             self.expandedSectionHeaderNumber = -1;
@@ -186,11 +222,12 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 indexesPath.append(index)
             }
             self.expandedSectionHeaderNumber = section
-            self.rCTableView!.beginUpdates()
-            self.rCTableView!.insertRows(at: indexesPath, with: UITableViewRowAnimation.fade)
-            self.rCTableView!.endUpdates()
+            self.tableView!.beginUpdates()
+            self.tableView!.insertRows(at: indexesPath, with: UITableViewRowAnimation.fade)
+            self.tableView!.endUpdates()
         }
     }
     
 }
+
 
