@@ -15,33 +15,35 @@ class CustomSegue: UIStoryboardSegue {
         
         if let identifier = self.identifier {
             
-            if identifier == "idSeguePresentMainMenu" {
+            switch identifier{
                 
-                //Sets the segue's destination VC
-                let dest = self.destination as! MainMenuViewController
+            case "idSeguePresentMainMenu":
                 
-                //Sets the segue's source VC
-                let source = self.source as! DeviceViewController
-                
-                //Passes the selected device to the destination VC
-                if let deviceObject = source.particleDevices?[source.selectedDeviceIndex] {
+                    //Sets the segue's destination VC
+                    let dest = self.destination as! MainMenuViewController
                     
-                    dest.deviceInfo = deviceObject
+                    //Sets the segue's source VC
+                    let source = self.source as! DeviceViewController
                     
-                } else {
-                    //handle the case of 'deviceObject' being 'nil'
-                }
+                    //Passes the selected device to the destination VC
+                    if let deviceObject = source.particleDevices?[source.selectedDeviceIndex] {
+                        
+                        dest.deviceInfo = deviceObject
+                        
+                    } else {
+                        //handle the case of 'deviceObject' being 'nil'
+                    }
+                    
+                    //Enables Hero animations for the destination VC
+                    dest.isHeroEnabled = true
+                    
+                    //Sets the animation type for the segue
+                    dest.heroModalAnimationType = .zoomSlide(direction: HeroDefaultAnimationType.Direction.left)
+                    
+                    //Performs the segue
+                    source.hero_replaceViewController(with: dest)
                 
-                //Enables Hero animations for the destination VC
-                dest.isHeroEnabled = true
-                
-                //Sets the animation type for the segue
-                dest.heroModalAnimationType = .zoomSlide(direction: HeroDefaultAnimationType.Direction.left)
-                
-                //Performs the segue
-                source.hero_replaceViewController(with: dest)
-            }
-            else if identifier == "presentDeviceList" {
+            case "presentDeviceList":
                 
                 //Sets the segue's destination VC
                 let dest = self.destination as! DeviceViewController
@@ -57,8 +59,8 @@ class CustomSegue: UIStoryboardSegue {
                 
                 //Performs the segue
                 source.hero_replaceViewController(with: dest)
-            }
-            else if identifier == "logoutSegue" {
+                
+            case "logoutSegue":
                 
                 //Sets the segue's destination VC
                 let dest = self.destination as! LoginViewController
@@ -73,8 +75,8 @@ class CustomSegue: UIStoryboardSegue {
                 dest.heroModalAnimationType = .zoomOut
                 
                 source.hero_replaceViewController(with: dest)
-            }
-            else if identifier == "vInfoSegue" {
+                
+            case "vInfoSegue":
                 
                 //Sets the segue's destination VC
                 let dest = self.destination as! VInfoViewController
@@ -103,37 +105,36 @@ class CustomSegue: UIStoryboardSegue {
                 
                 //Performs the segue
                 source.hero_replaceViewController(with: dest)
-            }
-            else if identifier == "vIBackSegue" {
                 
-                //Sets the segue's destination VC
-                let dest = self.destination as! MainMenuViewController
-                
-                //Sets the segue's source VC
-                let source = self.source as! VInfoViewController
-                
-                if source.ref != nil{
+            case "vIBackSegue":
                     
-                    dest.uid = source.uid
-                    dest.ref = source.ref
-                    dest.vin = source.vin
-                    dest.deviceInfo = source.deviceInfo
+                    //Sets the segue's destination VC
+                    let dest = self.destination as! MainMenuViewController
                     
-                } else {
+                    //Sets the segue's source VC
+                    let source = self.source as! VInfoViewController
                     
-                    print("Database reference is nil!")
-                }
-
-                //Enables Hero animations for the destination VC
-                dest.isHeroEnabled = true
+                    if source.ref != nil{
+                        
+                        dest.uid = source.uid
+                        dest.ref = source.ref
+                        dest.vin = source.vin
+                        dest.deviceInfo = source.deviceInfo
+                        
+                    } else {
+                        
+                        print("Database reference is nil!")
+                    }
+                    //Enables Hero animations for the destination VC
+                    dest.isHeroEnabled = true
+                    
+                    //Sets the animation type for the segue
+                    dest.heroModalAnimationType = .zoom
+                    
+                    //Performs the segue
+                    source.hero_replaceViewController(with: dest)
                 
-                //Sets the animation type for the segue
-                dest.heroModalAnimationType = .zoom
-                
-                //Performs the segue
-                source.hero_replaceViewController(with: dest)
-            }
-            else if identifier == "deviceSelectSegue" {
+            case "deviceSelectSegue":
                 
                 //Sets the segue's destination VC
                 let dest = self.destination as! DeviceViewController
@@ -149,37 +150,203 @@ class CustomSegue: UIStoryboardSegue {
                 
                 //Performs the segue
                 source.hero_replaceViewController(with: dest)
+                
+            case "readCodesSegue":
+                    
+                    //Sets the segue's destination VC
+                    //                let dest = self.destination as! ReadCodesViewController
+                    let dest = self.destination as! RCViewController
+                    
+                    //Sets the segue's source VC
+                    let source = self.source as! MainMenuViewController
+                    
+                    if source.ref != nil{
+                        
+                        dest.uid = source.uid
+                        dest.ref = source.ref
+                        dest.vin = source.vinLabel.text
+                        dest.dateString = source.dateString
+                        
+                    } else {
+                        
+                        print("Database reference is nil!")
+                    }
+                    
+                    //Enables Hero animations for the destination VC
+                    dest.isHeroEnabled = true
+                    
+                    //Sets the animation type for the segue
+                    dest.heroModalAnimationType = .zoom
+                    
+                    //Performs the segue
+                    source.hero_replaceViewController(with: dest)
             }
-            else if identifier == "readCodesSegue" {
-                
-                //Sets the segue's destination VC
-//                let dest = self.destination as! ReadCodesViewController
-                let dest = self.destination as! RCViewController
-                
-                //Sets the segue's source VC
-                let source = self.source as! MainMenuViewController
-                
-                if source.ref != nil{
-                    
-                    dest.uid = source.uid
-                    dest.ref = source.ref
-                    dest.vin = source.vinLabel.text
-                    dest.dateString = source.dateString
-                    
-                } else {
-                    
-                    print("Database reference is nil!")
-                }
-                
-                //Enables Hero animations for the destination VC
-                dest.isHeroEnabled = true
-                
-                //Sets the animation type for the segue
-                dest.heroModalAnimationType = .zoom
-                
-                //Performs the segue
-                source.hero_replaceViewController(with: dest)
-            }
+            
+//            if identifier == "idSeguePresentMainMenu" {
+//
+//                //Sets the segue's destination VC
+//                let dest = self.destination as! MainMenuViewController
+//
+//                //Sets the segue's source VC
+//                let source = self.source as! DeviceViewController
+//
+//                //Passes the selected device to the destination VC
+//                if let deviceObject = source.particleDevices?[source.selectedDeviceIndex] {
+//
+//                    dest.deviceInfo = deviceObject
+//
+//                } else {
+//                    //handle the case of 'deviceObject' being 'nil'
+//                }
+//
+//                //Enables Hero animations for the destination VC
+//                dest.isHeroEnabled = true
+//
+//                //Sets the animation type for the segue
+//                dest.heroModalAnimationType = .zoomSlide(direction: HeroDefaultAnimationType.Direction.left)
+//
+//                //Performs the segue
+//                source.hero_replaceViewController(with: dest)
+//            }
+//            else if identifier == "presentDeviceList" {
+//
+//                //Sets the segue's destination VC
+//                let dest = self.destination as! DeviceViewController
+//
+//                //Sets the segue's source VC
+//                let source = self.source as! MainMenuViewController
+//
+//                //Enables Hero animations for the destination VC
+//                dest.isHeroEnabled = true
+//
+//                //Sets the animation type for the segue
+//                dest.heroModalAnimationType = .zoomSlide(direction: HeroDefaultAnimationType.Direction.right)
+//
+//                //Performs the segue
+//                source.hero_replaceViewController(with: dest)
+//            }
+//            else if identifier == "logoutSegue" {
+//
+//                //Sets the segue's destination VC
+//                let dest = self.destination as! LoginViewController
+//
+//                //Sets the segue's source VC
+//                let source = self.source as! DeviceViewController
+//
+//                //Enables Hero animations for the destination VC
+//                dest.isHeroEnabled = true
+//
+//                //Sets the animation type for the segue
+//                dest.heroModalAnimationType = .zoomOut
+//
+//                source.hero_replaceViewController(with: dest)
+//            }
+//            else if identifier == "vInfoSegue" {
+//
+//                //Sets the segue's destination VC
+//                let dest = self.destination as! VInfoViewController
+//
+//                //Sets the segue's source VC
+//                let source = self.source as! MainMenuViewController
+//
+//                if source.ref != nil{
+//
+//                    dest.uid = source.uid
+//                    dest.ref = source.ref
+//                    dest.vin = source.vinLabel.text
+//                    dest.deviceInfo = source.deviceInfo
+//                    dest.newImage = source.vehicleImage.image
+//
+//                } else {
+//
+//                    print("Database reference is nil!")
+//                }
+//
+//                //Enables Hero animations for the destination VC
+//                dest.isHeroEnabled = true
+//
+//                //Sets the animation type for the segue
+//                dest.heroModalAnimationType = .zoom
+//
+//                //Performs the segue
+//                source.hero_replaceViewController(with: dest)
+//            }
+//            else if identifier == "vIBackSegue" {
+//
+//                //Sets the segue's destination VC
+//                let dest = self.destination as! MainMenuViewController
+//
+//                //Sets the segue's source VC
+//                let source = self.source as! VInfoViewController
+//
+//                if source.ref != nil{
+//
+//                    dest.uid = source.uid
+//                    dest.ref = source.ref
+//                    dest.vin = source.vin
+//                    dest.deviceInfo = source.deviceInfo
+//
+//                } else {
+//
+//                    print("Database reference is nil!")
+//                }
+//
+//                //Enables Hero animations for the destination VC
+//                dest.isHeroEnabled = true
+//
+//                //Sets the animation type for the segue
+//                dest.heroModalAnimationType = .zoom
+//
+//                //Performs the segue
+//                source.hero_replaceViewController(with: dest)
+//            }
+//            else if identifier == "deviceSelectSegue" {
+//
+//                //Sets the segue's destination VC
+//                let dest = self.destination as! DeviceViewController
+//
+//                //Sets the segue's source VC
+//                let source = self.source as! LoginViewController
+//
+//                //Enables Hero animations for the destination VC
+//                dest.isHeroEnabled = true
+//
+//                //Sets the animation type for the segue
+//                dest.heroModalAnimationType = .zoom
+//
+//                //Performs the segue
+//                source.hero_replaceViewController(with: dest)
+//            }
+//            else if identifier == "readCodesSegue" {
+//                
+//                //Sets the segue's destination VC
+////                let dest = self.destination as! ReadCodesViewController
+//                let dest = self.destination as! RCViewController
+//                
+//                //Sets the segue's source VC
+//                let source = self.source as! MainMenuViewController
+//                
+//                if source.ref != nil{
+//                    
+//                    dest.uid = source.uid
+//                    dest.ref = source.ref
+//                    dest.vin = source.vinLabel.text
+//                    dest.dateString = source.dateString
+//                    
+//                } else {
+//                    
+//                    print("Database reference is nil!")
+//                }
+//                
+//                //Enables Hero animations for the destination VC
+//                dest.isHeroEnabled = true
+//                
+//                //Sets the animation type for the segue
+//                dest.heroModalAnimationType = .zoom
+//                
+//                //Performs the segue
+//                source.hero_replaceViewController(with: dest)
+//            }
         }
     }
 }

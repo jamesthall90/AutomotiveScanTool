@@ -226,6 +226,7 @@ class MainMenuViewController: UIViewController {
                             self.vinLabel.text = event?.data?.description as! String
                             self.getVehicleInfo()
                             LoadingHud.hideHud(self.view)
+                        
                         } else {
                             
                             self.pushVehicleInfo(vin: event?.data?.description as! String)

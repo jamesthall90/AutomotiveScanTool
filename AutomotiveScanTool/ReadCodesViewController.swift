@@ -77,6 +77,19 @@ class ReadCodesViewController: CollapsibleTableSectionViewController {
 //            }
 //
 //        })
+        
+    ref.child(self.uid).child("vehicles").child(self.vin).child("storedCodes").child(self.dateString).observe(DataEventType.value, with: { (snapshot) in
+            let codes = snapshot.value as? [String : AnyObject] ?? [:]
+            
+            print(codes)
+            
+            for d in codes {
+                //                print("key: ", d.key as? String, " value: ", d.value as? String)
+                self.sectionData.append(Section(code: (d.key as? String)!, codeData: [
+                    codeData(description: (d.value as? String)!, googleLink: "link")
+                    ]))
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
