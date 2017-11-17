@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -728,7 +728,7 @@
                         <segue destination="amu-3i-Lzi" kind="show" identifier="vInfoSegue" customClass="CustomSegue" customModule="AutomotiveScanTool" customModuleProvider="target" id="lZm-sE-Da1"/>
                         <segue destination="cj6-Az-plh" kind="show" identifier="presentDeviceList" customClass="CustomSegue" customModule="AutomotiveScanTool" customModuleProvider="target" id="lH3-M6-zlu"/>
                         <segue destination="8qb-QH-Ky7" kind="show" id="HSC-uO-1r6"/>
-                        <segue destination="b1l-GK-aHU" kind="show" identifier="readCodesSegue" customClass="CustomSegue" customModule="AutomotiveScanTool" customModuleProvider="target" id="hTs-4y-r6f"/>
+                        <segue destination="4x1-uc-RSu" kind="show" identifier="readCodesSegue" customClass="CustomSegue" customModule="AutomotiveScanTool" customModuleProvider="target" id="RcD-Gs-DWr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kpg-Te-2gD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -752,6 +752,83 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tLq-Zu-56t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3598" y="931"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="nQX-2u-SP2">
+            <objects>
+                <viewController id="4x1-uc-RSu" customClass="RCViewController" customModule="AutomotiveScanTool" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="suy-06-AmA"/>
+                        <viewControllerLayoutGuide type="bottom" id="wRq-5x-Xsx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TCk-9l-oZc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JJB-48-vBb">
+                                <rect key="frame" x="0.0" y="65" width="375" height="602"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="codeCell" rowHeight="106" id="XQg-rX-kEK" customClass="CodesTableViewCell" customModule="AutomotiveScanTool" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="106"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XQg-rX-kEK" id="K7N-pS-Pi1">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="105.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRQ-Me-rgM">
+                                                    <rect key="frame" x="8" y="37" width="359" height="61"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Moy-uv-ki8">
+                                                    <rect key="frame" x="8" y="8" width="359" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="DKK-nA-yh3"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Moy-uv-ki8" firstAttribute="leading" secondItem="kRQ-Me-rgM" secondAttribute="leading" id="0I4-fX-Pxr"/>
+                                                <constraint firstItem="Moy-uv-ki8" firstAttribute="leading" secondItem="K7N-pS-Pi1" secondAttribute="leadingMargin" id="2lK-Ih-cP0"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="kRQ-Me-rgM" secondAttribute="bottom" constant="-0.5" id="3L3-Gg-4L5"/>
+                                                <constraint firstItem="Moy-uv-ki8" firstAttribute="trailing" secondItem="kRQ-Me-rgM" secondAttribute="trailing" id="8ud-i5-EXN"/>
+                                                <constraint firstItem="kRQ-Me-rgM" firstAttribute="top" secondItem="Moy-uv-ki8" secondAttribute="bottom" constant="8" id="Dkq-6X-slI"/>
+                                                <constraint firstItem="Moy-uv-ki8" firstAttribute="top" secondItem="K7N-pS-Pi1" secondAttribute="topMargin" id="j5d-pQ-jPO"/>
+                                                <constraint firstItem="Moy-uv-ki8" firstAttribute="trailing" secondItem="K7N-pS-Pi1" secondAttribute="trailingMargin" id="qab-0j-oth"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="rowDescription" destination="kRQ-Me-rgM" id="wbF-QZ-EFn"/>
+                                            <outlet property="title" destination="Moy-uv-ki8" id="rGF-6B-Qdf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4x1-uc-RSu" id="2Bd-c3-lCj"/>
+                                    <outlet property="delegate" destination="4x1-uc-RSu" id="5Ho-Tt-AR4"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JJB-48-vBb" firstAttribute="bottom" secondItem="wRq-5x-Xsx" secondAttribute="top" id="4cq-V7-Ayz"/>
+                            <constraint firstItem="JJB-48-vBb" firstAttribute="top" secondItem="suy-06-AmA" secondAttribute="bottom" constant="45" id="Fjc-95-bXs"/>
+                            <constraint firstAttribute="trailing" secondItem="JJB-48-vBb" secondAttribute="trailing" id="S5A-FU-7Xu"/>
+                            <constraint firstItem="JJB-48-vBb" firstAttribute="leading" secondItem="TCk-9l-oZc" secondAttribute="leading" id="xYB-ZY-hrj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="JJB-48-vBb" id="rrR-Uf-B7G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2dL-hS-FMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2933.5999999999999" y="930.58470764617698"/>
         </scene>
         <!--Code History View Controller-->
         <scene sceneID="sp2-mR-JYp">
@@ -811,6 +888,7 @@
         <image name="Particle-Logo" width="3796" height="890"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="HSC-uO-1r6"/>
         <segue reference="JTf-wt-zzU"/>
         <segue reference="lH3-M6-zlu"/>
     </inferredMetricsTieBreakers>
