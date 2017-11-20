@@ -145,20 +145,23 @@ class MainMenuViewController: UIViewController {
                             code.remove(at:i)
                             description = "Current: "
                         }
-                       
+                        
                         //find code descriptions in firebase and add them to the description variable
                         self.ref.child("trouble-codes").child(code).observeSingleEvent(of: .value, with: { (snapshot) in
+                            
                             description += (snapshot.value as? NSString)! as String
+                            
                             //testing line
-//                            print("Code is: \(code)  Description is: \(description)")
+                            print("Code is: \(code)  Description is: \(description) Vin is: \(self.vinLabel.text)")
                             
                             //push the codes and their descriptions to firebase under the respective vehicle
                             self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(self.dateString).child(code).setValue(description)
-//                            self.performSegue(withIdentifier: "readCodesSegue", sender: self)
+                            
+                            self.performSegue(withIdentifier: "readCodesSegue", sender: self)
 
                         })
                     }
-                    self.performSegue(withIdentifier: "readCodesSegue", sender: self)
+//                    self.performSegue(withIdentifier: "readCodesSegue", sender: self)
                 }) //end DispatchQueue
             }//end else
         })//end handler

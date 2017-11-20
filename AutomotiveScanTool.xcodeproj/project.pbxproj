@@ -29,6 +29,7 @@
 		729E64C71FBB3EAC00246B0C /* kia-optima.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 729E64C31FBB3EAC00246B0C /* kia-optima.jpg */; };
 		729E64C81FBB3EAC00246B0C /* chevy-suburban.png in Resources */ = {isa = PBXBuildFile; fileRef = 729E64C41FBB3EAC00246B0C /* chevy-suburban.png */; };
 		72BFF88A1FBCEF7A008A0265 /* RCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BFF8891FBCEF7A008A0265 /* RCViewController.swift */; };
+		72C09E4E1FC0B65F003BD0A0 /* ASTInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C09E4D1FC0B65F003BD0A0 /* ASTInfo.swift */; };
 		72E71BFB1FBCA44A00BEBA9D /* CodeHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E71BFA1FBCA44A00BEBA9D /* CodeHistoryViewController.swift */; };
 		72FC571C1FB4166C0005FD04 /* DeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC571B1FB4166C0005FD04 /* DeviceTableViewCell.swift */; };
 		A5D6DE94631699D1FC8C8EE9 /* Pods_AutomotiveScanTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8240C1EA87ED660AAE625 /* Pods_AutomotiveScanTool.framework */; };
@@ -90,6 +91,7 @@
 		729E64C31FBB3EAC00246B0C /* kia-optima.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "kia-optima.jpg"; path = "img/kia-optima.jpg"; sourceTree = "<group>"; };
 		729E64C41FBB3EAC00246B0C /* chevy-suburban.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chevy-suburban.png"; path = "img/chevy-suburban.png"; sourceTree = "<group>"; };
 		72BFF8891FBCEF7A008A0265 /* RCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCViewController.swift; sourceTree = "<group>"; };
+		72C09E4D1FC0B65F003BD0A0 /* ASTInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTInfo.swift; sourceTree = "<group>"; };
 		72E71BFA1FBCA44A00BEBA9D /* CodeHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeHistoryViewController.swift; sourceTree = "<group>"; };
 		72FC571B1FB4166C0005FD04 /* DeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCell.swift; sourceTree = "<group>"; };
 		A07F900895DE522BA641694B /* Pods-AutomotiveScanToolTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanToolTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanToolTests/Pods-AutomotiveScanToolTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				729E64C31FBB3EAC00246B0C /* kia-optima.jpg */,
 				729E64C11FBB3EAB00246B0C /* Particle-Logo.png */,
 				F853197B1FA7A6440065B2EC /* AppDelegate.swift */,
+				72C09E4D1FC0B65F003BD0A0 /* ASTInfo.swift */,
 				725D2D7D1FBA4F6500B21143 /* CustomSegue.swift */,
 				72FC571B1FB4166C0005FD04 /* DeviceTableViewCell.swift */,
 				F83EDAD51FBE2DAD0045079D /* CodesTableViewCell.swift */,
@@ -581,6 +584,7 @@
 				72FC571C1FB4166C0005FD04 /* DeviceTableViewCell.swift in Sources */,
 				72BFF88A1FBCEF7A008A0265 /* RCViewController.swift in Sources */,
 				727770FB1F9FD882004F2241 /* VinRequest.swift in Sources */,
+				72C09E4E1FC0B65F003BD0A0 /* ASTInfo.swift in Sources */,
 				F853197E1FA7A6550065B2EC /* MainMenuViewController.swift in Sources */,
 				727770FC1F9FD882004F2241 /* DeviceViewController.swift in Sources */,
 				727770FD1F9FD882004F2241 /* VInfoViewController.swift in Sources */,

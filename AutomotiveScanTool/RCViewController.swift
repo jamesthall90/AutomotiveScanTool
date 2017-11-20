@@ -36,9 +36,6 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var sections : [Section] = []
     var codeItems : [String] = []
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("-----loading screen closing-----")
@@ -120,9 +117,11 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         header.contentView.backgroundColor = UIColor.blue
         
+        
         //        colorWithHexString(hexStr: "#408000")
         
         header.textLabel?.textColor = UIColor.white
+        header.textLabel?.font = UIFont(name: "Copperplate-Bold", size: 17)
         
         if let viewWithTag = self.view.viewWithTag(kHeaderSectionTag + section) {
             viewWithTag.removeFromSuperview()
@@ -147,6 +146,8 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         //line wrapping
         cell.rowDescription?.lineBreakMode = NSLineBreakMode.byWordWrapping;
         cell.rowDescription?.numberOfLines = 0;
+        
+        cell.rowDescription.font = UIFont(name: "Copperplate-Bold", size: 13)
 
         //there will only ever be two items in each section. First is Code Description
         //second is the google search link

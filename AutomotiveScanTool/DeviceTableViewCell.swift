@@ -10,19 +10,9 @@ import Foundation
 import QuartzCore
 import UIKit
 
-internal class DeviceTableViewCell: UITableViewCell {
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-    @IBOutlet weak var deviceCellBackgroundView: UIView!
+class DeviceTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var deviceCellBackground: UIView!
     @IBOutlet weak var deviceImageView: UIImageView!
     @IBOutlet weak var deviceTypeLabel: UILabel!
     @IBOutlet weak var deviceStateImageView: UIImageView!

@@ -10,8 +10,6 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var deviceTable: UITableView!
     var particleDevices:[ParticleDevice]? = []
     var selectedDeviceIndex: Int!
-    var deviceImage: UIImage!
-    var deviceType: String!
     var dialog: ZAlertView!
     
     override func viewDidLoad() {
@@ -48,18 +46,14 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        tableView.register(DeviceTableViewCell.self, forCellReuseIdentifier: "deviceCell")
+//        tableView.register(DeviceTableViewCell.self, forCellReuseIdentifier: "deviceCell")
         
         return (particleDevices != nil) ? particleDevices!.count+1 : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "deviceCell", for: indexPath)
-        
-        if cell == nil {
-            cell = DeviceTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "deviceCell")
-        }
+        var cell = tableView.dequeueReusableCell(withIdentifier: "deviceCell", for: indexPath) as! DeviceTableViewCell
         
         self.getParticleDevices(indexPath: indexPath as NSIndexPath, cell: cell)
         
@@ -104,16 +98,16 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         dialog.allowTouchOutsideToDismiss = false
         
-//        if(particleDevices![selectedDeviceIndex].connected){
-//
+        if(particleDevices![selectedDeviceIndex].connected){
+
             performSegue(withIdentifier: "idSeguePresentMainMenu", sender: self)
-//        } else{
-//
-//            dialog.show()
-//        }
+        } else{
+
+            dialog.show()
+        }
     }
     
-    func getParticleDevices(indexPath: NSIndexPath, cell: UITableViewCell){
+    func getParticleDevices(indexPath: NSIndexPath, cell: DeviceTableViewCell){
         LoadingHud.showHud(self.view, label: "Loading Devices...")
         ParticleCloud.sharedInstance().getDevices { (devices:[ParticleDevice]?, error:Error?) -> Void in
             if let _ = error {
@@ -125,14 +119,24 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         
                         self.particleDevices?.append(device)
                         
-                        if let name = self.particleDevices![(indexPath as NSIndexPath).row].name
-                        {
-                            cell.textLabel?.text = name.uppercased()
+                        var info = ASTInfo.getDeviceTypeAndImage(device)
+
+                        cell.deviceImageView.image = info.deviceImage
+
+                        cell.deviceTypeLabel?.text = info.deviceType
+                        
+                        if let name = self.particleDevices![(indexPath as NSIndexPath).row].name {
+
+                            cell.deviceNameLabel?.text = name.uppercased()
+                            
+                        } else {
+
+                            cell.deviceNameLabel?.text = "<no name>"
                         }
-                        else
-                        {
-                            cell.textLabel?.text = "<no name>"
-                        }
+                        
+                        ASTInfo.animateOnlineIndicatorImageView(cell.deviceStateImageView, online: device.connected, flashing: device.isFlashing)
+                        
+                        cell.deviceStateLabel.text = ASTInfo.getDeviceState(device)
                     }
                 }
             }
