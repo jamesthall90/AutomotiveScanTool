@@ -891,7 +891,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JJB-48-vBb">
-                                <rect key="frame" x="0.0" y="65" width="375" height="558"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="543"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="codeCell" rowHeight="106" id="XQg-rX-kEK" customClass="CodesTableViewCell" customModule="AutomotiveScanTool" customModuleProvider="target">
@@ -902,7 +902,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRQ-Me-rgM">
-                                                    <rect key="frame" x="15" y="40" width="345" height="55.5"/>
+                                                    <rect key="frame" x="15" y="40" width="345" height="56"/>
                                                     <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -938,17 +938,49 @@
                                     <outlet property="delegate" destination="4x1-uc-RSu" id="5Ho-Tt-AR4"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K34-0F-xPt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trouble Codes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lsq-NV-6ah">
+                                        <rect key="frame" x="114" y="43" width="147" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="19"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsZ-dm-eDM">
+                                        <rect key="frame" x="8" y="38" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButton:" destination="FAa-d9-6mW" eventType="touchUpInside" id="wtJ-nh-6Ux"/>
+                                            <action selector="tcBackButton:" destination="4x1-uc-RSu" eventType="touchUpInside" id="e3y-Q5-bqM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="qR7-d7-Ua7"/>
+                                    <constraint firstAttribute="height" constant="72" id="x6f-IL-4Th"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JJB-48-vBb" firstAttribute="bottom" secondItem="wRq-5x-Xsx" secondAttribute="top" id="4cq-V7-Ayz"/>
-                            <constraint firstItem="JJB-48-vBb" firstAttribute="top" secondItem="suy-06-AmA" secondAttribute="bottom" constant="45" id="Fjc-95-bXs"/>
+                            <constraint firstItem="JJB-48-vBb" firstAttribute="top" secondItem="suy-06-AmA" secondAttribute="bottom" constant="60" id="Fjc-95-bXs"/>
                             <constraint firstAttribute="trailing" secondItem="JJB-48-vBb" secondAttribute="trailing" id="S5A-FU-7Xu"/>
+                            <constraint firstItem="K34-0F-xPt" firstAttribute="leading" secondItem="JJB-48-vBb" secondAttribute="leading" id="URC-si-3aH"/>
+                            <constraint firstItem="K34-0F-xPt" firstAttribute="top" secondItem="TCk-9l-oZc" secondAttribute="top" id="cYx-9m-KiV"/>
                             <constraint firstItem="JJB-48-vBb" firstAttribute="leading" secondItem="TCk-9l-oZc" secondAttribute="leading" id="xYB-ZY-hrj"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="JJB-48-vBb" id="rrR-Uf-B7G"/>
+                        <segue destination="FAa-d9-6mW" kind="show" identifier="troubleCodeBackSegue" customClass="CustomSegue" customModule="AutomotiveScanTool" customModuleProvider="target" id="lGB-Hc-GVB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2dL-hS-FMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1015,7 +1047,7 @@
         <image name="imgDeviceUnknown" width="200" height="376"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JTf-wt-zzU"/>
+        <segue reference="lGB-Hc-GVB"/>
         <segue reference="1cR-uT-PFS"/>
     </inferredMetricsTieBreakers>
 </document>

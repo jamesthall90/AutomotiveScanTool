@@ -70,6 +70,12 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func tcBackButton(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "troubleCodeBackSegue", sender: self)
+    }
+    
     // MARK: - Tableview Methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
