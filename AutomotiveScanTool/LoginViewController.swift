@@ -33,6 +33,20 @@ class LoginViewController: UIViewController {
         
     }
     
+    @IBAction func openParticle(_ sender: Any) {
+        
+            self.dialog = ZAlertView(title: "Open Particle", message: "Click \"Okay\" to open the Particle app. Click \"Cancel\" to go back to the Login Screen.", isOkButtonLeft: true, okButtonText: "Open", cancelButtonText: "Cancel", okButtonHandler: { (alertView) -> () in
+                
+                UIApplication.shared.openURL(URL(string: "https://itunes.apple.com/us/app/particle-build-photon-electron/id991459054?ls=1&mt=8")!)
+                alertView.dismissAlertView() }, cancelButtonHandler: { (alertView) -> () in
+                    alertView.dismissAlertView()
+            })
+            
+            self.dialog.allowTouchOutsideToDismiss = false
+            
+            self.dialog.show()
+    }
+    
     @IBAction func loginButton(_ sender: Any) { //
         
         //Stores the user-entered email & password values into variables using the guard statement

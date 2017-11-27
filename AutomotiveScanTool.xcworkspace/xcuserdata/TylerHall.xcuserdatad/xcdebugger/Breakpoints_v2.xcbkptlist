@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AutomotiveScanTool/MainMenuViewController.swift"
-            timestampString = "532656535.454157"
+            timestampString = "533078400.201832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "readCodes(_:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -117,49 +117,71 @@ class MainMenuViewController: UIViewController {
                     print("******************************************")
                     print("Codes Array: " , codesArr)
                     
-                    /*
-                     filters the 'p' or 'c' out of the code and add the corresponding
-                     "pending" or "current" to the beginning of the code description.
-                     
-                     Then stores this code under the vehicle document as a child of the date and time
-                     
-                     there is a problem with this when there is more than one code with multiple suffixes
-                     ie: s, p and c because only the last suffix will be stored as the description since
-                     the key wil be overwritten with the new value so best version of the code will not
-                     be stored. Need to fix this
-                     */
-                    for s in codesArr {
+                    if codesArr[0] == "null"{
                         
-                        var code = s
-                        var description = ""
-                        //filter the letter out of the code
-                        if let i = code.characters.index(of:"p") {
-                            code.remove(at: i)
-                            description = "Pending: "
-                        }
-                        if let i = code.characters.index(of:"c") {
-                            code.remove(at: i)
-                            description = "Cleared: "
-                        }
-                        if let i = code.characters.index(of:"s") {
-                            code.remove(at:i)
-                            description = "Current: "
-                        }
-                        
-                        //find code descriptions in firebase and add them to the description variable
-                        self.ref.child("trouble-codes").child(code).observeSingleEvent(of: .value, with: { (snapshot) in
-                            
-                            description += (snapshot.value as? NSString)! as String
-                            
-                            //testing line
-                            print("Code is: \(code)  Description is: \(description) Vin is: \(self.vinLabel.text)")
-                            
-                            //push the codes and their descriptions to firebase under the respective vehicle
-                            self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(self.dateString).child(code).setValue(description)
-                            
-                            self.performSegue(withIdentifier: "readCodesSegue", sender: self)
-
+                        self.dialog = ZAlertView(title: "No Codes!",
+                                                 message: "Vehicle has no trouble codes present!",
+                                                 closeButtonText: "OK",
+                                                 closeButtonHandler: { (alertView) -> () in
+                                                    alertView.dismissAlertView()
                         })
+                        
+                        self.dialog.allowTouchOutsideToDismiss = false
+                        
+                        self.dialog.show()
+                        
+                        LoadingHud.hideHud(self.view)
+                        
+                    } else {
+                        /*
+                         filters the 'p' or 'c' out of the code and add the corresponding
+                         "pending" or "current" to the beginning of the code description.
+                         
+                         Then stores this code under the vehicle document as a child of the date and time
+                         
+                         there is a problem with this when there is more than one code with multiple suffixes
+                         ie: s, p and c because only the last suffix will be stored as the description since
+                         the key wil be overwritten with the new value so best version of the code will not
+                         be stored. Need to fix this
+                         */
+                        for s in codesArr {
+                            
+                            var code = s
+                            var description = ""
+                            var child: String!
+                            //filter the letter out of the code
+                            if let i = code.characters.index(of:"p") {
+                                child = "Pending"
+                                code.remove(at: i)
+                                description = "Pending: "
+                            }
+                            if let i = code.characters.index(of:"c") {
+                                child = "Cleared"
+                                code.remove(at: i)
+                                description = "Cleared: "
+                            }
+                            if let i = code.characters.index(of:"s") {
+                                child = "Current"
+                                code.remove(at:i)
+                                description = "Current: "
+                            }
+                            
+                            //find code descriptions in firebase and add them to the description variable
+                            self.ref.child("trouble-codes").child(code).observeSingleEvent(of: .value, with: { (snapshot) in
+                                
+                                description += (snapshot.value as? NSString)! as String
+                                
+                                //testing line
+                                print("Code is: \(code)  Description is: \(description) Vin is: \(self.vinLabel.text)")
+                                
+                                //push the codes and their descriptions to firebase under the respective vehicle
+//                                self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(self.dateString).child(code).setValue(description)
+                            self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(self.dateString).child(child).child(code).setValue(description)
+                                
+                                self.performSegue(withIdentifier: "readCodesSegue", sender: self)
+
+                            })
+                        }
                     }
 //                    self.performSegue(withIdentifier: "readCodesSegue", sender: self)
                 }) //end DispatchQueue

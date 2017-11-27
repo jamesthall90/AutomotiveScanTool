@@ -36,17 +36,7 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Navigation
-    
-    @IBAction func back(_ sender: Any) {
-        
-        //dismiss your viewController
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-//        tableView.register(DeviceTableViewCell.self, forCellReuseIdentifier: "deviceCell")
         
         return (particleDevices != nil) ? particleDevices!.count+1 : 0
     }
@@ -98,6 +88,17 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         dialog.allowTouchOutsideToDismiss = false
         
+        if (particleDevices![selectedDeviceIndex].functions.contains("getFirmware")){
+            print(particleDevices![selectedDeviceIndex].functions)
+        } else{
+            let noFirmware =  ZAlertView(title: "Firmware Not Installed!",
+                                         message: "The device does not have the appropriate firmware installed!.",
+                                         closeButtonText: "OK",
+                                         closeButtonHandler: { (alertView) -> () in
+                                            alertView.dismissAlertView()
+            })
+        }
+        
         if(particleDevices![selectedDeviceIndex].connected){
 
             performSegue(withIdentifier: "idSeguePresentMainMenu", sender: self)
@@ -118,6 +119,7 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     for device in d {
                         
                         self.particleDevices?.append(device)
+                        
                         
                         var info = ASTInfo.getDeviceTypeAndImage(device)
 
@@ -142,6 +144,10 @@ class DeviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
         LoadingHud.hideHud(self.view)
+    }
+    
+    func flashDevice(){
+        
     }
 }
     
