@@ -13,8 +13,7 @@ import ParticleSDK
 
 class ASTInfo {
     
-    
-    
+    //Function that 
     class func getDeviceTypeAndImage(_ device : ParticleDevice?) -> (deviceType: String, deviceImage: UIImage) {
         
         var image : UIImage?

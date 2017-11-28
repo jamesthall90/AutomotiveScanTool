@@ -17,6 +17,7 @@ target 'AutomotiveScanTool' do
     pod 'AwaitKit', '~> 3.0.1'
     pod 'CollapsibleTableSectionViewController', '~> 1.0.0'
     pod 'PromiseKit/Alamofire', '~> 4.0'
+    pod 'Font-Awesome-Swift', '~> 1.7.2'
 
   target 'AutomotiveScanToolTests' do
     inherit! :search_paths

@@ -1,5 +1,5 @@
 //
-//  tableToMainSegue.swift
+//  CustomSegue.swift
 //  AutomotiveScanTool
 //
 //  Created by James Hall on 11/13/17.
@@ -362,7 +362,7 @@ class CustomSegue: UIStoryboardSegue {
                     
                     dest.uid = source.uid
                     dest.ref = source.ref
-                    dest.vin = source.vinLabel.text
+                    dest.vinLabel?.text = source.vin
                     dest.dateString = source.dateString
                     
                 } else {

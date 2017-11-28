@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3D67775A2CE7E553AEFA11B79B48799F'
-               BlueprintName = 'ZAlertView'
+               BlueprintIdentifier = '9735AA72928D41DB06EA697E23930C72'
+               BlueprintName = 'Font-Awesome-Swift-Font-Awesome-Swift'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'ZAlertView.framework'>
+               BuildableName = 'Font-Awesome-Swift.bundle'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

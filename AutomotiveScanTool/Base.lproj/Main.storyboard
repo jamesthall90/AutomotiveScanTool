@@ -232,7 +232,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="joR-Yz-GWf">
-                                <rect key="frame" x="0.0" y="70.5" width="375" height="596.5"/>
+                                <rect key="frame" x="0.0" y="70.5" width="375" height="552.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="deviceCell" id="dW5-B2-nvV" customClass="DeviceTableViewCell" customModule="AutomotiveScanTool" customModuleProvider="target">
@@ -254,34 +254,27 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgCircle" translatesAutoresizingMaskIntoConstraints="NO" id="Pzf-5W-71O" userLabel="Device State Image View">
-                                                            <rect key="frame" x="332" y="31" width="16" height="16"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eq-iF-wGb">
+                                                            <rect key="frame" x="321" y="23" width="36" height="35"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="16" id="69u-6f-Qkc"/>
-                                                                <constraint firstAttribute="width" constant="16" id="8EE-kW-ylk"/>
+                                                                <constraint firstAttribute="width" constant="36" id="oPQ-5i-Ihs"/>
                                                             </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device State" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ii-Cc-rd4">
-                                                            <rect key="frame" x="247" y="32.5" width="77" height="12.5"/>
-                                                            <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="12"/>
-                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <connections>
+                                                                <action selector="cellButtonTapped:" destination="cj6-Az-plh" eventType="touchUpInside" id="w7G-pX-AMq"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="3ii-Cc-rd4" secondAttribute="trailing" constant="51" id="5Vn-zD-HCk"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="Pzf-5W-71O" secondAttribute="trailing" constant="19" id="6So-Dd-2wt"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="Pzf-5W-71O" secondAttribute="trailing" constant="19" id="8Qa-fI-wS6"/>
+                                                        <constraint firstItem="5eq-iF-wGb" firstAttribute="top" secondItem="S2N-ha-EB2" secondAttribute="top" constant="23" id="4QK-Y3-wOs"/>
                                                         <constraint firstAttribute="height" constant="72" id="A6s-e7-eH6"/>
                                                         <constraint firstAttribute="bottom" secondItem="MAF-d5-OfY" secondAttribute="bottom" constant="27" id="FIb-h2-tDn"/>
-                                                        <constraint firstItem="3ii-Cc-rd4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MAF-d5-OfY" secondAttribute="trailing" constant="8" symbolic="YES" id="FbN-No-Pl2"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="Pzf-5W-71O" secondAttribute="bottom" constant="17" id="HBw-Ta-ZPw"/>
+                                                        <constraint firstAttribute="bottom" secondItem="5eq-iF-wGb" secondAttribute="bottom" constant="14" id="J8g-23-MFo"/>
                                                         <constraint firstAttribute="trailing" secondItem="MAF-d5-OfY" secondAttribute="trailing" constant="227" id="UZ6-LB-lM8"/>
                                                         <constraint firstItem="MAF-d5-OfY" firstAttribute="leading" secondItem="S2N-ha-EB2" secondAttribute="leading" constant="42" id="ZPD-lT-PGb"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MAF-d5-OfY" secondAttribute="trailing" id="dHV-9a-cSN"/>
                                                         <constraint firstItem="MAF-d5-OfY" firstAttribute="top" secondItem="S2N-ha-EB2" secondAttribute="top" constant="24" id="i7p-hM-zZj"/>
-                                                        <constraint firstAttribute="top" secondItem="Pzf-5W-71O" secondAttribute="bottom" constant="-47" id="kqL-tv-FlJ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="5eq-iF-wGb" secondAttribute="trailing" constant="18" id="oVn-So-EX3"/>
                                                         <constraint firstAttribute="width" constant="375" id="oiW-oN-JeT"/>
                                                     </constraints>
                                                 </view>
@@ -315,14 +308,11 @@
                                                 <constraint firstItem="DVk-5R-Bgz" firstAttribute="leading" secondItem="10M-g0-YhI" secondAttribute="trailing" constant="7" id="siv-Xh-heu"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="3ii-Cc-rd4" secondAttribute="bottom" constant="16" id="Pfk-Jk-haX"/>
-                                        </constraints>
                                         <connections>
+                                            <outlet property="deviceCellBackground" destination="S2N-ha-EB2" id="HMg-tw-ZBE"/>
+                                            <outlet property="deviceCellButton" destination="5eq-iF-wGb" id="rER-Wu-HfG"/>
                                             <outlet property="deviceImageView" destination="10M-g0-YhI" id="cyp-5Q-use"/>
                                             <outlet property="deviceNameLabel" destination="MAF-d5-OfY" id="CHI-rg-c8F"/>
-                                            <outlet property="deviceStateImageView" destination="Pzf-5W-71O" id="aEp-gA-jwg"/>
-                                            <outlet property="deviceStateLabel" destination="3ii-Cc-rd4" id="K7l-kE-70Y"/>
                                             <outlet property="deviceTypeLabel" destination="DVk-5R-Bgz" id="jsm-24-Jhz"/>
                                         </connections>
                                     </tableViewCell>
@@ -822,7 +812,6 @@
                             <constraint firstItem="l3H-jP-VCU" firstAttribute="leading" secondItem="GEC-Ze-U9i" secondAttribute="leadingMargin" constant="4" id="NPO-xO-Ie0"/>
                             <constraint firstItem="6Oa-jt-RAc" firstAttribute="leading" secondItem="GEC-Ze-U9i" secondAttribute="leadingMargin" constant="38" id="OLc-vh-a9m"/>
                             <constraint firstItem="I8F-FV-EQg" firstAttribute="top" secondItem="uBA-e4-9hM" secondAttribute="bottom" constant="8" symbolic="YES" id="ViE-w2-3g6"/>
-                            <constraint firstItem="3el-Pr-3GS" firstAttribute="centerX" secondItem="l3H-jP-VCU" secondAttribute="centerX" id="Wae-9Y-poT"/>
                             <constraint firstItem="I8F-FV-EQg" firstAttribute="centerX" secondItem="6Oa-jt-RAc" secondAttribute="centerX" constant="-4.5" id="Yuf-E0-HPW"/>
                             <constraint firstItem="uBA-e4-9hM" firstAttribute="centerX" secondItem="eJ6-vu-hir" secondAttribute="centerX" constant="-5" id="af0-C4-Pya"/>
                             <constraint firstItem="l3H-jP-VCU" firstAttribute="centerX" secondItem="uBA-e4-9hM" secondAttribute="centerX" constant="4.5" id="b5v-61-8sj"/>
@@ -1043,11 +1032,10 @@
     <resources>
         <image name="AST Logo" width="170" height="118"/>
         <image name="Particle-Logo" width="3796" height="890"/>
-        <image name="imgCircle" width="128" height="128"/>
         <image name="imgDeviceUnknown" width="200" height="376"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lGB-Hc-GVB"/>
-        <segue reference="1cR-uT-PFS"/>
+        <segue reference="eSR-rS-DqA"/>
+        <segue reference="lH3-M6-zlu"/>
     </inferredMetricsTieBreakers>
 </document>
