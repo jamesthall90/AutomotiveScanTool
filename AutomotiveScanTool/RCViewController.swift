@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import PromiseKit
+import ParticleSDK
 
 class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     public struct Section{
@@ -25,6 +26,7 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var ref: DatabaseReference!
     var uid: String!
     var vin: String!
+    var deviceInfo: ParticleDevice!
     var dateString : String!
     
     let kHeaderSectionTag: Int = 6900;
@@ -40,23 +42,48 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         print("-----loading screen closing-----")
         LoadingHud.hideHud(self.view)
+            DispatchQueue.main.async {
 
-        DispatchQueue.main.async {
             //query firebase for codes with a specific date .datestring).observe(...)
             self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).child("storedCodes").child(self.dateString).observe(DataEventType.value, with: { (snapshot) in
-                
-                let values = snapshot.value as? [String : String] ?? [:]
-                
+                print("SNAPSHOT: ",snapshot)
+
+                let values = snapshot.value as? NSDictionary
+//                print("VALUES: ",values)
                 //add Sections to the sections array for each code that was in the snapshot.
-                for k in values {
-                    let link = "https://www.google.com/search?q=" + (k.key as? String)!
-                    let newSection: Section = (Section(code: (k.key as? String)!, codeItems: [
-                        (k.value as? String)!, link]))
-                    self.sections.append(newSection)
-                }//end for
-                self.tableView.reloadData()
+                for items in values! {
+                    var k = items.key
+//                    print("k = ", k)
+                    var v = items.value as! [String : String]
+//                    print("v = ", v)
+                    for (a , b) in v {
+//                        print("key value pairs: ")
+//                        print("\(a) : \(b)")
+                        let link = "https://www.google.com/search?q=" + (a as? String)!
+
+                        let newSection : Section  = (Section(code: (a as? String)!, codeItems: [(b as? String)!, link]))
+                        self.sections.append(newSection)
+                    }
+//                    for k in items {
+//
+//                        let link = "https://www.google.com/search?q=" + (k.key as? String)!
+//                        let newSection: Section = (Section(code: (k.key as? String)!, codeItems: [
+//                            (k.value as? String)!, link]))
+//                        self.sections.append(newSection)
+//                    }//end for
+                }
+//                print("Sections: ", self.sections)
+//                print("Sections Count: ", self.sections.count)
+
+                DispatchQueue.main.async {
+                    print("reloading inside query")
+                    print("reloading inside")
+                    self.tableView.reloadData()
+                }
             })//end firebase query
         }//end DispatchQueue
+//        print("reloading outside")
+//        self.tableView.reloadData()
         self.tableView!.tableFooterView = UIView()
     }//end viewDidLoad
     
@@ -79,6 +106,9 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     // MARK: - Tableview Methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        print("Sections in numberOfSetions: ", self.sections)
+        print("Sections Count in numberOfSetions: ", self.sections.count)
+
         if self.sections.count > 0 {
             tableView.backgroundView = nil
             return self.sections.count
@@ -169,6 +199,7 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        print("*********selected a row!**********")
     }
     
     // MARK: - Expand / Collapse Methods
@@ -234,7 +265,6 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             self.tableView!.endUpdates()
         }
     }
-    
 }
 
 

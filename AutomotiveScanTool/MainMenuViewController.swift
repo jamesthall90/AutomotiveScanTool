@@ -17,6 +17,7 @@ import Alamofire
 
 class MainMenuViewController: UIViewController {
     
+    var handler: Any?
     var deviceInfo: ParticleDevice!
     var vehicle: VinRequest!
     var ref: DatabaseReference!
@@ -62,8 +63,13 @@ class MainMenuViewController: UIViewController {
         if (self.vin == nil){
           
             self.getVIN()
-        } else {
             
+//            if let sid = self.handler {
+//                print("*^&%&$*")
+//                ParticleCloud.sharedInstance().unsubscribeFromEvent(withID: sid)
+//            }
+        } else {
+            self.vinLabel.text = self.vin
             self.getVehicleInfo()
         }
     }
@@ -87,27 +93,27 @@ class MainMenuViewController: UIViewController {
     }
     
     @IBAction func readCodes(_ sender: UIButton) {
-        LoadingHud.showHud(self.view, label: "Reading codes...")
+//        LoadingHud.showHud(self.view, label: "Reading codes...")
         dateString = getDate();
         
-        var task = self.deviceInfo!.callFunction("readCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
-            if (error == nil) {
-                //testing line
-                print("Performed readCodes() function with no errors!")
-                let json = JSON(resultCode)
-                print("Json item: ", json)
-            } else {
-                print("Error: ", error)
-            }
-        }
+//        var task = self.deviceInfo!.callFunction("readCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
+//            if (error == nil) {
+//                //testing line
+//                print("Performed readCodes() function with no errors!")
+//                let json = JSON(resultCode)
+//                print("Json item: ", json)
+//            } else {
+//                print("Error: ", error)
+//            }
+//        }
         
-        var handler = ParticleCloud.sharedInstance().subscribeToAllEvents(withPrefix: "codes/result", handler: { (event :ParticleEvent?, error : Error?) in
+        self.handler = ParticleCloud.sharedInstance().subscribeToAllEvents(withPrefix: "codes/result", handler: { (event :ParticleEvent?, error : Error?) in
             if let _ = error {
                 print ("Error: ", error)
 //                readCodes(_ sender: self)
             } else {
                 print("Completed particle event subscription, now loading codes...")
-                DispatchQueue.main.async(execute: {
+//                DispatchQueue.main.async(execute: {
                     //testing line
 //                     print("got event with data \(event?.data?.description as! String)")
                     
@@ -177,16 +183,28 @@ class MainMenuViewController: UIViewController {
                                 //push the codes and their descriptions to firebase under the respective vehicle
 //                                self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(self.dateString).child(code).setValue(description)
                             self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(self.dateString).child(child).child(code).setValue(description)
-                                
-                                self.performSegue(withIdentifier: "readCodesSegue", sender: self)
-
                             })
                         }
-                    }
-//                    self.performSegue(withIdentifier: "readCodesSegue", sender: self)
-                }) //end DispatchQueue
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "readCodesSegue", sender: self)
+                        }
+                    }//end else
+                
+//                }) //end DispatchQueue
             }//end else
         })//end handler
+        
+        var task = self.deviceInfo!.callFunction("readCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
+            if (error == nil) {
+                //testing line
+                print("Performed readCodes() function with no errors!")
+                let json = JSON(resultCode)
+                print("Json item: ", json)
+            } else {
+                print("Error: ", error)
+            }
+        }
+        
     }//end readCodes
     
     @IBAction func clearCodes(_ sender: Any) {
@@ -246,7 +264,7 @@ class MainMenuViewController: UIViewController {
             }
         }
         LoadingHud.showHud(self.view, label: "Loading Data...")
-        var handler = ParticleCloud.sharedInstance().subscribeToAllEvents(withPrefix: "vin/result", handler: { (event :ParticleEvent?, error : Error?) in
+        self.handler = ParticleCloud.sharedInstance().subscribeToAllEvents(withPrefix: "vin/result", handler: { (event :ParticleEvent?, error : Error?) in
             if let _ = error {
                 
                 print ("Could not subscribe to readVIN Event")
@@ -256,7 +274,7 @@ class MainMenuViewController: UIViewController {
             } else {
                 
                 DispatchQueue.main.async(execute: {
-                    
+                
                     self.ref.child("users").child(self.uid).child("vehicles").observeSingleEvent(of: .value, with: { (snapshot) in
                         
                         if snapshot.hasChild(event?.data?.description as! String){
@@ -278,6 +296,7 @@ class MainMenuViewController: UIViewController {
                 })
             }
         })
+        
     }
     
     func pushVehicleInfo(vin: String) -> Void {

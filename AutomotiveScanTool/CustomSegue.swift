@@ -335,6 +335,7 @@ class CustomSegue: UIStoryboardSegue {
                     dest.ref = source.ref
                     dest.vin = source.vinLabel.text
                     dest.dateString = source.dateString
+                    dest.deviceInfo = source.deviceInfo
                     
                 } else {
                     
@@ -364,6 +365,7 @@ class CustomSegue: UIStoryboardSegue {
                     dest.ref = source.ref
                     dest.vinLabel?.text = source.vin
                     dest.dateString = source.dateString
+                    dest.deviceInfo = source.deviceInfo
                     
                 } else {
                     
