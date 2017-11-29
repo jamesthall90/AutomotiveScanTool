@@ -54,158 +54,53 @@ class MainMenuViewController: UIViewController {
         
         //Returns an object containing the current user's information
         let user = Auth.auth().currentUser
-
+        
         if let user = user {
-
+            
             //Return's the current user's unique ID
             self.uid = user.uid
         }
         if (self.vin == nil){
-          
+            
             self.getVIN()
             
-//            if let sid = self.handler {
-//                print("*^&%&$*")
-//                ParticleCloud.sharedInstance().unsubscribeFromEvent(withID: sid)
-//            }
+            //            if let sid = self.handler {
+            //                print("*^&%&$*")
+            //                ParticleCloud.sharedInstance().unsubscribeFromEvent(withID: sid)
+            //            }
         } else {
             self.vinLabel.text = self.vin
             self.getVehicleInfo()
+            LoadingHud.hideHud(self.view)
         }
+        
+        subscribeToCodeEvents()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-        
+    
     @IBAction func codeHistory(_ sender: UIButton) {
         
         
     }
     
-    //returns a string of the current date and time
-    func getDate() -> String {
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yy-hh:mm"
-        return dateFormatter.string(from: date)
-    }
-    
     @IBAction func readCodes(_ sender: UIButton) {
-//        LoadingHud.showHud(self.view, label: "Reading codes...")
-        dateString = getDate();
-        
-//        var task = self.deviceInfo!.callFunction("readCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
-//            if (error == nil) {
-//                //testing line
-//                print("Performed readCodes() function with no errors!")
-//                let json = JSON(resultCode)
-//                print("Json item: ", json)
-//            } else {
-//                print("Error: ", error)
-//            }
-//        }
-        
-        self.handler = ParticleCloud.sharedInstance().subscribeToAllEvents(withPrefix: "codes/result", handler: { (event :ParticleEvent?, error : Error?) in
-            if let _ = error {
-                print ("Error: ", error)
-//                readCodes(_ sender: self)
-            } else {
-                print("Completed particle event subscription, now loading codes...")
-//                DispatchQueue.main.async(execute: {
-                    //testing line
-//                     print("got event with data \(event?.data?.description as! String)")
-                    
-                
-                    //put codes into an array
-                    var codesArr : [String] = (event?.data?.components(separatedBy: ","))!
-                    print("******************************************")
-                    print("Codes Array: " , codesArr)
-                    
-                    if codesArr[0] == "null"{
-                        
-                        self.dialog = ZAlertView(title: "No Codes!",
-                                                 message: "Vehicle has no trouble codes present!",
-                                                 closeButtonText: "OK",
-                                                 closeButtonHandler: { (alertView) -> () in
-                                                    alertView.dismissAlertView()
-                        })
-                        
-                        self.dialog.allowTouchOutsideToDismiss = false
-                        
-                        self.dialog.show()
-                        
-                        LoadingHud.hideHud(self.view)
-                        
-                    } else {
-                        /*
-                         filters the 'p' or 'c' out of the code and add the corresponding
-                         "pending" or "current" to the beginning of the code description.
-                         
-                         Then stores this code under the vehicle document as a child of the date and time
-                         
-                         there is a problem with this when there is more than one code with multiple suffixes
-                         ie: s, p and c because only the last suffix will be stored as the description since
-                         the key wil be overwritten with the new value so best version of the code will not
-                         be stored. Need to fix this
-                         */
-                        for s in codesArr {
-                            
-                            var code = s
-                            var description = ""
-                            var child: String!
-                            //filter the letter out of the code
-                            if let i = code.characters.index(of:"p") {
-                                child = "Pending"
-                                code.remove(at: i)
-                                description = "Pending: "
-                            }
-                            if let i = code.characters.index(of:"c") {
-                                child = "Cleared"
-                                code.remove(at: i)
-                                description = "Cleared: "
-                            }
-                            if let i = code.characters.index(of:"s") {
-                                child = "Current"
-                                code.remove(at:i)
-                                description = "Current: "
-                            }
-                            
-                            //find code descriptions in firebase and add them to the description variable
-                            self.ref.child("trouble-codes").child(code).observeSingleEvent(of: .value, with: { (snapshot) in
-                                
-                                description += (snapshot.value as? NSString)! as String
-                                
-                                //testing line
-                                print("Code is: \(code)  Description is: \(description) Vin is: \(self.vinLabel.text)")
-                                
-                                //push the codes and their descriptions to firebase under the respective vehicle
-//                                self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(self.dateString).child(code).setValue(description)
-                            self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(self.dateString).child(child).child(code).setValue(description)
-                            })
-                        }
-                        DispatchQueue.main.async {
-                            self.performSegue(withIdentifier: "readCodesSegue", sender: self)
-                        }
-                    }//end else
-                
-//                }) //end DispatchQueue
-            }//end else
-        })//end handler
+        //        LoadingHud.showHud(self.view, label: "Reading codes...")
         
         var task = self.deviceInfo!.callFunction("readCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
             if (error == nil) {
+                
                 //testing line
                 print("Performed readCodes() function with no errors!")
-                let json = JSON(resultCode)
-                print("Json item: ", json)
+            
             } else {
                 print("Error: ", error)
             }
         }
-        
-    }//end readCodes
+    }
     
     @IBAction func clearCodes(_ sender: Any) {
         
@@ -216,25 +111,25 @@ class MainMenuViewController: UIViewController {
                 LoadingHud.hideHud(self.view)
                 
                 self.dialog = ZAlertView(title: "Codes Cleared",
-                                    message: "Trouble codes were successfully cleared from the vehicle!",
-                                    closeButtonText: "OK",
-                                    closeButtonHandler: { (alertView) -> () in
-                                        alertView.dismissAlertView()
+                                         message: "Trouble codes were successfully cleared from the vehicle!",
+                                         closeButtonText: "OK",
+                                         closeButtonHandler: { (alertView) -> () in
+                                            alertView.dismissAlertView()
                 })
                 
                 self.dialog.allowTouchOutsideToDismiss = false
                 
                 self.dialog.show()
-            
+                
             } else{
                 
                 LoadingHud.hideHud(self.view)
                 
                 self.dialog = ZAlertView(title: "Codes Not Cleared",
                                          message: "The code-clearing operation was unsuccessful! See error message below.\n \(error?.localizedDescription ?? "")",
-                                         closeButtonText: "OK",
-                                         closeButtonHandler: { (alertView) -> () in
-                                            alertView.dismissAlertView()
+                    closeButtonText: "OK",
+                    closeButtonHandler: { (alertView) -> () in
+                        alertView.dismissAlertView()
                 })
                 
                 self.dialog.allowTouchOutsideToDismiss = false
@@ -255,6 +150,17 @@ class MainMenuViewController: UIViewController {
         //Segue's to Device List view
         performSegue(withIdentifier: "presentDeviceList", sender: self)
     }
+}
+
+extension MainMenuViewController {
+    
+    //returns a string of the current date and time
+    func getDate() -> String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yy-hh:mm"
+        return dateFormatter.string(from: date)
+    }
     
     func getVIN(){
         
@@ -274,7 +180,7 @@ class MainMenuViewController: UIViewController {
             } else {
                 
                 DispatchQueue.main.async(execute: {
-                
+                    
                     self.ref.child("users").child(self.uid).child("vehicles").observeSingleEvent(of: .value, with: { (snapshot) in
                         
                         if snapshot.hasChild(event?.data?.description as! String){
@@ -284,19 +190,19 @@ class MainMenuViewController: UIViewController {
                             self.vinLabel.text = event?.data?.description as! String
                             self.getVehicleInfo()
                             LoadingHud.hideHud(self.view)
-                        
+                            
                         } else {
                             
                             self.pushVehicleInfo(vin: event?.data?.description as! String)
                             self.vin = event?.data?.description as! String
                             self.vinLabel.text = event?.data?.description as! String
                             self.getVehicleInfo()
+                            LoadingHud.hideHud(self.view)
                         }
                     })
                 })
             }
         })
-        
     }
     
     func pushVehicleInfo(vin: String) -> Void {
@@ -304,8 +210,8 @@ class MainMenuViewController: UIViewController {
         var vehicle: VinRequest!
         
         self.parameters = [
-                            "data":"\(vin);",
-                            "format":"json"
+            "data":"\(vin);",
+            "format":"json"
         ]
         
         VinRequest.request(URL: apiURL, method: .post, parameters: self.parameters).then {
@@ -329,7 +235,7 @@ class MainMenuViewController: UIViewController {
                 self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle transmission").setValue(vehicle.getVehicleTransmission())
                 self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle fuel type").setValue(vehicle.getVehicleFuelType())
                 self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle assembly plant").setValue(vehicle.getVehicleAssemblyPlant())
-            
+                
             } .catch { error in
                 
                 print(error)
@@ -338,7 +244,7 @@ class MainMenuViewController: UIViewController {
     
     func getVehicleInfo(){
         
-//        LoadingHud.show(self.view, label: "Loading Data...")
+        //        LoadingHud.show(self.view, label: "Loading Data...")
         self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).observeSingleEvent(of: .value, with: { (snapshot) in
             
             let value = snapshot.value as? NSDictionary
@@ -349,10 +255,83 @@ class MainMenuViewController: UIViewController {
             self.vehicleImage.clipsToBounds = true
             self.vehicleImage.image = UIImage(named: "camaro")
             
-            LoadingHud.hideHud(self.view)
+//            LoadingHud.hideHud(self.view)
             
         }) { (error) in
             print(error.localizedDescription)
         }
+    }
+    
+    func subscribeToCodeEvents(){
+        
+//        var thisVin = self.vinLabel.text!
+        
+        self.handler = self.deviceInfo!.subscribeToEvents(withPrefix: "codes/result", handler: { (event :ParticleEvent?, error : Error?) in
+            if let _ = error {
+                print ("Error: ", error)
+                //                readCodes(_ sender: self)
+            } else {
+                print("Completed particle event subscription, now loading codes...")
+                
+                self.dateString = self.getDate();
+                
+                //put codes into an array
+                var codesArr : [String] = (event?.data?.components(separatedBy: ","))!
+                print("******************************************")
+                print("Codes Array: " , codesArr)
+                
+                /*
+                 filters the 'p' or 'c' out of the code and add the corresponding
+                 "pending" or "current" to the beginning of the code description.
+                 
+                 Then stores this code under the vehicle document as a child of the date and time
+                 */
+                for s in codesArr {
+                    
+                    var code = s
+                    var description = ""
+                    var child: String!
+                    
+                    //filter the letter out of the code
+                    if let i = code.characters.index(of:"p") {
+                        child = "Pending"
+                        code.remove(at: i)
+                        description = "Pending: "
+                    }
+                    if let i = code.characters.index(of:"c") {
+                        child = "Cleared"
+                        code.remove(at: i)
+                        description = "Cleared: "
+                    }
+                    if let i = code.characters.index(of:"s") {
+                        child = "Current"
+                        code.remove(at:i)
+                        description = "Current: "
+                    }
+                    
+                    //find code descriptions in firebase and add them to the description variable
+                    self.ref.child("trouble-codes").child(code).observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        description += (snapshot.value as? NSString)! as String
+                        
+                        //testing line
+                        print("Code is: \(code)  Description is: \(description) Vin is: \(self.vinLabel.text)")
+                        
+                        //push the codes and their descriptions to firebase under the respective vehicle
+                        self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(self.dateString).child(child).child(code).setValue(description)
+                    })
+                }
+                
+            self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").observeSingleEvent(of: .value, with: { (snapshot) in
+
+                    if snapshot.hasChild(self.dateString){
+
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "readCodesSegue", sender: self)
+                        }
+                    }
+                })
+            }//end else
+        })//end handler
     }
 }
