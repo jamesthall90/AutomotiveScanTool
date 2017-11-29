@@ -72,6 +72,7 @@ class MainMenuViewController: UIViewController {
             self.vinLabel.text = self.vin
             self.getVehicleInfo()
         }
+        LoadingHud.hideHud(self.view)
     }
     
     override func didReceiveMemoryWarning() {
@@ -113,7 +114,7 @@ class MainMenuViewController: UIViewController {
 //                readCodes(_ sender: self)
             } else {
                 print("Completed particle event subscription, now loading codes...")
-//                DispatchQueue.main.async(execute: {
+                DispatchQueue.main.async(execute: {
                     //testing line
 //                     print("got event with data \(event?.data?.description as! String)")
                     
@@ -185,12 +186,12 @@ class MainMenuViewController: UIViewController {
                             self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(self.dateString).child(child).child(code).setValue(description)
                             })
                         }
-                        DispatchQueue.main.async {
+//                        DispatchQueue.main.async {
                             self.performSegue(withIdentifier: "readCodesSegue", sender: self)
-                        }
+//                        }
                     }//end else
                 
-//                }) //end DispatchQueue
+                }) //end DispatchQueue
             }//end else
         })//end handler
         

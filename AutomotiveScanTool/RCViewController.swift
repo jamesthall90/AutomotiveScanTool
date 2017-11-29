@@ -23,11 +23,35 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
+//    public struct Section{
+//        public var status : String
+//        public var innerSection : [InnerSection]
+//
+//        public init(_ status: String, _ innerSection: [InnerSection]) {
+//            self.status = status
+//            self.innerSection = innerSection
+//        }
+//    }
+//
+//    public struct InnerSection{
+//        public var code: String
+//        public var codeItems: [String]
+//
+//        public init(_ code: String, _ codeItems: [String]) {
+//            self.code = code
+//            self.codeItems = codeItems
+//        }
+//    }
+//
+//        to add:
+//    var section : Section = Section("Pending", [InnerSection("P0008", ["Description Pending","Google Link"])])
+    
     var ref: DatabaseReference!
     var uid: String!
     var vin: String!
     var deviceInfo: ParticleDevice!
     var dateString : String!
+    private var cellExpanded : Bool = false
     
     let kHeaderSectionTag: Int = 6900;
     
@@ -200,6 +224,27 @@ class RCViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         print("*********selected a row!**********")
+        if (indexPath.row == 0) {
+            if cellExpanded {
+                cellExpanded = false
+            } else {
+                cellExpanded = true
+                
+            }
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath.row == 0) {
+            if cellExpanded {
+                return 250
+            } else {
+                return 50
+            }
+        }
+        return 50
     }
     
     // MARK: - Expand / Collapse Methods
