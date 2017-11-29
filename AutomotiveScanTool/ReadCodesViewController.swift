@@ -43,6 +43,7 @@ class ReadCodesViewController: UIViewController,UITableViewDataSource,UITableVie
         }
     
     func buildData() {
+        //comment
         self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).child("storedCodes").child("11-28-17-08:11"/*self.dateString*/).observe(DataEventType.value, with: { (snapshot) in
             print("SNAPSHOT: ",snapshot)
             
