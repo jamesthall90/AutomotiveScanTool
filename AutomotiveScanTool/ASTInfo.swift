@@ -13,7 +13,7 @@ import ParticleSDK
 
 class ASTInfo {
     
-    //Function that 
+    //Function that
     class func getDeviceTypeAndImage(_ device : ParticleDevice?) -> (deviceType: String, deviceImage: UIImage) {
         
         var image : UIImage?
@@ -61,57 +61,4 @@ class ASTInfo {
         
         return (text!, image!)
     }
-    
-    class func animateOnlineIndicatorImageView(_ imageView: UIImageView, online: Bool, flashing: Bool) {
-        DispatchQueue.main.async(execute: {
-            imageView.image = UIImage(named: "imgCircle")
-            //
-            
-            imageView.image = imageView.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            
-            if flashing {
-                imageView.tintColor = UIColor(red: 239.0/255.0, green: 13.0/255.0, blue: 209.0/255.0, alpha: 1.0) // Flashing purple
-                imageView.alpha = 1
-                UIView.animate(withDuration: 0.12, delay: 0, options: [.autoreverse, .repeat], animations: {
-                    imageView.alpha = 0
-                }, completion: nil)
-                
-            } else if online {
-                imageView.tintColor = UIColor(red: 0, green: 173.0/255.0, blue: 239.0/255.0, alpha: 1.0) // ParticleCyan
-                
-                if imageView.alpha == 1 {
-                    //                    print ("1-->0")
-                    UIView.animate(withDuration: 2.5, delay: 0, options: [.autoreverse, .repeat], animations: {
-                        imageView.alpha = 0.15
-                    }, completion: nil)
-                } else {
-                    //                    print ("0-->1")
-                    imageView.alpha = 0.15
-                    UIView.animate(withDuration: 2.5, delay: 0, options: [.autoreverse, .repeat], animations: {
-                        imageView.alpha = 1
-                    }, completion: nil)
-                    
-                }
-            } else {
-                imageView.tintColor = UIColor(white: 0.466, alpha: 1.0) // ParticleGray
-                imageView.alpha = 1
-                imageView.layer.removeAllAnimations()
-            }
-        })
-    }
-    
-    class func getDeviceState(_ device : ParticleDevice?) -> String {
-        
-        let state = device?.connected
-        
-        switch state! {
-            
-        case true:
-            return "Connected"
-            
-        default:
-            return "Not Connected"
-        }
-    }
-    
 }
