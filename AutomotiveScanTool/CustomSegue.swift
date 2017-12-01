@@ -351,36 +351,36 @@ class CustomSegue: UIStoryboardSegue {
                 //Performs the segue
                 source.hero_replaceViewController(with: dest)
             }
-            else if identifier == "troubleCodeBackSegue" {
-                
-                //Sets the segue's destination VC
-                let dest = self.destination as! MainMenuViewController
-                
-                //Sets the segue's source VC
-                let source = self.source as! RCViewController
-                
-                if source.ref != nil{
-                    
-                    dest.uid = source.uid
-                    dest.ref = source.ref
-                    dest.vinLabel?.text = source.vin
-                    dest.dateString = source.dateString
-                    dest.deviceInfo = source.deviceInfo
-                    
-                } else {
-                    
-                    print("Database reference is nil!")
-                }
-                
-                //Enables Hero animations for the destination VC
-                dest.isHeroEnabled = true
-                
-                //Sets the animation type for the segue
-                dest.heroModalAnimationType = .zoom
-                
-                //Performs the segue
-                source.hero_replaceViewController(with: dest)
-            }
+//            else if identifier == "troubleCodeBackSegue" {
+//                
+//                //Sets the segue's destination VC
+//                let dest = self.destination as! MainMenuViewController
+//                
+//                //Sets the segue's source VC
+//                let source = self.source as! RCViewController
+//                
+//                if source.ref != nil{
+//                    
+//                    dest.uid = source.uid
+//                    dest.ref = source.ref
+//                    dest.vinLabel?.text = source.vin
+//                    dest.dateString = source.dateString
+//                    dest.deviceInfo = source.deviceInfo
+//                    
+//                } else {
+//                    
+//                    print("Database reference is nil!")
+//                }
+//                
+//                //Enables Hero animations for the destination VC
+//                dest.isHeroEnabled = true
+//                
+//                //Sets the animation type for the segue
+//                dest.heroModalAnimationType = .zoom
+//                
+//                //Performs the segue
+//                source.hero_replaceViewController(with: dest)
+//            }
         }
     }
 }

@@ -74,6 +74,7 @@ class MainMenuViewController: UIViewController {
             LoadingHud.hideHud(self.view)
         }
         LoadingHud.hideHud(self.view)
+        subscribeToCodeEvents()
     }
     
     override func didReceiveMemoryWarning() {
@@ -87,116 +88,20 @@ class MainMenuViewController: UIViewController {
     }
     
     @IBAction func readCodes(_ sender: UIButton) {
-//        LoadingHud.showHud(self.view, label: "Reading codes...")
-        dateString = getDate();
-        
-//        var task = self.deviceInfo!.callFunction("readCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
-//            if (error == nil) {
-//                //testing line
-//                print("Performed readCodes() function with no errors!")
-//                let json = JSON(resultCode)
-//                print("Json item: ", json)
-//            } else {
-//                print("Error: ", error)
-//            }
-//        }
-        
-        self.handler = ParticleCloud.sharedInstance().subscribeToAllEvents(withPrefix: "codes/result", handler: { (event :ParticleEvent?, error : Error?) in
-            if let _ = error {
-                print ("Error: ", error)
-//                readCodes(_ sender: self)
-            } else {
-                print("Completed particle event subscription, now loading codes...")
-                DispatchQueue.main.async(execute: {
-                    //testing line
-//                     print("got event with data \(event?.data?.description as! String)")
-                    
-                
-                    //put codes into an array
-                    var codesArr : [String] = (event?.data?.components(separatedBy: ","))!
-                    print("******************************************")
-                    print("Codes Array: " , codesArr)
-                    
-                    if codesArr[0] == "null"{
-                        
-                        self.dialog = ZAlertView(title: "No Codes!",
-                                                 message: "Vehicle has no trouble codes present!",
-                                                 closeButtonText: "OK",
-                                                 closeButtonHandler: { (alertView) -> () in
-                                                    alertView.dismissAlertView()
-                        })
-                        
-                        self.dialog.allowTouchOutsideToDismiss = false
-                        
-                        self.dialog.show()
-                        
-                        LoadingHud.hideHud(self.view)
-                        
-                    } else {
-                        /*
-                         filters the 'p' or 'c' out of the code and add the corresponding
-                         "pending" or "current" to the beginning of the code description.
-                         
-                         Then stores this code under the vehicle document as a child of the date and time
-                         
-                         there is a problem with this when there is more than one code with multiple suffixes
-                         ie: s, p and c because only the last suffix will be stored as the description since
-                         the key wil be overwritten with the new value so best version of the code will not
-                         be stored. Need to fix this
-                         */
-                        for s in codesArr {
-                            
-                            var code = s
-                            var description = ""
-                            var child: String!
-                            //filter the letter out of the code
-                            if let i = code.characters.index(of:"p") {
-                                child = "Pending"
-                                code.remove(at: i)
-                                description = "Pending: "
-                            }
-                            if let i = code.characters.index(of:"c") {
-                                child = "Cleared"
-                                code.remove(at: i)
-                                description = "Cleared: "
-                            }
-                            if let i = code.characters.index(of:"s") {
-                                child = "Current"
-                                code.remove(at:i)
-                                description = "Current: "
-                            }
-                            
-                            //find code descriptions in firebase and add them to the description variable
-                            self.ref.child("trouble-codes").child(code).observeSingleEvent(of: .value, with: { (snapshot) in
-                                
-                                description += (snapshot.value as? NSString)! as String
-                                
-                                //testing line
-                                print("Code is: \(code)  Description is: \(description) Vin is: \(self.vinLabel.text)")
-                                
-                                //push the codes and their descriptions to firebase under the respective vehicle
-//                                self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(self.dateString).child(code).setValue(description)
-                            self.ref.child("users").child(self.uid).child("vehicles").child(self.vinLabel.text!).child("storedCodes").child(self.dateString).child(child).child(code).setValue(description)
-                            })
-                        }
-//                        DispatchQueue.main.async {
-                            self.performSegue(withIdentifier: "readCodesSegue", sender: self)
-//                        }
-                    }//end else
-                
-                }) //end DispatchQueue
-            }//end else
-        })//end handler
+        //        LoadingHud.showHud(self.view, label: "Reading codes...")
         
         var task = self.deviceInfo!.callFunction("readCodes", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
             if (error == nil) {
                 
                 //testing line
                 print("Performed readCodes() function with no errors!")
-            
+                
             } else {
                 print("Error: ", error)
             }
+        }
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "readCodesSegue", sender: self)
         }
     }
     
