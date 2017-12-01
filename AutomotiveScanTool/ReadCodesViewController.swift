@@ -79,7 +79,7 @@ class ReadCodesViewController: UIViewController,UITableViewDataSource,UITableVie
                 for items in self.values {
                     print(items.key, "  ", items.value)
                 }
-                print("VALUES IN BUILDDATA()", self.values)
+//                print("VALUES IN BUILDDATA()", self.values)
 //                self.tableView.reloadData()
                 completion("Success")
             })
@@ -134,7 +134,7 @@ class ReadCodesViewController: UIViewController,UITableViewDataSource,UITableVie
             for section in self.values {
                 for i in 0...section.value.count {
                     //
-                    print("Section.value: ", section.value)
+//                    print("Section.value: ", section.value)
                     print("r: ", r, "s: ", s ,"i: ", i)
                     if i < section.value.count {
                         let row = section.value[i]

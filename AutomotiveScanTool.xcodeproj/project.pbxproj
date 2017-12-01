@@ -36,6 +36,9 @@
 		F83EDAD21FBCB0980045079D /* ReadCodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83EDAD11FBCB0980045079D /* ReadCodesViewController.swift */; };
 		F83EDAD61FBE2DAD0045079D /* CodesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83EDAD51FBE2DAD0045079D /* CodesTableViewCell.swift */; };
 		F842895D1FCE2D4B00048737 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F842895C1FCE2D4B00048737 /* StatusCell.swift */; };
+		F842895F1FD1BD0700048737 /* history.swift in Sources */ = {isa = PBXBuildFile; fileRef = F842895E1FD1BD0700048737 /* history.swift */; };
+		F84289611FD1CEBF00048737 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84289601FD1CEBF00048737 /* DateCell.swift */; };
+		F84289631FD1EADE00048737 /* ReadCodeHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84289621FD1EADE00048737 /* ReadCodeHistoryViewController.swift */; };
 		F853197C1FA7A6440065B2EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F853197B1FA7A6440065B2EC /* AppDelegate.swift */; };
 		F853197E1FA7A6550065B2EC /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F853197D1FA7A6550065B2EC /* MainMenuViewController.swift */; };
 /* End PBXBuildFile section */
@@ -102,6 +105,9 @@
 		F83EDAD11FBCB0980045079D /* ReadCodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCodesViewController.swift; sourceTree = "<group>"; };
 		F83EDAD51FBE2DAD0045079D /* CodesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesTableViewCell.swift; sourceTree = "<group>"; };
 		F842895C1FCE2D4B00048737 /* StatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
+		F842895E1FD1BD0700048737 /* history.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = history.swift; sourceTree = "<group>"; };
+		F84289601FD1CEBF00048737 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		F84289621FD1EADE00048737 /* ReadCodeHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCodeHistoryViewController.swift; sourceTree = "<group>"; };
 		F853197B1FA7A6440065B2EC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F853197D1FA7A6550065B2EC /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +180,8 @@
 				F853197B1FA7A6440065B2EC /* AppDelegate.swift */,
 				72C09E4D1FC0B65F003BD0A0 /* ASTInfo.swift */,
 				725D2D7D1FBA4F6500B21143 /* CustomSegue.swift */,
+				F842895E1FD1BD0700048737 /* history.swift */,
+				F84289601FD1CEBF00048737 /* DateCell.swift */,
 				72FC571B1FB4166C0005FD04 /* DeviceTableViewCell.swift */,
 				F83EDAD51FBE2DAD0045079D /* CodesTableViewCell.swift */,
 				729E0D361FB1310C00BA4CCE /* LoadingHud.swift */,
@@ -181,6 +189,7 @@
 				727770C91F9FD7E9004F2241 /* Main.storyboard */,
 				727770CE1F9FD7E9004F2241 /* LaunchScreen.storyboard */,
 				72E71BFA1FBCA44A00BEBA9D /* CodeHistoryViewController.swift */,
+				F84289621FD1EADE00048737 /* ReadCodeHistoryViewController.swift */,
 				727770F51F9FD881004F2241 /* DeviceViewController.swift */,
 				727770F91F9FD882004F2241 /* LoginViewController.swift */,
 				F853197D1FA7A6550065B2EC /* MainMenuViewController.swift */,
@@ -583,6 +592,7 @@
 			files = (
 				725D2D7E1FBA4F6500B21143 /* CustomSegue.swift in Sources */,
 				72E71BFB1FBCA44A00BEBA9D /* CodeHistoryViewController.swift in Sources */,
+				F84289631FD1EADE00048737 /* ReadCodeHistoryViewController.swift in Sources */,
 				F853197C1FA7A6440065B2EC /* AppDelegate.swift in Sources */,
 				F842895D1FCE2D4B00048737 /* StatusCell.swift in Sources */,
 				727771001F9FD882004F2241 /* LoginViewController.swift in Sources */,
@@ -591,8 +601,10 @@
 				729E0D371FB1310C00BA4CCE /* LoadingHud.swift in Sources */,
 				F83EDAD21FBCB0980045079D /* ReadCodesViewController.swift in Sources */,
 				72FC571C1FB4166C0005FD04 /* DeviceTableViewCell.swift in Sources */,
+				F842895F1FD1BD0700048737 /* history.swift in Sources */,
 				72BFF88A1FBCEF7A008A0265 /* RCViewController.swift in Sources */,
 				727770FB1F9FD882004F2241 /* VinRequest.swift in Sources */,
+				F84289611FD1CEBF00048737 /* DateCell.swift in Sources */,
 				72C09E4E1FC0B65F003BD0A0 /* ASTInfo.swift in Sources */,
 				F853197E1FA7A6550065B2EC /* MainMenuViewController.swift in Sources */,
 				727770FC1F9FD882004F2241 /* DeviceViewController.swift in Sources */,
