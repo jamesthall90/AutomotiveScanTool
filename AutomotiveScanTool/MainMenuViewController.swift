@@ -22,7 +22,7 @@ class MainMenuViewController: UIViewController {
     var vehicle: VinRequest!
     var ref: DatabaseReference!
     var uid: String!
-    var vin: String!
+    var vin: String! = "2G1FE1ED7B9118397"
     var dateString: String!
     var parameters: Parameters?
     var apiURL: URL!
@@ -73,7 +73,7 @@ class MainMenuViewController: UIViewController {
             self.getVehicleInfo()
             LoadingHud.hideHud(self.view)
         }
-        
+        LoadingHud.hideHud(self.view)
         subscribeToCodeEvents()
     }
     
@@ -84,6 +84,9 @@ class MainMenuViewController: UIViewController {
     
     @IBAction func codeHistory(_ sender: UIButton) {
         
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "codeHistorySegue", sender: self)
+        }
         
     }
     
@@ -95,10 +98,13 @@ class MainMenuViewController: UIViewController {
                 
                 //testing line
                 print("Performed readCodes() function with no errors!")
-            
+                
             } else {
                 print("Error: ", error)
             }
+        }
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "readCodesSegue", sender: self)
         }
     }
     
@@ -167,6 +173,9 @@ extension MainMenuViewController {
         var task = self.deviceInfo!.callFunction("readVIN", withArguments: nil) { (resultCode : NSNumber?, error : Error?) -> Void in
             if (error == nil) {
                 print("Performed readVin() function with no errors!")
+            } else {
+                print("Could not get VIN!!")
+                self.vinLabel.text = "2G1FE1ED7B9118397"
             }
         }
         LoadingHud.showHud(self.view, label: "Loading Data...")

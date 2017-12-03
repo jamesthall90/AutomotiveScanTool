@@ -7,135 +7,208 @@
 //
 
 import UIKit
-import CollapsibleTableSectionViewController
 import FirebaseAuth
 import FirebaseDatabase
 import PromiseKit
+import ParticleSDK
 
 
-public struct codeData {
-    public var description: String
-    public var googleLink: String
-    
-    public init(description: String, googleLink: String) {
-        self.description = description
-        self.googleLink = googleLink
-    }
-}
 
-public struct Section {
-    public var code: String
-    public var codeData: [codeData]
-    
-    public init(code: String, codeData: [codeData]) {
-        self.code = code
-        self.codeData = codeData
-    }
-}
-
-class ReadCodesViewController: CollapsibleTableSectionViewController {
+class ReadCodesViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     var ref: DatabaseReference!
     var uid: String!
     var vin: String!
+    var deviceInfo: ParticleDevice!
     var dateString : String!
-    var sectionData : [Section] = []
-
+    
+    var values = [String : [[String : [String]]]]()
+    var cellExpanded : Bool = false
+    var selectedIndexPath : IndexPath = []
+        
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.delegate = self
-        
-//        self.sectionData = buildSectionData()
-        
-//            [
-//            Section(code: "P0000", codeData: [
-//                codeData(description: "derp", googleLink: "www.google.com/derp"),
-//                codeData(description: "bork", googleLink: "www.google.com/bork")
-//
-//            ]),
-//            Section(code: "P1111", codeData: [
-//                codeData(description: "derp", googleLink: "www.google.com/derp"),
-//                codeData(description: "bork", googleLink: "www.google.com/bork")
-//            ])
-//        ]
-    }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        self.
-//    }
-    
-    func buildSectionData (){
-//    self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).child("storedCodes").child(self.dateString).observe(DataEventType.childAdded, with: DataSnapshot.init())
-//            let codes = snapshot.value as? [String: AnyObject] ?? [:]
-//            print(codes)
-//            for d in codes {
-////                print("key: ", d.key as? String, " value: ", d.value as? String)
-//                self.sectionData.append(Section(code: (d.key as? String)!, codeData: [
-//                    codeData(description: (d.value as? String)!, googleLink: "link")
-//                ]))
-//            }
-//
-//        })
-        
-    ref.child(self.uid).child("vehicles").child(self.vin).child("storedCodes").child(self.dateString).observe(DataEventType.value, with: { (snapshot) in
-            let codes = snapshot.value as? [String : AnyObject] ?? [:]
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        self.values = ["Pending": [],
+                       "Current" :[],
+                       "Cleared":[]
+                      ]
             
-            print(codes)
-            
-            for d in codes {
-                //                print("key: ", d.key as? String, " value: ", d.value as? String)
-                self.sectionData.append(Section(code: (d.key as? String)!, codeData: [
-                    codeData(description: (d.value as? String)!, googleLink: "link")
-                    ]))
+//            values = ["Pending" : [["P1008" : ["Description", "link"]], ["P0101" : ["Description", "Link"]]],
+//                      "Current" : [["P2008" : ["Description", "link"]], ["P0101" : ["Description", "Link"]]],
+//                      "Cleared" : [["P3008" : ["Description", "link"]], ["P0101" : ["Description", "Link"]]]]
+//
+//            values["Pending"]?.append(["P2222" : ["Code Desc", "Google Link"]])
+//            values["Cleared"]?.append(["P2222" : ["Code Desc", "Google Link"]])
+//
+//            print("*****PRESET VALUES*****\n", values)
+//            values = [String : [[String : [String]]]]()
+        self.buildData{(completion: String) in
+            print(completion)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+//                print("DERP")
             }
-        })
+        }
+//        print("*****VALUES AFTER BUILD DATA*****\n", self.values)
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func buildData(completion: @escaping (String) -> Void) {
+        DispatchQueue.main.async {
+        self.ref.child("users").child(self.uid).child("vehicles").child("2G1FE1ED7B9118397"/*self.vin*/).child("storedCodes").child("11-27-17-04:20"/*self.dateString*/).observe(DataEventType.value, with: { (snapshot) in
+//                print("SNAPSHOT: ",snapshot)
+                
+                let fbSnapshot = snapshot.value as? NSDictionary
+//                print("fbSnapshot: ",fbSnapshot)
+                
+                for status in fbSnapshot! {
+//                    print("fbsnapshot.key: ", status.key)
+//                    print("fbsnapshot.value: ", status.value)
+                    var codeItems = status.value as? NSDictionary
+//                    print("codeItems: ", codeItems)
+                    for codeItem in codeItems! {
+//                        print("Code: ", codeItem.key)
+//                        print("Item: ", codeItem.value)
+                        self.values[(status.key as? String)!]?.append([(codeItem.key as? String)! : [(codeItem.value as? String)!, "Google Link"]])
+                    }
+                }
+                
+                for items in self.values {
+                    print(items.key, "  ", items.value)
+                }
+//                print("VALUES IN BUILDDATA()", self.values)
+//                self.tableView.reloadData()
+                completion("Success")
+            })
+        }
     }
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return getNumberOfRowsForSection(s: section)
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "statusCell", for: indexPath) as! StatusCell
+            //        print("*****GETTING CODE TEXT***** SECTION: ", indexPath.section, "ROW: ", indexPath.row)
+            cell.descriptionLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping;
+            cell.descriptionLabel?.numberOfLines = 0;
+            cell.codeLabel.text = getCodeText(s: indexPath.section, r: indexPath.row)
+            cell.descriptionLabel.text = getCodeDescription(s: indexPath.section, r: indexPath.row)
+            
+            return cell
+        }
+        
+        func getNumberOfRowsForSection(s: Int) -> Int {
+            var counter = 0
+            for section in self.values{
+                if counter == s {
+//                    print("Section.value: ", section.value)
+                    return section.value.count
+                }
+                counter += 1
+            }
+            return 0
+        }
+    
+    func getCodeDescription (s: Int, r:Int) -> String {
+        var counter = 0
+        for section in self.values {
+            for i in 0...section.value.count {
+                if i < section.value.count {
+                    let row = section.value[i]
+                    if (i == r && s == counter) {
+                        return(row.first?.value[0])!
+                    }
+                }
+            }
+            counter += 1
+        }
+        return ""
+    }
+        
+        func getCodeText(s: Int, r: Int) -> String {
+            var counter = 0
+            for section in self.values {
+                for i in 0...section.value.count {
+                    //
+//                    print("Section.value: ", section.value)
+                    print("r: ", r, "s: ", s ,"i: ", i)
+                    if i < section.value.count {
+                        let row = section.value[i]
+                        if (i == r && s == counter) {
+                            return(row.first?.key)!
+                        }
+                    }
+                }
+                counter += 1
+            }
+            return ""
+        }
+        
+        func getStatusText (index : Int) -> String {
+            var counter = 0
+            for section in self.values {
+                if counter == index {
+                    return section.key
+                }
+                counter += 1
+                
+            }
+            return "Didnt Work"
+        }
+        
+        func numberOfSections(in tableView: UITableView) -> Int {
+            //        print(values.count)
+            return values.count
+        }
+        
+        func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            return getStatusText(index: section)
+        }
+        
+        func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return 44.0;
+        }
+        
+        func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
+            return 0;
+        }
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+            print("****SELECTED A ROW!****   ", indexPath.row)
+            
+            //expand selected row and collapse any other row that was previously expanded
+            cellExpanded = false
+            
+            if (indexPath != selectedIndexPath) {
+                cellExpanded = true
+                selectedIndexPath = indexPath
+            } else {
+                selectedIndexPath = []
+            }
+            
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
+        
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            if selectedIndexPath != [] {
+                if (indexPath == selectedIndexPath) {
+                    if cellExpanded {
+                        return 200
+                    } else {
+                        return 50
+                    }
+                }
+            }
+            return 50
+        }
 }
 
-extension ReadCodesViewController: CollapsibleTableSectionDelegate {
-    
-    func numberOfSections(_ tableView: UITableView) -> Int {
-        buildSectionData()
-        print("sectionData.count is: ",self.sectionData.count)
-        return self.sectionData.count
-    }
-    
-    func collapsibleTableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("sectionData[section].codeData.count is: ",self.sectionData[section].codeData.count)
-        return self.sectionData[section].codeData.count
-    }
-    
-    func collapsibleTableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell") as UITableViewCell? ?? UITableViewCell(style: .subtitle, reuseIdentifier: "BasicCell")
-        
-//        buildSectionData()
-//        print(sectionData)
-        
-        let codes: codeData = self.sectionData[indexPath.section].codeData[indexPath.row]
-        
-        cell.textLabel?.text = codes.description
-        cell.detailTextLabel?.text = codes.googleLink
-        
-        return cell
-    }
-    
-    func collapsibleTableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.sectionData[section].code
-    }
-}
 
-//extension DatabaseReference {
-//    func observeSingleEvent() -> Promise<DatabaseReference> {
-//        return PromiseKit.wrap { resolve in
-//            observeSingleEvent(of: .value, with: snapshot in))
-//        }
-//    }
-//}
 
 
