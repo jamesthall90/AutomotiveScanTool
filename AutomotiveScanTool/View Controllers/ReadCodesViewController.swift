@@ -1,8 +1,8 @@
 //
-//  ReadCodeHistoryViewController.swift
+//  ReadCodesViewController.swift
 //  AutomotiveScanTool
 //
-//  Created by Stephen Lomangino on 12/1/17.
+//  Created by Stephen Lomangino on 11/15/17.
 //  Copyright © 2017 James Hall. All rights reserved.
 //
 
@@ -11,26 +11,22 @@ import FirebaseAuth
 import FirebaseDatabase
 import PromiseKit
 import ParticleSDK
+import Font_Awesome_Swift
 
-class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class ReadCodesViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     var ref: DatabaseReference!
     var uid: String!
     var vin: String!
     var deviceInfo: ParticleDevice!
     var dateString : String!
-    
+    var vehicleStruct: Vehicle?
     var values = [String : [[String : [String]]]]()
     var cellExpanded : Bool = false
     var selectedIndexPath : IndexPath = []
-    
-    @IBOutlet weak var titleBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
-    @IBAction func backButton(_ sender: Any) {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "backToCodeHistorySegue", sender: self)
-        }
-    }
+    @IBOutlet weak var backButtonOutlet: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self;
@@ -39,24 +35,37 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
                        "Current" :[],
                        "Cleared":[]
         ]
-
+        
         self.buildData{(completion: String) in
             print(completion)
             DispatchQueue.main.async {
-                self.titleBar.topItem?.title = self.dateString
+                self.backButtonOutlet.setFAIcon(icon: .FAChevronLeft, iconSize: 25, forState: .normal)
                 self.tableView.reloadData()
             }
         }
     }
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        
+        performSegue(withIdentifier: "rcToMainSegue", sender: self)
+    }
+    
     func buildData(completion: @escaping (String) -> Void) {
         DispatchQueue.main.async {
-            self.ref.child("users").child(self.uid).child("vehicles").child("2G1FE1ED7B9118397"/*self.vin*/).child("storedCodes").child(self.dateString).observe(DataEventType.value, with: { (snapshot) in
+            self.ref.child("users").child(self.uid).child("vehicles").child("2G1FE1ED7B9118397"/*self.vin*/).child("storedCodes").child("11-27-17-04:20"/*self.dateString*/).observe(DataEventType.value, with: { (snapshot) in
+                //                print("SNAPSHOT: ",snapshot)
                 
                 let fbSnapshot = snapshot.value as? NSDictionary
+                //                print("fbSnapshot: ",fbSnapshot)
+                
                 for status in fbSnapshot! {
+                    //                    print("fbsnapshot.key: ", status.key)
+                    //                    print("fbsnapshot.value: ", status.value)
                     var codeItems = status.value as? NSDictionary
+                    //                    print("codeItems: ", codeItems)
                     for codeItem in codeItems! {
+                        //                        print("Code: ", codeItem.key)
+                        //                        print("Item: ", codeItem.value)
                         self.values[(status.key as? String)!]?.append([(codeItem.key as? String)! : [(codeItem.value as? String)!, "Google Link"]])
                     }
                 }
@@ -64,7 +73,8 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
                 for items in self.values {
                     print(items.key, "  ", items.value)
                 }
-                print("VALUES IN BUILDDATA()", self.values)
+                //                print("VALUES IN BUILDDATA()", self.values)
+                //                self.tableView.reloadData()
                 completion("Success")
             })
         }
@@ -76,11 +86,13 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "statusCell", for: indexPath) as! StatusCell
+        //        print("*****GETTING CODE TEXT***** SECTION: ", indexPath.section, "ROW: ", indexPath.row)
         cell.descriptionLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping;
         cell.descriptionLabel?.numberOfLines = 0;
         cell.codeLabel.text = getCodeText(s: indexPath.section, r: indexPath.row)
         cell.descriptionLabel.text = getCodeDescription(s: indexPath.section, r: indexPath.row)
-        
+        cell.expandArrow.setFAIconWithName(icon: .FAChevronRight, textColor: astColor)
+        cell.googleButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
         return cell
     }
     
@@ -117,8 +129,8 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
         for section in self.values {
             for i in 0...section.value.count {
                 //
-                print("Section.value: ", section.value)
-                print("r: ", r, "s: ", s ,"i: ", i)
+                //                    print("Section.value: ", section.value)
+                //                    print("r: ", r, "s: ", s ,"i: ", i)
                 if i < section.value.count {
                     let row = section.value[i]
                     if (i == r && s == counter) {
@@ -144,6 +156,7 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        //        print(values.count)
         return values.count
     }
     
@@ -161,12 +174,16 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("****SELECTED A ROW!****   ", indexPath.row)
+        
+        let cell = tableView.cellForRow(at: indexPath) as? StatusCell
         
         //expand selected row and collapse any other row that was previously expanded
         cellExpanded = false
         
+        cell?.expandArrow.setFAIconWithName(icon: .FAChevronRight, textColor: astColor)
+        
         if (indexPath != selectedIndexPath) {
+            cell?.expandArrow.setFAIconWithName(icon: .FAChevronDown, textColor: astColor)
             cellExpanded = true
             selectedIndexPath = indexPath
         } else {
@@ -181,7 +198,7 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
         if selectedIndexPath != [] {
             if (indexPath == selectedIndexPath) {
                 if cellExpanded {
-                    return 200
+                    return 170
                 } else {
                     return 50
                 }
@@ -189,4 +206,50 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
         }
         return 50
     }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view:UIView, forSection: Int) {
+        if let headerTitle = view as? UITableViewHeaderFooterView {
+            
+            headerTitle.textLabel?.textColor = UIColor.black
+            
+            headerTitle.textLabel?.font = UIFont(name: "Copperplate-Bold", size: 20)
+            
+            headerTitle.backgroundView?.alpha = 0.4
+            
+            if (forSection == 0) {
+                
+                headerTitle.backgroundView?.backgroundColor = UIColor.yellow
+                
+            } else if (forSection == 1){
+                
+                headerTitle.backgroundView?.backgroundColor = UIColor.green
+                
+            } else {
+                
+                headerTitle.backgroundView?.backgroundColor = UIColor.red
+            }
+        }
+    }
+    
+    @objc func didTapButton(_ sender: UIButton) {
+        // Fetch Item
+        if let indexPath = self.tableView.indexPathForView(view: sender) {
+            let code = self.getCodeText(s: (indexPath.section), r: (indexPath.row))
+            
+            let car = "https://www.google.com/search?q=\(vehicleStruct?.year as? String ?? "2011")+\(vehicleStruct?.make as? String ?? "CHEVROLET")+\(vehicleStruct?.model as? String ?? "CAMARO")+\(code)"
+            
+            UIApplication.shared.open(URL(string: car)!)
+        }
+    }
 }
+
+//extension UITableView {
+//    func indexPathForView (view : UIView) -> NSIndexPath? {
+//        let location = view.convert(CGPoint.zero, to:self)
+//        return indexPathForRow(at: location) as! NSIndexPath
+//    }
+//}
+
+
+
+

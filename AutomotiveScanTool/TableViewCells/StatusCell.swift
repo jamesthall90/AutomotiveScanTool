@@ -12,11 +12,14 @@ class StatusCell: UITableViewCell {
 
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBAction func googleButton(_ sender: UIButton) {
-    }
+    @IBOutlet weak var googleButton: UIButton!
+    @IBOutlet weak var expandArrow: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

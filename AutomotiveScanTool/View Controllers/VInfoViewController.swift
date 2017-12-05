@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import ParticleSDK
+import Font_Awesome_Swift
 
 class VInfoViewController: UIViewController {
 
@@ -18,6 +19,7 @@ class VInfoViewController: UIViewController {
     var ref: DatabaseReference!
     var deviceInfo: ParticleDevice!
     var newImage: UIImage!
+    var vehicleStruct: Vehicle?
     @IBOutlet weak var vIYearLabel: UILabel!
     @IBOutlet weak var vIMakeLabel: UILabel!
     @IBOutlet weak var vIModelLabel: UILabel!
@@ -39,9 +41,11 @@ class VInfoViewController: UIViewController {
     @IBOutlet weak var transTitle: UILabel!
     @IBOutlet weak var aPlantTitle: UILabel!
     @IBOutlet weak var fuelTitle: UILabel!
+    @IBOutlet weak var backButtonOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.backButtonOutlet.setFAIcon(icon: .FAChevronLeft, iconSize: 25, forState: .normal)
         
         fillLabels()
     }

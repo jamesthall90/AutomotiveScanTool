@@ -14,6 +14,7 @@ import AwaitKit
 import SwiftyJSON
 import ZAlertView
 import Alamofire
+import Font_Awesome_Swift
 
 class MainMenuViewController: UIViewController {
     
@@ -29,13 +30,16 @@ class MainMenuViewController: UIViewController {
     var vinPath: String!
     var vehicleData: JSON!
     var dialog: ZAlertView!
+    var vehicleStruct: Vehicle?
     @IBOutlet weak var vehicleImage: UIImageView!
     @IBOutlet weak var yMMLabel: UILabel!
     @IBOutlet weak var vinLabel: UILabel!
-    
+    @IBOutlet weak var backButtonOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.backButtonOutlet.setFAIcon(icon: .FAChevronLeft, iconSize: 25, forState: .normal)
         
         let astColor = UIColor(red:0.00, green:0.20, blue:0.40, alpha:1.0)
         ZAlertView.blurredBackground = true
@@ -235,6 +239,8 @@ extension MainMenuViewController {
                 
                 self.yMMLabel.text = "\(vehicle.getVehicleYear()) \(vehicle.getVehicleMake()) \(vehicle.getVehicleModel())"
                 
+                self.vehicleStruct = Vehicle(vin: vehicle.getVehicleVIN() ?? "vin", year: vehicle.getVehicleYear() ?? "year", make: vehicle.getVehicleMake() ?? "make", model: vehicle.getVehicleModel() ?? "model")
+                
                 self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle year").setValue(vehicle.getVehicleYear())
                 self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle make").setValue(vehicle.getVehicleMake())
                 self.ref.child("users").child(self.uid).child("vehicles").child(vin).child("vehicle model").setValue(vehicle.getVehicleModel())
@@ -259,6 +265,8 @@ extension MainMenuViewController {
             let value = snapshot.value as? NSDictionary
             
             self.yMMLabel.text = "\(value?["vehicle year"] as? String ?? "") \(value?["vehicle make"] as? String ?? "") \(value?["vehicle model"] as? String ?? "")".uppercased()
+            
+            self.vehicleStruct = Vehicle(vin: self.vin, year: value?["vehicle year"] as? String ?? "year", make: value?["vehicle make"] as? String ?? "make", model: value?["vehicle model"] as? String ?? "model")
             
             self.vehicleImage.contentMode = UIViewContentMode.scaleAspectFit
             self.vehicleImage.clipsToBounds = true

@@ -10,59 +10,50 @@ import UIKit
 import Firebase
 import ParticleSDK
 
-
 class CodeHistoryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     var ref: DatabaseReference!
     var uid: String!
     var vin: String!
     var dateString : String!
     var deviceInfo: ParticleDevice!
-
+    var dates: [String] = []
+    var vehicleStruct: Vehicle?
+    var values = [[String: [[String: [[String:String]]]]]]()
+    @IBOutlet weak var backButtonOutlet: UIButton!
+    
     @IBAction func backButton(_ sender: Any) {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "backToMainMenuFromHistorySegue", sender: self)
         }
     }
     @IBOutlet weak var tableView: UITableView!
-    var dates: [String] = []
-    var values = [[String: [[String: [[String:String]]]]]]()
-//    var values: Dictionary<String, Any> = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self;
         tableView.dataSource = self;
         
-//        self.values = [["Date" : [["Current" : [["code":"description"]]],
-//                                  ["Pending":[["code":"description"],
-//                                            ["code":"Description"]]],
-//                                  ["Cleared": [["code":"description"]]]]],
-//                       ["date2" : [["Current" : [["code":"Description"]]]]]
-//                      ]
-//        self.values = []
-        
-
-        
         self.buildData { (completion:String) in
             print(completion)
             print(self.dates)
             DispatchQueue.main.async {
+                self.backButtonOutlet.setFAIcon(icon: .FAChevronLeft, iconSize: 25, forState: .normal)
                 self.tableView.reloadData()
             }
         }
-        
-        
     }
     
     func buildData (completion: @escaping (String) -> Void) {
         self.ref.child("users").child(self.uid).child("vehicles").child("2G1FE1ED7B9118397"/*self.vin*/).child("storedCodes").observe(DataEventType.value, with : {(snapshot) in
-//            print("SNAPSHOT: ",snapshot)
 
             let data = snapshot.value as? NSDictionary
             for date in data! {
                 self.dates.append((date.key as? String)!)
 //                print("Date: ", date.key, "Value: ", date.value)
             }
+            
+            self.dates.sort()
+            self.dates.reverse()
         completion("Success")
         })
     }
@@ -108,9 +99,10 @@ class CodeHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         var title: UILabel = UILabel()
         
         title.text = "--DATES--"
-        title.textColor = UIColor(red: 77.0/255.0, green: 98.0/255.0, blue: 130.0/255.0, alpha: 1.0)
+//        title.textColor = UIColor(red: 77.0/255.0, green: 98.0/255.0, blue: 130.0/255.0, alpha: 1.0)
+        title.textColor = astColor
         title.backgroundColor = UIColor(red: 225.0/255.0, green: 243.0/255.0, blue: 251.0/255.0, alpha: 1.0)
-        title.font = UIFont.boldSystemFont(ofSize: 18)
+        title.font = UIFont(name: "Copperplate-Bold", size: 20)
         
         var constraint = NSLayoutConstraint.constraints(withVisualFormat: "H:[label]", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: ["label": title])
         

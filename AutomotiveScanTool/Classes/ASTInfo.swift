@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import ParticleSDK
 
+var astColor = UIColor(red:0.00, green:0.20, blue:0.40, alpha:1.0)
 
 class ASTInfo {
     

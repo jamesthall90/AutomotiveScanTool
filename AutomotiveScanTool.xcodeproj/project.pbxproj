@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		624FB15DB7EB3B1B0FD0CCDD /* Pods_AutomotiveScanToolTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A646871F6ACECD0127A0221 /* Pods_AutomotiveScanToolTests.framework */; };
 		720D8E4C1F9FE10100DAF53E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 720D8E4B1F9FE10100DAF53E /* GoogleService-Info.plist */; };
+		720DAEC81FD616C500B3A023 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720DAEC71FD616C500B3A023 /* Vehicle.swift */; };
 		725D2D7E1FBA4F6500B21143 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725D2D7D1FBA4F6500B21143 /* CustomSegue.swift */; };
 		727770CB1F9FD7E9004F2241 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 727770C91F9FD7E9004F2241 /* Main.storyboard */; };
 		727770CD1F9FD7E9004F2241 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 727770CC1F9FD7E9004F2241 /* Assets.xcassets */; };
@@ -27,7 +28,6 @@
 		729E64C61FBB3EAC00246B0C /* AST Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 729E64C21FBB3EAB00246B0C /* AST Logo.png */; };
 		729E64C71FBB3EAC00246B0C /* kia-optima.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 729E64C31FBB3EAC00246B0C /* kia-optima.jpg */; };
 		729E64C81FBB3EAC00246B0C /* chevy-suburban.png in Resources */ = {isa = PBXBuildFile; fileRef = 729E64C41FBB3EAC00246B0C /* chevy-suburban.png */; };
-		72BFF88A1FBCEF7A008A0265 /* RCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BFF8891FBCEF7A008A0265 /* RCViewController.swift */; };
 		72C09E4E1FC0B65F003BD0A0 /* ASTInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C09E4D1FC0B65F003BD0A0 /* ASTInfo.swift */; };
 		72E71BFB1FBCA44A00BEBA9D /* CodeHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E71BFA1FBCA44A00BEBA9D /* CodeHistoryViewController.swift */; };
 		72FC571C1FB4166C0005FD04 /* DeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC571B1FB4166C0005FD04 /* DeviceTableViewCell.swift */; };
@@ -66,6 +66,7 @@
 		339CFCDB618861FB2FCFDCEB /* Pods-AutomotiveScanTool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutomotiveScanTool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutomotiveScanTool/Pods-AutomotiveScanTool.debug.xcconfig"; sourceTree = "<group>"; };
 		51E8240C1EA87ED660AAE625 /* Pods_AutomotiveScanTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutomotiveScanTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		720D8E4B1F9FE10100DAF53E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		720DAEC71FD616C500B3A023 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		72161B391FCDD71B00AFD753 /* AutomotiveScanTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AutomotiveScanTool.entitlements; sourceTree = "<group>"; };
 		725D2D7D1FBA4F6500B21143 /* CustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 		727770C21F9FD7E9004F2241 /* AutomotiveScanTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomotiveScanTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,11 +90,10 @@
 		72926ACB1F9FDA5E00A8BCA5 /* ParticleSDK.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ParticleSDK.framework.dSYM; path = Carthage/Build/iOS/ParticleSDK.framework.dSYM; sourceTree = "<group>"; };
 		72926ACD1F9FDA6600A8BCA5 /* AFNetworking.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = AFNetworking.framework.dSYM; path = Carthage/Build/iOS/AFNetworking.framework.dSYM; sourceTree = "<group>"; };
 		729E0D361FB1310C00BA4CCE /* LoadingHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHud.swift; sourceTree = "<group>"; };
-		729E64C11FBB3EAB00246B0C /* Particle-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Particle-Logo.png"; path = "img/Particle-Logo.png"; sourceTree = "<group>"; };
-		729E64C21FBB3EAB00246B0C /* AST Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AST Logo.png"; path = "img/AST Logo.png"; sourceTree = "<group>"; };
-		729E64C31FBB3EAC00246B0C /* kia-optima.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "kia-optima.jpg"; path = "img/kia-optima.jpg"; sourceTree = "<group>"; };
-		729E64C41FBB3EAC00246B0C /* chevy-suburban.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chevy-suburban.png"; path = "img/chevy-suburban.png"; sourceTree = "<group>"; };
-		72BFF8891FBCEF7A008A0265 /* RCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCViewController.swift; sourceTree = "<group>"; };
+		729E64C11FBB3EAB00246B0C /* Particle-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Particle-Logo.png"; sourceTree = "<group>"; };
+		729E64C21FBB3EAB00246B0C /* AST Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AST Logo.png"; sourceTree = "<group>"; };
+		729E64C31FBB3EAC00246B0C /* kia-optima.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "kia-optima.jpg"; sourceTree = "<group>"; };
+		729E64C41FBB3EAC00246B0C /* chevy-suburban.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevy-suburban.png"; sourceTree = "<group>"; };
 		72C09E4D1FC0B65F003BD0A0 /* ASTInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTInfo.swift; sourceTree = "<group>"; };
 		72E71BFA1FBCA44A00BEBA9D /* CodeHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeHistoryViewController.swift; sourceTree = "<group>"; };
 		72FC571B1FB4166C0005FD04 /* DeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCell.swift; sourceTree = "<group>"; };
@@ -142,6 +142,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		720DAECA1FD61A8200B3A023 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				72E71BFA1FBCA44A00BEBA9D /* CodeHistoryViewController.swift */,
+				F84289621FD1EADE00048737 /* ReadCodeHistoryViewController.swift */,
+				F83EDAD11FBCB0980045079D /* ReadCodesViewController.swift */,
+				727770F51F9FD881004F2241 /* DeviceViewController.swift */,
+				727770F91F9FD882004F2241 /* LoginViewController.swift */,
+				F853197D1FA7A6550065B2EC /* MainMenuViewController.swift */,
+				727770F61F9FD881004F2241 /* VInfoViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		720DAECB1FD61ADF00B3A023 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				F842895E1FD1BD0700048737 /* history.swift */,
+				720DAEC71FD616C500B3A023 /* Vehicle.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		720DAECC1FD61B2C00B3A023 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				F84289601FD1CEBF00048737 /* DateCell.swift */,
+				72FC571B1FB4166C0005FD04 /* DeviceTableViewCell.swift */,
+				F83EDAD51FBE2DAD0045079D /* CodesTableViewCell.swift */,
+				F842895C1FCE2D4B00048737 /* StatusCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		720DAECD1FD61B5800B3A023 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				729E64C21FBB3EAB00246B0C /* AST Logo.png */,
+				729E64C41FBB3EAC00246B0C /* chevy-suburban.png */,
+				729E64C31FBB3EAC00246B0C /* kia-optima.jpg */,
+				729E64C11FBB3EAB00246B0C /* Particle-Logo.png */,
+				F853197B1FA7A6440065B2EC /* AppDelegate.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		720DAECE1FD61B6A00B3A023 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				72C09E4D1FC0B65F003BD0A0 /* ASTInfo.swift */,
+				725D2D7D1FBA4F6500B21143 /* CustomSegue.swift */,
+				729E0D361FB1310C00BA4CCE /* LoadingHud.swift */,
+				727770F41F9FD881004F2241 /* VinRequest.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		727770B91F9FD7E9004F2241 = {
 			isa = PBXGroup;
 			children = (
@@ -171,32 +228,15 @@
 		727770C41F9FD7E9004F2241 /* AutomotiveScanTool */ = {
 			isa = PBXGroup;
 			children = (
+				720DAECE1FD61B6A00B3A023 /* Classes */,
+				720DAECD1FD61B5800B3A023 /* Images */,
+				720DAECC1FD61B2C00B3A023 /* TableViewCells */,
+				720DAECB1FD61ADF00B3A023 /* Structs */,
+				720DAECA1FD61A8200B3A023 /* View Controllers */,
 				72161B391FCDD71B00AFD753 /* AutomotiveScanTool.entitlements */,
 				727770CC1F9FD7E9004F2241 /* Assets.xcassets */,
-				729E64C21FBB3EAB00246B0C /* AST Logo.png */,
-				729E64C41FBB3EAC00246B0C /* chevy-suburban.png */,
-				729E64C31FBB3EAC00246B0C /* kia-optima.jpg */,
-				729E64C11FBB3EAB00246B0C /* Particle-Logo.png */,
-				F853197B1FA7A6440065B2EC /* AppDelegate.swift */,
-				72C09E4D1FC0B65F003BD0A0 /* ASTInfo.swift */,
-				725D2D7D1FBA4F6500B21143 /* CustomSegue.swift */,
-				F842895E1FD1BD0700048737 /* history.swift */,
-				F84289601FD1CEBF00048737 /* DateCell.swift */,
-				72FC571B1FB4166C0005FD04 /* DeviceTableViewCell.swift */,
-				F83EDAD51FBE2DAD0045079D /* CodesTableViewCell.swift */,
-				729E0D361FB1310C00BA4CCE /* LoadingHud.swift */,
-				727770F41F9FD881004F2241 /* VinRequest.swift */,
 				727770C91F9FD7E9004F2241 /* Main.storyboard */,
 				727770CE1F9FD7E9004F2241 /* LaunchScreen.storyboard */,
-				72E71BFA1FBCA44A00BEBA9D /* CodeHistoryViewController.swift */,
-				F84289621FD1EADE00048737 /* ReadCodeHistoryViewController.swift */,
-				727770F51F9FD881004F2241 /* DeviceViewController.swift */,
-				727770F91F9FD882004F2241 /* LoginViewController.swift */,
-				F853197D1FA7A6550065B2EC /* MainMenuViewController.swift */,
-				72BFF8891FBCEF7A008A0265 /* RCViewController.swift */,
-				F842895C1FCE2D4B00048737 /* StatusCell.swift */,
-				F83EDAD11FBCB0980045079D /* ReadCodesViewController.swift */,
-				727770F61F9FD881004F2241 /* VInfoViewController.swift */,
 				727770F31F9FD880004F2241 /* UIViewExtension.swift */,
 				720D8E4B1F9FE10100DAF53E /* GoogleService-Info.plist */,
 				727770D11F9FD7E9004F2241 /* Info.plist */,
@@ -598,11 +638,11 @@
 				727771001F9FD882004F2241 /* LoginViewController.swift in Sources */,
 				727770FA1F9FD882004F2241 /* UIViewExtension.swift in Sources */,
 				F83EDAD61FBE2DAD0045079D /* CodesTableViewCell.swift in Sources */,
+				720DAEC81FD616C500B3A023 /* Vehicle.swift in Sources */,
 				729E0D371FB1310C00BA4CCE /* LoadingHud.swift in Sources */,
 				F83EDAD21FBCB0980045079D /* ReadCodesViewController.swift in Sources */,
 				72FC571C1FB4166C0005FD04 /* DeviceTableViewCell.swift in Sources */,
 				F842895F1FD1BD0700048737 /* history.swift in Sources */,
-				72BFF88A1FBCEF7A008A0265 /* RCViewController.swift in Sources */,
 				727770FB1F9FD882004F2241 /* VinRequest.swift in Sources */,
 				F84289611FD1CEBF00048737 /* DateCell.swift in Sources */,
 				72C09E4E1FC0B65F003BD0A0 /* ASTInfo.swift in Sources */,

@@ -82,5 +82,20 @@ extension UIView {
         imgView.backgroundColor = UIColor.clear
         return imgView
     }
+}
+
+struct CustomProperties {
+    static var indexer: IndexPath = IndexPath()
+}
+
+extension UIButton {
     
+    var indexer: IndexPath {
+        get {
+            return objc_getAssociatedObject(CustomProperties.indexer, &CustomProperties.indexer) as! IndexPath
+        }
+        set {
+            return objc_setAssociatedObject(self, &CustomProperties.indexer, newValue, .OBJC_ASSOCIATION_RETAIN)
+        }
+    }
 }

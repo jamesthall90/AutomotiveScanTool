@@ -152,6 +152,7 @@ extension DeviceViewController {
                         
                         //Sets the device button with a Font-Awesome chevron icon
                         cell.deviceCellButton.setFAIcon(icon: .FAChevronRight, iconSize: 35, forState: .normal)
+                        cell.deviceCellButton.setTitleColor(UIColor.gray, for: .selected)
                         
                         //Changes the button icon's color to match the app's theme
                         cell.deviceCellButton.setFATitleColor(color: self.astColor)
