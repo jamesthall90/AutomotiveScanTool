@@ -166,6 +166,10 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as? StatusCell
+        if (selectedIndexPath != [] ) {
+            let previousCell = tableView.cellForRow(at: selectedIndexPath) as? StatusCell
+            previousCell?.expandArrow.setFAIconWithName(icon: .FAChevronRight, textColor: astColor)
+        }
         //expand selected row and collapse any other row that was previously expanded
         cellExpanded = false
         cell?.expandArrow.setFAIconWithName(icon: .FAChevronRight, textColor: astColor)
@@ -174,6 +178,7 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
             cellExpanded = true
             selectedIndexPath = indexPath
         } else {
+            
             selectedIndexPath = []
         }
         

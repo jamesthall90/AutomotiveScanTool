@@ -151,6 +151,7 @@ class ReadCodesViewController: UIViewController,UITableViewDataSource,UITableVie
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
         return getStatusText(index: section)
     }
     
@@ -166,13 +167,20 @@ class ReadCodesViewController: UIViewController,UITableViewDataSource,UITableVie
         tableView.deselectRow(at: indexPath, animated: true)
         
         let cell = tableView.cellForRow(at: indexPath) as? StatusCell
+        if (selectedIndexPath != [] ) {
+            let previousCell = tableView.cellForRow(at: selectedIndexPath) as? StatusCell
+            previousCell?.expandArrow.setFAIconWithName(icon: .FAChevronRight, textColor: astColor)
+        }
         
         //expand selected row and collapse any other row that was previously expanded
         cellExpanded = false
         cell?.expandArrow.setFAIconWithName(icon: .FAChevronRight, textColor: astColor)
         if (indexPath != selectedIndexPath) {
+            
             cell?.expandArrow.setFAIconWithName(icon: .FAChevronDown, textColor: astColor)
+            
             cellExpanded = true
+            
             selectedIndexPath = indexPath
         } else {
             selectedIndexPath = []

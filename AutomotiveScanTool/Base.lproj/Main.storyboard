@@ -581,7 +581,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8m-et-fOA">
-                                <rect key="frame" x="139" y="363" width="22" height="21"/>
+                                <rect key="frame" x="139" y="360" width="22" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="kRJ-Xl-8ec"/>
                                 </constraints>
@@ -590,7 +590,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Engine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6b-Vs-WJm">
-                                <rect key="frame" x="139" y="391" width="46" height="22"/>
+                                <rect key="frame" x="139" y="388" width="46" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="jmm-rf-w2u"/>
                                 </constraints>
@@ -679,7 +679,7 @@
                             <constraint firstItem="Jf8-0g-cZQ" firstAttribute="leading" secondItem="o8m-et-fOA" secondAttribute="leading" id="3eQ-ex-WMb"/>
                             <constraint firstItem="YYb-cm-TNN" firstAttribute="top" secondItem="Pas-dz-K9z" secondAttribute="bottom" constant="9" id="5Lb-Or-JAM"/>
                             <constraint firstItem="bg8-2h-bWk" firstAttribute="top" secondItem="rOu-AM-J2o" secondAttribute="bottom" constant="7" id="5Sa-jF-Can"/>
-                            <constraint firstItem="19r-LY-mBR" firstAttribute="firstBaseline" secondItem="c6b-Vs-WJm" secondAttribute="firstBaseline" id="7SB-1H-vrZ"/>
+                            <constraint firstItem="19r-LY-mBR" firstAttribute="firstBaseline" secondItem="c6b-Vs-WJm" secondAttribute="firstBaseline" constant="3" id="7SB-1H-vrZ"/>
                             <constraint firstItem="19r-LY-mBR" firstAttribute="leading" secondItem="1bo-Nm-Eug" secondAttribute="leading" id="8kG-fg-35I"/>
                             <constraint firstItem="rOu-AM-J2o" firstAttribute="top" secondItem="QdE-76-Flr" secondAttribute="top" id="9Vd-hz-Ovi"/>
                             <constraint firstItem="ZZi-kh-XZ5" firstAttribute="top" secondItem="rbO-dW-icR" secondAttribute="top" id="A0t-o7-OuV"/>
@@ -727,7 +727,7 @@
                             <constraint firstItem="oYg-Sj-OF0" firstAttribute="firstBaseline" secondItem="TxT-rC-VMb" secondAttribute="firstBaseline" constant="-23" id="mBy-jG-Wn0"/>
                             <constraint firstItem="YYb-cm-TNN" firstAttribute="top" secondItem="oYg-Sj-OF0" secondAttribute="bottom" constant="41" id="n9g-xZ-7Do"/>
                             <constraint firstItem="rOu-AM-J2o" firstAttribute="top" secondItem="ZZi-kh-XZ5" secondAttribute="bottom" constant="8" symbolic="YES" id="nK4-FS-UGc"/>
-                            <constraint firstItem="xyi-pv-aUq" firstAttribute="firstBaseline" secondItem="o8m-et-fOA" secondAttribute="firstBaseline" id="oQj-wJ-Q2f"/>
+                            <constraint firstItem="xyi-pv-aUq" firstAttribute="firstBaseline" secondItem="o8m-et-fOA" secondAttribute="firstBaseline" constant="3" id="oQj-wJ-Q2f"/>
                             <constraint firstItem="nSu-K7-Tpg" firstAttribute="leading" secondItem="5Ec-gz-eIz" secondAttribute="leadingMargin" constant="-15" id="qnc-N0-eo9"/>
                             <constraint firstItem="6vs-Fj-j8s" firstAttribute="leading" secondItem="TxT-rC-VMb" secondAttribute="leading" id="rWl-OH-lnY"/>
                             <constraint firstItem="ZZi-kh-XZ5" firstAttribute="leading" secondItem="rOu-AM-J2o" secondAttribute="leading" id="sNI-gD-9kD"/>
@@ -1206,9 +1206,8 @@
         <image name="imgDeviceUnknown" width="200" height="376"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ndY-ux-3FV"/>
         <segue reference="EG7-8T-Y3j"/>
-        <segue reference="eiI-oZ-aHL"/>
+        <segue reference="5dU-xd-CuK"/>
         <segue reference="lH3-M6-zlu"/>
     </inferredMetricsTieBreakers>
 </document>
