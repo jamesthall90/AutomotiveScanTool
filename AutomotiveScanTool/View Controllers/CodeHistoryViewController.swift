@@ -99,7 +99,6 @@ class CodeHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         var title: UILabel = UILabel()
         
         title.text = "--DATES--"
-//        title.textColor = UIColor(red: 77.0/255.0, green: 98.0/255.0, blue: 130.0/255.0, alpha: 1.0)
         title.textColor = astColor
         title.backgroundColor = UIColor(red: 225.0/255.0, green: 243.0/255.0, blue: 251.0/255.0, alpha: 1.0)
         title.font = UIFont(name: "Copperplate-Bold", size: 20)
@@ -113,15 +112,7 @@ class CodeHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if selectedIndexPath != [] {
-//            if (indexPath == selectedIndexPath) {
-//                if cellExpanded {
-//                    return 200
-//                } else {
-//                    return 50
-//                }
-//            }
-//        }
+
         return 50
     }
     
