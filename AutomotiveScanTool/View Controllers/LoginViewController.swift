@@ -19,7 +19,6 @@ class LoginViewController: UIViewController {
     var dialog: ZAlertView!
     
     override func viewDidLoad() {
-        
         let astColor = UIColor(red:0.00, green:0.20, blue:0.40, alpha:1.0)
         ZAlertView.blurredBackground = true
         ZAlertView.showAnimation = .bounceBottom
@@ -27,10 +26,6 @@ class LoginViewController: UIViewController {
         ZAlertView.alertTitleFont = UIFont(name: "Copperplate", size: 19)!
         ZAlertView.positiveColor = astColor
         ZAlertView.titleColor = astColor
-    }
-    
-    override func didReceiveMemoryWarning() {
-        
     }
     
     //Opens the Particle iOS application when the button is pressed
@@ -94,7 +89,7 @@ class LoginViewController: UIViewController {
                     LoadingHud.hideHud(self.view)
                     
                     //Prints an error message to the console
-                    print("Wrong credentials or no internet connectivity, please try again")
+//                    print("Wrong credentials or no internet connectivity, please try again")
                     
                     //Initialization of a ZAlertView dialog for displaying the login failure
                     self.dialog = ZAlertView(title: "Login Failure",
@@ -112,7 +107,7 @@ class LoginViewController: UIViewController {
                 }
                 else {
                     //Prints a message to the console
-                    print("Logged in to Particle!")
+//                    print("Logged in to Particle!")
                     
                     //Firebase Auth asynchronous function, which attempts to sign the user in
                     Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
@@ -121,7 +116,7 @@ class LoginViewController: UIViewController {
                         if error != nil{
                             
                             //Prints a warning to the console
-                            print("User does not exist! Attempting to create user...")
+//                            print("User does not exist! Attempting to create user...")
                             
                             //Attempts to create a new user in the DB with values stored from user input
                             Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
@@ -141,7 +136,7 @@ class LoginViewController: UIViewController {
                                 }
                                 
                                 //User was successfully created
-                                print("User successfully created!")
+//                                print("User successfully created!")
                                 
                                 //Initializes reference to Firebase object
                                 let ref  : DatabaseReference! = Database.database().reference()
@@ -172,7 +167,7 @@ class LoginViewController: UIViewController {
                                     return
                                 }
                                 
-                                print("User has been created and signed-in!")
+//                                print("User has been created and signed-in!")
                                 
                                 //Once the user has been created, segue switches views to Main Menu
                                 self.performSegue(withIdentifier: "deviceSelectSegue", sender: self)
@@ -181,7 +176,7 @@ class LoginViewController: UIViewController {
                         else {
                             
                             //Prints a message to the console
-                            print("Logged in to Firebase!")
+//                            print("Logged in to Firebase!")
                             
                             //Once the user has been created, segue switches views to Main Menu
                             self.performSegue(withIdentifier: "deviceSelectSegue", sender: self)

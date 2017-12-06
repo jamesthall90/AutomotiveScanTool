@@ -53,9 +53,10 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
     }
     
     func buildData(completion: @escaping (String) -> Void) {
-        //        DispatchQueue.main.async {
-        self.ref.child("users").child(self.uid).child("vehicles").child("2G1FE1ED7B9118397"/*self.vin*/).child("storedCodes").child(self.dateString).observe(DataEventType.value, with: { (snapshot) in
-            
+        /*  ***Uncomment to use hard coded values***  */
+//        self.ref.child("users").child(self.uid).child("vehicles").child("2G1FE1ED7B9118397"/*self.vin*/).child("storedCodes").child(self.dateString).observe(DataEventType.value, with: { (snapshot) in
+        self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).child("storedCodes").child(self.dateString).observe(DataEventType.value, with: { (snapshot) in
+
             let fbSnapshot = snapshot.value as? NSDictionary
             for status in fbSnapshot! {
                 var codeItems = status.value as? NSDictionary
@@ -63,14 +64,12 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
                     self.values[(status.key as? String)!]?.append([(codeItem.key as? String)! : [(codeItem.value as? String)!, "Google Link"]])
                 }
             }
-            
-            for items in self.values {
-                print(items.key, "  ", items.value)
-            }
-            //                print("VALUES IN BUILDDATA()", self.values)
+//
+//            for items in self.values {
+//                print(items.key, "  ", items.value)
+//            }
             completion("Success")
         })
-        //        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,7 +93,6 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
         var counter = 0
         for section in self.values{
             if counter == s {
-                //                    print("Section.value: ", section.value)
                 return section.value.count
             }
             counter += 1
@@ -146,7 +144,7 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
             counter += 1
             
         }
-        return "Didnt Work"
+        return "Error: Could not load StatusText"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -154,8 +152,6 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        
         return getStatusText(index: section)
     }
     
@@ -169,12 +165,10 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        //        print("****SELECTED A ROW!****   ", indexPath.row)
         let cell = tableView.cellForRow(at: indexPath) as? StatusCell
         //expand selected row and collapse any other row that was previously expanded
         cellExpanded = false
         cell?.expandArrow.setFAIconWithName(icon: .FAChevronRight, textColor: astColor)
-        
         if (indexPath != selectedIndexPath) {
             cell?.expandArrow.setFAIconWithName(icon: .FAChevronDown, textColor: astColor)
             cellExpanded = true
@@ -203,23 +197,15 @@ class ReadCodeHistoryViewController: UIViewController,UITableViewDataSource,UITa
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view:UIView, forSection: Int) {
         if let headerTitle = view as? UITableViewHeaderFooterView {
-            
             headerTitle.textLabel?.textColor = UIColor.black
-            
             headerTitle.textLabel?.font = UIFont(name: "Copperplate-Bold", size: 20)
-            
             headerTitle.backgroundView?.alpha = 0.4
             
             if (forSection == 0) {
-                
                 headerTitle.backgroundView?.backgroundColor = UIColor.yellow
-                
             } else if (forSection == 1){
-                
                 headerTitle.backgroundView?.backgroundColor = UIColor.green
-                
             } else {
-                
                 headerTitle.backgroundView?.backgroundColor = UIColor.red
             }
         }

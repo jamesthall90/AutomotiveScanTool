@@ -13,7 +13,6 @@ import UIKit
 class DeviceTableViewCell: UITableViewCell {
 
     @IBOutlet weak var deviceCellButton: UIButton!
-    
     @IBOutlet weak var deviceCellBackground: UIView!
     @IBOutlet weak var deviceImageView: UIImageView!
     @IBOutlet weak var deviceTypeLabel: UILabel!

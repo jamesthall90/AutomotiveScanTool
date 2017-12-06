@@ -34,8 +34,6 @@ class CodeHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         tableView.dataSource = self;
         
         self.buildData { (completion:String) in
-            print(completion)
-            print(self.dates)
             DispatchQueue.main.async {
                 self.backButtonOutlet.setFAIcon(icon: .FAChevronLeft, iconSize: 25, forState: .normal)
                 self.tableView.reloadData()
@@ -44,17 +42,18 @@ class CodeHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     }
     
     func buildData (completion: @escaping (String) -> Void) {
-        self.ref.child("users").child(self.uid).child("vehicles").child("2G1FE1ED7B9118397"/*self.vin*/).child("storedCodes").observe(DataEventType.value, with : {(snapshot) in
+        
+        /* ***Uncomment to use hard coded values*** */
+//        self.ref.child("users").child(self.uid).child("vehicles").child("2G1FE1ED7B9118397"/*self.vin*/).child("storedCodes").observe(DataEventType.value, with : {(snapshot) in
+        self.ref.child("users").child(self.uid).child("vehicles").child(self.vin).child("storedCodes").observe(DataEventType.value, with : {(snapshot) in
 
             let data = snapshot.value as? NSDictionary
             for date in data! {
                 self.dates.append((date.key as? String)!)
-//                print("Date: ", date.key, "Value: ", date.value)
             }
-            
             self.dates.sort()
             self.dates.reverse()
-        completion("Success")
+            completion("Success")
         })
     }
     
@@ -62,7 +61,6 @@ class CodeHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         tableView.deselectRow(at: indexPath, animated: true)
         
         self.dateString = dates[indexPath.row]
-        
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "readCodeHistorySegue", sender: self)
         }
@@ -99,7 +97,6 @@ class CodeHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         var title: UILabel = UILabel()
         
         title.text = "--DATES--"
-//        title.textColor = UIColor(red: 77.0/255.0, green: 98.0/255.0, blue: 130.0/255.0, alpha: 1.0)
         title.textColor = astColor
         title.backgroundColor = UIColor(red: 225.0/255.0, green: 243.0/255.0, blue: 251.0/255.0, alpha: 1.0)
         title.font = UIFont(name: "Copperplate-Bold", size: 20)
@@ -108,21 +105,10 @@ class CodeHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         
         title.textAlignment = NSTextAlignment.center
         title.addConstraints(constraint)
-        
         return title
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if selectedIndexPath != [] {
-//            if (indexPath == selectedIndexPath) {
-//                if cellExpanded {
-//                    return 200
-//                } else {
-//                    return 50
-//                }
-//            }
-//        }
         return 50
     }
-    
 }

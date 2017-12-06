@@ -28,15 +28,15 @@ class DeviceViewController: UIViewController, ParticleDeviceDelegate {
         deviceTable.delegate = self
         deviceTable.dataSource = self
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//    }
+//
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
     
     @IBAction func logOutButtonTapped(_ sender: Any) {
         
@@ -52,7 +52,7 @@ class DeviceViewController: UIViewController, ParticleDeviceDelegate {
           
           //Catches any errors in signing out and writes a warning to the console
         } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+            print (signOutError.localizedDescription)
         }
 
         //Once the user is logged out, segue switches views to Login
@@ -80,25 +80,24 @@ class DeviceViewController: UIViewController, ParticleDeviceDelegate {
             
             dialog.show()
             
+            /******** CURRENTLY DOES NOT WORK AND HAS NO EFFECT *******/
         //Logic to ensure that the selected device has the required firmware installed
-        } else if (!particleDevices![selectedDeviceIndex].functions.contains("getFirmware")){
-            
-            let noFirmware =  ZAlertView(title: "Firmware Not Installed!",
-                                         message: "The device does not have the appropriate firmware installed!.",
-                                         closeButtonText: "OK",
-                                         closeButtonHandler: { (alertView) -> () in
-                                            alertView.dismissAlertView()
-            })
-            
-            noFirmware.allowTouchOutsideToDismiss = false
-            
-            noFirmware.show()
-          
+//        } else if (!particleDevices![selectedDeviceIndex].functions.contains("getFirmware")){
+//
+//            let noFirmware =  ZAlertView(title: "Firmware Not Installed!",
+//                                         message: "The device does not have the appropriate firmware installed!.",
+//                                         closeButtonText: "OK",
+//                                         closeButtonHandler: { (alertView) -> () in
+//                                            alertView.dismissAlertView()
+//            })
+//
+//            noFirmware.allowTouchOutsideToDismiss = false
+//
+//            noFirmware.show()
+//
           //If the device is connected and has the required firmware installed, perform segue
-        } else{
-            
+        } else {
             performSegue(withIdentifier: "idSeguePresentMainMenu", sender: self)
-            
         }
     }
 }
@@ -116,8 +115,7 @@ extension DeviceViewController {
             
             //Prints a message to the console if an error is detected
             if let _ = error {
-                
-                print("Check your internet connectivity")
+                print("ERROR: Could not find devices, check your internet connectivity")
             }
             else { //No errors detected
                 
@@ -166,9 +164,7 @@ extension DeviceViewController {
 }
 
 extension DeviceViewController: UITableViewDelegate {
-    
-    //
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCell(withIdentifier: "deviceCell", for: indexPath) as! DeviceTableViewCell
         
@@ -197,7 +193,6 @@ extension DeviceViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return (particleDevices != nil) ? particleDevices!.count+1 : 0
     }
 }

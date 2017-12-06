@@ -44,5 +44,4 @@ class DateCell: UITableViewCell {
         dateView.layer.addSublayer(border)
         dateView.layer.masksToBounds = true
     }
-
 }

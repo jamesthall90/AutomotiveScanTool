@@ -46,31 +46,25 @@ class VInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.backButtonOutlet.setFAIcon(icon: .FAChevronLeft, iconSize: 25, forState: .normal)
-        
         fillLabels()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+//
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
     
     @IBAction func vIBackButton(_ sender: Any) {
-        
         self.performSegue(withIdentifier: "vIBackSegue", sender: self)
     }
     
     func fillLabels(){
-        
         LoadingHud.showHud(self.view, label: "Loading Data...")
-        
             self.imageView.contentMode = UIViewContentMode.scaleAspectFit
             self.imageView.clipsToBounds = true
             self.imageView.image = newImage
-        
             self.ref.child("users").child(self.uid).child("vehicles").child(self.vin as!
                 String).observeSingleEvent(of: .value, with: { (snapshot) in
-                
                     let value = snapshot.value as? NSDictionary
                     self.vIVINLabel.text = self.vin
                     self.vIYearLabel.text = value?["vehicle year"] as? String ?? ""
@@ -81,7 +75,6 @@ class VInfoViewController: UIViewController {
                     self.vITransmissionLabel.text = value?["vehicle transmission"] as? String ?? ""
                     self.vIAssyPlantLabel.text = value?["vehicle assembly plant"] as? String ?? ""
                     self.vIFuelTypeLabel.text = value?["vehicle fuel type"] as? String ?? ""
-
                     self.yearTitle.text = "Year"
                     self.makeTitle.text = "Make"
                     self.modelTitle.text = "Model"
@@ -94,5 +87,5 @@ class VInfoViewController: UIViewController {
                 
                     LoadingHud.hideHud(self.view)
             })
-    }
+    }//end func
 }
